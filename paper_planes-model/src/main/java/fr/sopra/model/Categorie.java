@@ -25,10 +25,10 @@ public class Categorie {
 
 	@ManyToMany
 	@JoinTable(
-			name="origami",
-			uniqueConstraints=@UniqueConstraint(columnNames = { "CMD_CATEGORIE_ID", "CMD_ORIGAMI_ID" }),
-			joinColumns=@JoinColumn(name="CMD_CATEGORIE_ID", referencedColumnName="CAT_ID"),
-			inverseJoinColumns=@JoinColumn(name="CMD_ORIGAMI_ID", referencedColumnName="ORI_ID"))
+			name="branche",
+			uniqueConstraints=@UniqueConstraint(columnNames = { "BRA_CATEGORIE_ID", "BRA_ORIGAMI_ID" }),
+			joinColumns=@JoinColumn(name="BRA_CATEGORIE_ID", referencedColumnName="CAT_ID"),
+			inverseJoinColumns=@JoinColumn(name="BRA_ORIGAMI_ID", referencedColumnName="ORI_ID"))
 	private Set<Origami> origamis;
 
 	public int getId() {
