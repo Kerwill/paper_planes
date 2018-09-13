@@ -53,7 +53,7 @@ private Niveau niveau;
 @OneToMany(mappedBy="origami")
 private Set<Etape> etapes;
 
-@ManyToMany(mappedBy="origami")
+@ManyToMany(mappedBy="origamis")
 private Set<Categorie> categories;
 
 public int getId() {
