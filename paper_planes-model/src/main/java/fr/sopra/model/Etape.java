@@ -89,5 +89,6 @@ public class Etape {
 	public void setOrigami(Origami origami) {
 		this.origami = origami;
 	}
+
 	
 }
