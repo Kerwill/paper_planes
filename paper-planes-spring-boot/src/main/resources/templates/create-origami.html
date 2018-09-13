@@ -48,20 +48,7 @@ layout:decorator="layout.html">
       <div> 
         <input type="checkbox" name="categorie" 
              th:each= "categorie : ${ categories }" th:value="${ categories.id }" checked /> 
-      </div> 
-     
-   <!-- <section id="extraGam"> 
-     
-      <div class="col"> 
-      <input type="text" class="form-control" name="gamme.nom" placeholder="Nom de gamme"/> 
-    </div> 
-    <div class="col"> 
-    <select id="inputState" class="form-control" name="fournisseur.id"> 
-        	<option th:each= "fournisseurs : ${fournisseurs }" th:value="${ fournisseurs.id }">[[${ fournisseurs.societe }]]</option> 
-        </select> 
-    </div> 
-     
-    </section>--> 
+      </div>
      
         <div> 
      <button class="btn btn-outline-info" type="submit">Envoyer</button></div> 
