@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.UniqueConstraint;
 
 @Entity
@@ -22,6 +23,9 @@ public class Categorie {
 
 	@Column(name = "CAT_NOM")
 	private String nom;
+	
+	@OneToMany
+	private Set<Categorie> categories; 
 
 	@ManyToMany
 	@JoinTable(
@@ -30,7 +34,7 @@ public class Categorie {
 			joinColumns=@JoinColumn(name="BRA_CATEGORIE_ID", referencedColumnName="CAT_ID"),
 			inverseJoinColumns=@JoinColumn(name="BRA_ORIGAMI_ID", referencedColumnName="ORI_ID"))
 	private Set<Origami> origamis;
-
+	
 	public int getId() {
 		return id;
 	}
@@ -54,5 +58,6 @@ public class Categorie {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
 
 }
