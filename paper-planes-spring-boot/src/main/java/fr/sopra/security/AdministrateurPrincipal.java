@@ -28,10 +28,10 @@ public class AdministrateurPrincipal implements UserDetails {
 	List<GrantedAuthority> myAuthorities = new ArrayList<GrantedAuthority>();
 	
 	if (this.administrateur.isTechnicien()) {
-		myAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		myAuthorities.add(new SimpleGrantedAuthority("ROLE_TECH"));
 	}
 	else {
-		myAuthorities.add(new SimpleGrantedAuthority("ROLE_TECH"));
+		myAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 	}
 	
 	return myAuthorities;
