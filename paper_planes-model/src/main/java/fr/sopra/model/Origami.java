@@ -18,103 +18,106 @@ import javax.validation.constraints.Size;
 import fr.sopra.model.enumerateur.Niveau;
 
 @Entity
-@Table(name="origami")
+@Table(name = "origami")
 public class Origami {
 
-@Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
-@Column(name="ORI_ID")
-private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ORI_ID")
+	private int id;
 
-@Column(name="ORI_NOM", length=(100), nullable=false)
-@NotEmpty
-@Size(max=100)
-private String nom;
+	@Column(name = "ORI_NOM", length = (100), nullable = false)
+	@NotEmpty
+	@Size(max = 100)
+	private String nom;
 
-@Column(name="ORI_TEMPS", nullable=false, columnDefinition="INT DEFAULT 1")
-@Positive
-private int temps;
+	@Column(name = "ORI_TEMPS", nullable = false, columnDefinition = "INT DEFAULT 1")
+	@Positive
+	private int temps;
 
-@Column(name="ORI_FEUILLE", nullable=false, columnDefinition="INT DEFAULT 1")
-@Positive
-private int feuille;
+	@Column(name = "ORI_FEUILLE", nullable = false, columnDefinition = "INT DEFAULT 1")
+	@Positive
+	private int feuille;
 
-@Column(name="ORI_NOTE", nullable=false, columnDefinition="INT DEFAULT 1")
-@Positive
-private int note;
+	@Column(name = "ORI_NOTE", nullable = false, columnDefinition = "INT DEFAULT 1")
+	@Positive
+	private int note;
 
-@Column(name="ORI_DISPO", nullable=false)
-private boolean dispo;
+	@Column(name = "ORI_DISPO", nullable = false)
+	private boolean dispo;
 
-@Enumerated(EnumType.ORDINAL)
-@Column(name="ORI_NIVEAU", nullable=false)
-private Niveau niveau;
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name = "ORI_NIVEAU", nullable = false)
+	private Niveau niveau;
 
-@OneToMany(mappedBy="origami")
-private Set<Etape> etapes;
+	@OneToMany(mappedBy = "origami")
+	private Set<Etape> etapes;
 
-@ManyToMany(mappedBy="origami")
-private Set<Categorie> categories;
+	@ManyToMany(mappedBy = "origamis")
+	private Set<Categorie> categories;
 
-public int getId() {
-  return id;
-}
+	public int getId() {
+		return id;
+	}
 
-public void setId(int id) {
-  this.id = id;
-}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-public String getNom() {
-  return nom;
-}
+	public String getNom() {
+		return nom;
+	}
 
-public void setNom(String nom) {
-  this.nom = nom;
-}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-public int getTemps() {
-  return temps;
-}
-public void setTemps(int temps) {
-  this.temps = temps;
-}
+	public int getTemps() {
+		return temps;
+	}
 
-public int getFeuille() {
-  return feuille;
-}
-public void setFeuille(int feuille) {
-  this.feuille = feuille;
-}
+	public void setTemps(int temps) {
+		this.temps = temps;
+	}
 
-public int getNote() {
-  return note;
-}
-public void setNote(int note) {
-  this.note = note;
-}
+	public int getFeuille() {
+		return feuille;
+	}
 
-public boolean isDispo() {
-  return dispo;
-}
+	public void setFeuille(int feuille) {
+		this.feuille = feuille;
+	}
 
-public void setDispo(boolean dispo) {
-  this.dispo = dispo;
-}
+	public int getNote() {
+		return note;
+	}
 
-public Set<Etape> getEtapes() {
-  return etapes;
-}
+	public void setNote(int note) {
+		this.note = note;
+	}
 
-public void setEtapes(Set<Etape> etapes) {
-  this.etapes = etapes;
-}
+	public boolean isDispo() {
+		return dispo;
+	}
 
-public Set<Categorie> getCategories() {
-  return categories;
-}
+	public void setDispo(boolean dispo) {
+		this.dispo = dispo;
+	}
 
-public void setCategories(Set<Categorie> categories) {
-  this.categories = categories;
-}
+	public Set<Etape> getEtapes() {
+		return etapes;
+	}
+
+	public void setEtapes(Set<Etape> etapes) {
+		this.etapes = etapes;
+	}
+
+	public Set<Categorie> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Set<Categorie> categories) {
+		this.categories = categories;
+	}
 
 }
