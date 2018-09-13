@@ -1,0 +1,13 @@
+#section{
+  display : flex;
+  flex-direction: column;
+}
+
+#logo{
+  flex : 1;
+}
+
+#slogan{
+  flex : 2;
+  font-family: 'Gamja Flower', cursive;
+}

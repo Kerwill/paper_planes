@@ -1,13 +1,13 @@
 {
     "name": "eshop",
     "version": "1.0.0",
-    "description": "eShop Angular qui permet de vendre des produits en ligne !",
+    "description": "Paperplane, quand le pliage est une philosophie",
     "scripts": {
         "start": "tsc && concurrently \"tsc -w\" \"lite-server\" "
     },
     "keywords": [],
-    "author": "Formation AJC (Jeremy PERROUAULT)",
-    "license": "MIT",
+    "author": "Team Paperplane",
+    "license": "Nantes Bouyah",
     "dependencies": {
         "@angular/common": "~4.0.0",
         "@angular/compiler": "~4.0.0",
@@ -17,7 +17,6 @@
         "@angular/platform-browser": "~4.0.0",
         "@angular/platform-browser-dynamic": "~4.0.0",
         "@angular/router": "~4.0.0",
-        
         "systemjs": "0.19.40",
         "core-js": "^2.4.1",
         "rxjs": "5.0.1",
