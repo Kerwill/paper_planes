@@ -6,6 +6,4 @@ import fr.sopra.model.Etape;
 
 public interface IDAOEtape extends JpaRepository<Etape, Integer> {
 
-	public Etape save (Etape entity);
-	
 }
