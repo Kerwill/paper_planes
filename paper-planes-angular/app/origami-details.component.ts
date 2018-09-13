@@ -10,4 +10,6 @@ import { Origami } from './origami';
 
 export class OrigamiDetailsComponent {
 
+
+
 }

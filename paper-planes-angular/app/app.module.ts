@@ -9,7 +9,7 @@ import { HomeComponent } from './home.component';
 import { HeaderComponent } from './header.component';
 import { FooterComponent } from './footer.component';
 import { NavComponent } from './nav.component';
-import { OrigamisComponent } from './origamis.component';
+import { OrigamiComponent } from './origami.component';
 import { OrigamiDetailsComponent } from './origami-details.component';
 import { IdeeComponent } from './idee.component';
 import { CategorieComponent } from './categorie.component';

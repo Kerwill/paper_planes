@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 public class Categorie {
@@ -19,10 +23,18 @@ public class Categorie {
 
 	@Column(name = "CAT_NOM")
 	private String nom;
+	
+	@OneToMany
+	private Set<Categorie> categories; 
 
 	@ManyToMany
+	@JoinTable(
+			name="branche",
+			uniqueConstraints=@UniqueConstraint(columnNames = { "BRA_CATEGORIE_ID", "BRA_ORIGAMI_ID" }),
+			joinColumns=@JoinColumn(name="BRA_CATEGORIE_ID", referencedColumnName="CAT_ID"),
+			inverseJoinColumns=@JoinColumn(name="BRA_ORIGAMI_ID", referencedColumnName="ORI_ID"))
 	private Set<Origami> origamis;
-
+	
 	public int getId() {
 		return id;
 	}
@@ -46,5 +58,6 @@ public class Categorie {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
 
 }

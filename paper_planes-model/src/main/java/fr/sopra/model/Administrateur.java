@@ -20,8 +20,8 @@ public class Administrateur {
 
 		@Column(name="ADM_TECHNICIEN", nullable=false)
 		@NotEmpty
-		private boolean isTechnicien;
-
+		private boolean isTechnicien = true;
+	
 		@Column(name="ADM_USERNAME", length =100, nullable=false)
 		@NotEmpty
 		@Size(max = 100)
@@ -64,4 +64,6 @@ public class Administrateur {
 			this.isTechnicien = isTechnicien;
 		}
 	}
+
+
 
