@@ -21,9 +21,25 @@
   <br/>
 
   <b>Recherche</b>
-  <input name="recherche" type="text" [(ngModel)]="filtre" />
+  <input name="recherche" type="text" [(ngModel)]="origami.nom" />
 </div>
 
 <div id="view">
+  <table>
+    <tr>
+      <th>Nom</th>
+      <th>Niveau</th>
+      <th>Temps</th>
+      <th>Note</th>
+      <th>Détail</th>
+    </tr>
+    <tr *ngFor="let o of filtrerOrigamis()">
+      <td>{{ o.nom }}</td>
+      <td>{{ o.niveau }}</td>
+      <td>{{ o.temps }}</td>
+      <td>{{ o.note }}</td>
+      <td>{{  }}</td>
+    </tr>
+  </table>
 </div>
 </div>
