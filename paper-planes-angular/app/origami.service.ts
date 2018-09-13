@@ -6,16 +6,17 @@ import { AppConfigService} from './app-config.service';
 @Injectable()
 export class OrigamiService {
   private origamis: Array<Origami> = new Array<Origami>();
-  private myOptions: RequestOptions;
 
   constructor(private http: Http, private appConfigService : AppConfigService) {
       this.http
            .get(this.appConfigService.getUrlApi() + "origamis")
            .subscribe(resp => {
-               for (let o of resp.json()._embedded.origamis) {
-                   this.origamis.push(new Origami(o));
-               }
-           });
+
+             console.log("OK")
+               // for (let o of resp.json()._embedded.origamis) {
+               //     this.origamis.push(new Origami(o));
+             }
+           );
   }
 
   public findAll() : Array<Origami>{

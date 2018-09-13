@@ -6,20 +6,21 @@ import { OrigamiService } from './origami.service';
 
 @Component({
     selector: 'origamis',
-    templateUrl: 'app/origamis.component.html',
-    styleUrls: ['app/origamis.component.css']
+    templateUrl: 'app/origami.component.html',
+    styleUrls: ['app/origami.component.css']
 	})
 
 export class OrigamiComponent {
   private origami: Origami = new Origami();
   private origamis: Array<Origami> = new Array<Origami>();
+  private filtre: string;
 
-  constructor() {
-      this.origamis.push(new Origami("Lapin", "Normal", 10, 3, "blabla"));
+  constructor(private origamiService : OrigamiService) {
+      // this.origamis.push(new Origami("Lapin", "Normal", 10, 3, "blabla"));
   }
 
   public getOrigamis() {
-      this.OrigamiService.findAll();
+      this.origamiService.findAll();
   }
 
   public addOrigami() {

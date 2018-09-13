@@ -1,3 +1,6 @@
+import { Etape } from './etape';
+import { Categorie } from './categorie';
+
 export class Origami {
   public nom: string;
   public temps: number;
@@ -6,7 +9,7 @@ export class Origami {
   public etapes: Array<Etape>;
   public categories: Array<Categorie>;
 
-  constructor(public nom?: string) {
+  constructor() {
   }
 
   public getNom(): string {
