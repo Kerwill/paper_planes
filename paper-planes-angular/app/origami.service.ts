@@ -5,18 +5,10 @@ import { AppConfigService} from './app-config.service';
 
 @Injectable()
 export class OrigamiService {
+  private origamis: Array<Origami> = new Array<Origami>();
+  private myOptions: RequestOptions;
 
-
-  @Injectable()
-export class ProduitService{
-
-
-private produits: Array<Produit> = new Array<Produit>();
-private myOptions: RequestOptions;
-
-
-constructor(private http: Http, private appConfigService : AppConfigService) {
-
+  constructor(private http: Http, private appConfigService : AppConfigService) {
       this.http
            .get(this.appConfigService.getUrlApi() + "origamis")
            .subscribe(resp => {
@@ -24,12 +16,12 @@ constructor(private http: Http, private appConfigService : AppConfigService) {
                    this.origamis.push(new Origami(o));
                }
            });
+  }
 
-}
+  public findAll() : Array<Origami>{
+    return this.origamis;
+  }
 
-
-public findAll() : Array<Origami>{
-  return this.origamis;
 }
 //
 // public findAllByNom(nom: string) : Array<Produit> {
@@ -64,4 +56,3 @@ public findAll() : Array<Origami>{
 //   .subscribe(resp => this.produits.splice(myIndex, 1));
 //
 // }
-}

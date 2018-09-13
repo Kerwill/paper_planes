@@ -33,7 +33,7 @@
       <th>Note</th>
       <th>Détail</th>
     </tr>
-    <tr *ngFor="let o of filtrerOrigamis()">
+    <tr *ngFor="let o of getOrigamis()">
       <td>{{ o.nom }}</td>
       <td>{{ o.niveau }}</td>
       <td>{{ o.temps }}</td>
