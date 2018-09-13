@@ -1,12 +1,8 @@
-import { Component } from '@angular/core';
-import { IdeeService } from './idee.service';
-//import { Idee } from './idee';
+import { Injectable } from '@angular/core';
+import { Idee } from './idee';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import { AppConfigService} from './app-config.service';
 
-@Component({
-    templateUrl: 'app/idee.component.html',
-    styleUrls: ['app/idee.component.css']
-	})
-
-export class IdeeComponent {
-
+@Injectable()
+export class IdeeService {
 }
