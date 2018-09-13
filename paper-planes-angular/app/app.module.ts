@@ -5,13 +5,18 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header.component';
-import { NavComponent } from './nav.component';
-import { OrigamiViewComponent } from './origami-view.component';
 
+import { HomeComponent } from './home.component';
+
+import { HeaderComponent } from './header.component';
 import { FooterComponent } from './footer.component';
+import { NavComponent } from './nav.component';
+
+import { OrigamisComponent } from './origamis.component';
+import { OrigamiDetailsComponent } from './origami-details.component';
+
 import { IdeeComponent } from './idee.component';
-import { EtapeViewComponent } from './etape-view.component';
+
 import { CategorieComponent } from './categorie.component';
 
 import { AppConfigService } from './app-config.service';
@@ -22,7 +27,7 @@ import { CategorieService } from './categorie.service';
 //Configuration des routes
 const routes: Routes = [
 { path: 'home', component: AppComponent },
-{ path: 'origami-view', component: OrigamiViewComponent },
+{ path: 'origami-list', component: OrigamisComponent },
 { path: 'origami-details', component: OrigamiDetailsComponent },
 
 { path: '', redirectTo: 'home', pathMatch: 'full' }
@@ -48,12 +53,12 @@ const routes: Routes = [
         AppComponent,
         HeaderComponent,
         NavComponent,
-        OrigamiViewComponent,
-        OrigamiComponent,
+        OrigamisComponent,
         FooterComponent,
         IdeeComponent,
-        EtapeViewComponent,
-        CategorieComponent
+        OrigamiDetailsComponent,
+        CategorieComponent,
+        HomeComponent
     ],
 
     bootstrap: [ AppComponent ]
