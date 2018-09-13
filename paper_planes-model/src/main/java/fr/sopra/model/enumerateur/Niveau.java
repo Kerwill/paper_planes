@@ -4,7 +4,7 @@ public enum Niveau {
 
 	Occasionnel(1),
 	Normal(2),
-	Avancé(3),
+	Avance(3),
 	Expert(4);
 	
 	private int valeur = 0;
