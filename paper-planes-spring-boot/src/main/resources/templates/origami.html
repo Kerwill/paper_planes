@@ -48,9 +48,9 @@ layout:decorator="layout.html">
 					<td>[[${ ori.etapes}]]</td>
 					<td>[[${ ori.categories}]]</td>
 					<td><a class="btn btn-outline-warning"
-						th:href="@{update(id=${ origami.id })}">Modifier</a>
+						th:href="@{update(id=${ ori.id })}">Modifier</a>
 						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-danger"
-						th:href="@{delete(id=${ origami.id })}"
+						th:href="@{delete(id=${ ori.id })}"
 						>Supprimer</a>
 					</td>
 				</tr>
