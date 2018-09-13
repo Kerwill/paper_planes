@@ -23,14 +23,14 @@ public class EtapeController {
 	private IDAOEtape daoetape;
 
 	@Secured({"ROLE_ADMIN","ROLE_TECH"})
-	@GetMapping({ "/readEtape" })
+	@GetMapping({ "/etape" })
 	public String listetape(Model model) {
 
 		List<Etape> myEtapes = new ArrayList<Etape>();
 
 		model.addAttribute("etapes", daoetape.findAll());
 
-		return "origami";
+		return "etape";
 
 	}
 
@@ -76,7 +76,7 @@ public class EtapeController {
 
 		daoetape.deleteById(id);
 
-		return "redirect:/origami";
+		return "redirect:/etape";
 
 	}
 
