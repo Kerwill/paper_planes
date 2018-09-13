@@ -12,7 +12,7 @@ layout:decorator="layout.html">
 
 <h1 class="display-2" layout:fragment="custom-title">Liste des origami</h1>
 <div>
-<a class="btn btn-outline-success" th:href = "@{create}" sec:authorize="hasRole('ROLE_ADMIN')">Ajouter un origami</a>
+<a class="btn btn-outline-success" th:href="@{origami/create}">Ajouter un origami</a>
 </div>
 	<div>
 		<table class="table table-borderless">
@@ -47,10 +47,10 @@ layout:decorator="layout.html">
 					<td>[[${ori.note}]]</td>
 					<td>[[${ ori.etapes}]]</td>
 					<td>[[${ ori.categories}]]</td>
-					<td sec:authorize="hasRole('ROLE_ADMIN', 'ROLE_TECH')"><a class="btn btn-outline-warning"
-						th:href="@{update(id=${ origami.id })}">Modifier</a>
+					<td><a class="btn btn-outline-warning"
+						th:href="@{update(id=${ ori.id })}">Modifier</a>
 						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-danger"
-						th:href="@{delete(id=${ origami.id })}"
+						th:href="@{delete(id=${ ori.id })}"
 						>Supprimer</a>
 					</td>
 				</tr>
