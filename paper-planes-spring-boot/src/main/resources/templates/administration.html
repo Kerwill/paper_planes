@@ -20,7 +20,7 @@
 
 	<h1> ADMINISTRATION </h1>
 
-<a sec:authorize="hasRole('ROLE_ADMIN')"href="/paperplanes-web/createAdministrateur">Ajouter un administrateur</a>			>
+<a sec:authorize="hasRole('ROLE_ADMIN')"href="/paperplanes-web/create-administration">Ajouter un administrateur</a>			>
 
 		<table>
 
@@ -28,6 +28,7 @@
 				<tr>
 					<th>Username</th>
 					<th>Password</th>
+					<th>Technicien</th>
 					<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')">Actions</th>
 				</tr>
 			</thead>
@@ -36,13 +37,12 @@
 
 
 				<td>[[${ administrateur.username }]]</td>
-
 				<td>[[${ administrateur.password }]]</td>
+				<td>[[${ administrateur.isTechnicien }]]</td>
 
-
-					<td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{updateAdministration(id=${ administrateur.id })}"
+					<td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{create-administration(id=${ administrateur.id })}"
 					class="btn btn-primary">Modifier</a> 
-					<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{deleteAdministration(id=${ administrateur.id })}"
+					<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{administration(id=${ administrateur.id })}"
 					class="btn btn-danger">Supprimer</a></td>
 
 

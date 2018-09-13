@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8" />
 <title>Insert title here</title>
 </head>
 
@@ -15,35 +15,35 @@
 		
 		<div>
 			<label for="inputDescriptif" class="col-sm-2 col-form-label">Descriptif de
-				l'étape</label>
+				l'Ã©tape</label>
 			<div class="col-sm-10">
 				<input name="descriptif" th:value="${ etape?. }"
-					placeholder="Descriptif de l'étape">
+					placeholder="Descriptif de l'Ã©tape">
 			</div>
 		</div>
 
 		<div>
 			<label for="inputImage" class="col-sm-2 col-form-label">Image
-				de l'étape</label>
+				de l'Ã©tape</label>
 			<div class="col-sm-10">
 				<input name="image" th:value="${ etape?.image }"
-					placeholder="Image de l'étape">
+					placeholder="Image de l'Ã©tape">
 				<div></div>
 
 				<div>
 					<label for="inputVideo" class="col-sm-2 col-form-label">Video
-						de l'étape</label>
+						de l'Ã©tape</label>
 					<div class="col-sm-10">
 						<input name="video" th:value="${ etape?.video }"
-							placeholder="Video de l'étape">
+							placeholder="Video de l'Ã©tape">
 					</div>
 
 					<div>
-						<label for="inputOrdre" class="col-sm-2 col-form-label">Ordre de l'étape
+						<label for="inputOrdre" class="col-sm-2 col-form-label">Ordre de l'Ã©tape
 						</label>
 						<div class="col-sm-10">
 							<input name="ordre" th:value="${ etape?.ordre }"
-								placeholder="Ordre de l'étape">
+								placeholder="Ordre de l'Ã©tape">
 						</div>
 					</div>
 
@@ -52,7 +52,7 @@
 
 							<div class="w3-container">
 
-								<a href="/origami" class="btn btn-danger">Annuler</a>
+								<a href="/etape" class="btn btn-danger">Annuler</a>
 
 								<button type="submit" class="btn btn-primary">Ajouter</button>
 

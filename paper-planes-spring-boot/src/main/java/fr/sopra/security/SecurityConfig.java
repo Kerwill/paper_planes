@@ -36,7 +36,7 @@ public class SecurityConfig {
 				.antMatchers("/**").hasAnyRole("ADMIN", "TECH")
 				.and()
 				.formLogin()
-					.loginPage("/login")
+					.loginPage("/home")
 					.loginProcessingUrl("/perform_login")
 					.defaultSuccessUrl("/home", true)
 					.failureUrl("/login?error=true")
