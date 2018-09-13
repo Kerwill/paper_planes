@@ -59,7 +59,7 @@
 				<td><a sec:authorize="hasRole('ROLE_ADMIN')"
 					th:href="@{create-etape(id=${ etape.id })}" class="btn btn-primary">Modifier</a>
 					<a sec:authorize="hasRole('ROLE_ADMIN')"
-					th:href="@{delete-etape(id=${ etape.id })}" class="btn btn-danger">Supprimer</a></td>
+					th:href="@{etape(id=${ etape.id })}" class="btn btn-danger">Supprimer</a></td>
 
 			</tr>
 
