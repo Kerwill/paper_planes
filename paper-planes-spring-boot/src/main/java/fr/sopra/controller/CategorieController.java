@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import fr.sopra.dao.IDAOCategorie;
 import fr.sopra.model.Categorie;
+
 
 @Controller
 @RequestMapping("/categorie")
