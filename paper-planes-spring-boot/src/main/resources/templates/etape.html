@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout.html"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<head>
+
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+	
+<base href="/" />
+
+<title>Etape</title>
+</head>
+
+<body>
+	<h1 layout:fragment="custom-title">LISTE DES ETAPES</h1>
+
+	</p>
+
+	<div layout:fragment="custom-content">
+		<a sec:authorize="hasRole('ROLE_ADMIN')"
+			href="/http://localhost:8080/create-etape">Ajouter une étape</a> >
+
+
+
+		<table>
+
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Descriptif</th>
+					<th>Image</th>
+					<th>Video</th>
+					<th>Ordre</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
+				</tr>
+			</thead>
+
+			<tr th:each="etape : ${ etapes }"}>
+
+				<td>[[${ etape.id }]]</td>
+
+				<td>[[${ etape.descriptif }]]</td>
+
+				<td>[[${ etape.image }]]</td>
+
+				<td>[[${ etape.video }]]</td>
+
+				<td>[[${ etape.ordre }]]</td>
+
+				<td><a sec:authorize="hasRole('ROLE_ADMIN')"
+					th:href="@{create-etape(id=${ etape.id })}" class="btn btn-primary">Modifier</a>
+					<a sec:authorize="hasRole('ROLE_ADMIN')"
+					th:href="@{delete-etape(id=${ etape.id })}" class="btn btn-danger">Supprimer</a></td>
+
+			</tr>
+
+			</tbody>
+		</table>
+</body>
+</div>
+</html>
