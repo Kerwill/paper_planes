@@ -6,13 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.sopra.dao.IDAOAdministrateur;
 import fr.sopra.model.Administrateur;
 
-@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
 @Controller
+@RequestMapping("/administration")
+@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
 public class AdministrateurController {
 
 	@Autowired
@@ -20,7 +22,7 @@ public class AdministrateurController {
 
 //	lister les administrateurs/techniciens
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
-	@GetMapping("/administration")
+	@GetMapping("/read")
 	public String readAdmin(Model model) {
 		model.addAttribute("administrateurs", daoAdministrateur.findAll());
 		return "administration";
@@ -28,7 +30,7 @@ public class AdministrateurController {
 
 //	Etape 1 : modifier les administrateurs/techniciens -- find by id
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/administration")
+	@GetMapping("/update")
 	public String updateAdminGet(@RequestParam int id, Model model) {
 		model.addAttribute("administrateur", daoAdministrateur.findById(id).get());
 		return "create-administration";
@@ -36,7 +38,7 @@ public class AdministrateurController {
 
 //	Etape 2 : modifier les administrateurs -- modifier les champs
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@PostMapping("/create-administration")
+	@PostMapping("/update")
 	public String updateAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien, @RequestParam String username,
 			@RequestParam String password, Model model) {
 		Administrateur myAdministrateur = new Administrateur();
@@ -52,7 +54,7 @@ public class AdministrateurController {
 
 //	supprimer les administrateurs/techniciens
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/administration")
+	@GetMapping("/delete")
 	public String deleteAdmin(@RequestParam int id, Model model) {
 		Administrateur myAdministrateur = new Administrateur();
 		myAdministrateur.setId(id);
@@ -64,14 +66,14 @@ public class AdministrateurController {
 //creer administrateurs/techniciens	
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/create-administration")
+	@GetMapping("/create")
 	public String createAdminGet(Model model) {
 		model.addAttribute("administrateurs", daoAdministrateur.findAll());
 		return "create-administration";
 	}
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@PostMapping("/create-administration")
+	@PostMapping("/create")
 	public String createAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien, @RequestParam String username,
 	@RequestParam String password, Model model) {
 		Administrateur myAdministrateur = new Administrateur();

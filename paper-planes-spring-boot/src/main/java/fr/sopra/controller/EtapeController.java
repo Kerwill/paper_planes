@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,83 +24,83 @@ public class EtapeController {
 	private IDAOEtape daoetape;
 
 	@Secured({"ROLE_ADMIN","ROLE_TECH"})
-	@GetMapping({ "/readEtape" })
-	public String listetape(Model model) {
-
-		List<Etape> myEtapes = new ArrayList<Etape>();
-
+	@GetMapping({ "/etape" })
+	public String readEtape(Model model) {
 		model.addAttribute("etapes", daoetape.findAll());
-
-		return "origami";
+		return "etape";
 
 	}
 
 	// AJOUTER ETAPE
 
 	// 1 GET POUR RECUPERER FORMULAIRE
-
-	@GetMapping({ "/createEtape" })
-	public String addEtape(Model model) {
-
-		model.addAttribute("etape", daoetape.findAll());
-
-		return "origami";
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping({ "/create-etape" })
+	public String createEtape(Model model) {
+		model.addAttribute("etapes", daoetape.findAll());
+		return "create-etape";
 
 	}
 
 	// 2 POST POUR ENVOYER DONNES
-
-	@PostMapping({ "/createEtape" })
 	
-	// 	public String addProduit(@RequestParam String nom, @RequestParam float prix) {
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PostMapping({ "/create-etape" })
 	
-	public String addEtape(@RequestParam String nom, @RequestParam String descriptif, @RequestParam String image, @RequestParam String video, @RequestParam int ordre ) {
-
+	public String createEtape(@RequestParam int id, @RequestParam String nom, @RequestParam String descriptif, 
+			@RequestParam String image, @RequestParam String video, @RequestParam int ordre, Model model ) {
+		
 		Etape myEtape = new Etape();
-
+		myEtape.setId(id);
 		myEtape.setDescriptif(descriptif);
 		myEtape.setImage(image);
 		myEtape.setVideo(video);
 		myEtape.setOrdre(ordre);
 
 		daoetape.save(myEtape);
-
-		return "redirect:/formulaireetape";
-
+		return "redirect:/etape";
 	}
 
 	// EFFACER ETAPE
-
-	@GetMapping({ "/deleteEtape" })
-
-	public String deleteEtape(@RequestParam int id) {
-
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping({ "/etape" })
+	public String deleteEtape(@RequestParam int id, Model model) {
+		
+		Etape myEtape = new Etape();
+		myEtape.setId(id);
 		daoetape.deleteById(id);
 
-		return "redirect:/origami";
+		return "redirect:/etape";
 
 	}
 
 	// MODIFIER ETAPE
-
-	@GetMapping({ "/uodateEtape" })
-
-	public String editerEtape(@RequestParam int id, Model model) {
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping({ "/etape" })
+	public String updateEtapeGet(@RequestParam int id, Model model) {
 
 		model.addAttribute("etape", daoetape.findById(id).get());
 
 		return "formulaireetape";
 
 	}
-
-	@PostMapping({ "/modetape" })
-
-
-	public String editerEtape(@ModelAttribute Etape etape) {
 	
-		daoetape.save(etape);
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PostMapping({ "/etape" })
+	public String updateEtapePost(@RequestParam int id, @RequestParam String nom, @RequestParam String descriptif, 
+			@RequestParam String image, @RequestParam String video, @RequestParam int ordre, Model model ) {
+	
+		Etape myEtape = new Etape();
+		myEtape.setId(id);
+		myEtape.setDescriptif(descriptif);
+		myEtape.setImage(image);
+		myEtape.setVideo(video);
+		myEtape.setOrdre(ordre);
 
-		return "redirect:/origami";
+		daoetape.save(myEtape);
+		return "redirect:/etape";
 	}
 	
 	}
