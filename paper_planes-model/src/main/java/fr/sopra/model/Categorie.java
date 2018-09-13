@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 public class Categorie {
@@ -21,6 +24,11 @@ public class Categorie {
 	private String nom;
 
 	@ManyToMany
+	@JoinTable(
+			name="origami",
+			uniqueConstraints=@UniqueConstraint(columnNames = { "CMD_CATEGORIE_ID", "CMD_ORIGAMI_ID" }),
+			joinColumns=@JoinColumn(name="CMD_CATEGORIE_ID", referencedColumnName="CAT_ID"),
+			inverseJoinColumns=@JoinColumn(name="CMD_ORIGAMI_ID", referencedColumnName="ORI_ID"))
 	private Set<Origami> origamis;
 
 	public int getId() {
