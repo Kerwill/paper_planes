@@ -9,7 +9,7 @@ import { HomeComponent } from './home.component';
 import { HeaderComponent } from './header.component';
 import { FooterComponent } from './footer.component';
 import { NavComponent } from './nav.component';
-import { OrigamisComponent } from './origamis.component';
+import { OrigamiComponent } from './origami.component';
 import { OrigamiDetailsComponent } from './origami-details.component';
 import { IdeeComponent } from './idee.component';
 import { CategorieComponent } from './categorie.component';
@@ -22,7 +22,7 @@ import { CategorieService } from './categorie.service';
 //Configuration des routes
 const routes: Routes = [
 { path: 'home', component: HomeComponent },
-{ path: 'origami-list', component: OrigamisComponent },
+{ path: 'origami-list', component: OrigamiComponent },
 { path: 'origami-details', component: OrigamiDetailsComponent },
 
 { path: '', redirectTo: 'home', pathMatch: 'full' }
@@ -48,7 +48,7 @@ const routes: Routes = [
         AppComponent,
         HeaderComponent,
         NavComponent,
-        OrigamisComponent,
+        OrigamiComponent,
         FooterComponent,
         IdeeComponent,
         OrigamiDetailsComponent,
