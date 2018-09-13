@@ -1,4 +1,4 @@
-package fr.sopra;
+package fr.sopra.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import fr.sopra.AdministrateurPrincipal;
 import fr.sopra.dao.IDAOAdministrateur;
 import fr.sopra.model.Administrateur;
 
