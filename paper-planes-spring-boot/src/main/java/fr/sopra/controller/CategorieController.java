@@ -22,7 +22,7 @@ public class CategorieController {
 	@GetMapping("/read")
 	public String readCategorie(Model model){
 		model.addAttribute("categories", daoCategorie.findAll());
-		return "redirect:/categorie";
+		return "categorie";
 	}
 	
 	@GetMapping("/create")
