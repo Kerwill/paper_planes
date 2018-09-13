@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 //import classe model si besoin
 
 @Component({
+    selector: 'myFooter',
     templateUrl: 'app/footer.component.html',
     styleUrls: ['app/footer.component.css']
 	})

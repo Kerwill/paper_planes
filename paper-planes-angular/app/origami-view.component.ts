@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 //import classe model si besoin
 
 @Component({
+    selector: 'origamiView',
     templateUrl: 'app/origami-view.component.html',
     styleUrls: ['app/origami-view.component.css']
 	})

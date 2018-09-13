@@ -1,0 +1,12 @@
+#basPage {
+  display : flex;
+  flex-direction: column;
+}
+
+#boiteIdee {
+  flex:2;
+}
+
+#credits {
+  flex:1;
+}
