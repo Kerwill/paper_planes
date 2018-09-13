@@ -1,21 +1,64 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout.html">
-
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+layout:decorator="layout.html">
 <head>
-
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<link rel="stylesheet"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-
-
-<title></title>
+<title>Gestion des origami</title>
 </head>
 <body>
+
+<section layout:fragment="custom-content">
+
+<h1 class="display-2" layout:fragment="custom-title">Liste des origami</h1>
+<div>
+<a class="btn btn-outline-success" th:href = "@{create}" sec:authorize="hasRole('ROLE_ADMIN')">Ajouter un origami</a>
+</div>
+	<div>
+		<table class="table table-borderless">
+			<thead class="bg-success">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Niveau</th>
+					<th scope="col">Temps de réalisation</th>
+					<th scope="col">Nombre de feuilles</th>
+					<th scope="col">Disponibilité</th>
+					<th scope="col">Rendre disponible</th>
+					<th scope="col">Rendre indisponible</th>
+					<th scope="col">Note</th>
+					<th scope="col">Etapes</th>
+					<th scope="col">Catégories</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="ori : ${ origamis }">
+					<th scope="row">[[${ ori.id }]]</th>
+					<td>[[${ ori.nom }]]</td>
+					<td>[[${ ori.niveau }]]</td>
+					<td>[[${ ori.temps }]]</td>
+					<td>[[${ ori.feuille }]]</td>
+					<td>[[${ ori.dispo }]]</td>
+					<td th:if="${ ori.dispo == true }"><a th:href="@{origami/non-dispo(id=${ori.id})}" class="btn btn-danger">Rendre indisponible</a></td>
+					<td th:if="${ ori.dispo == false }">Origami indisponible</td>
+					<td th:if="${ ori.dispo == false }"></a></td>
+					<td th:if="${ ori.dispo == true }"><a th:href="@{origami/dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></td>
+					<td>[[${ori.note}]]</td>
+					<td>[[${ ori.etapes}]]</td>
+					<td>[[${ ori.categories}]]</td>
+					<td sec:authorize="hasRole('ROLE_ADMIN', 'ROLE_TECH')"><a class="btn btn-outline-warning"
+						th:href="@{update(id=${ origami.id })}">Modifier</a>
+						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-danger"
+						th:href="@{delete(id=${ origami.id })}"
+						>Supprimer</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</section>
 
 </body>
 </html>
