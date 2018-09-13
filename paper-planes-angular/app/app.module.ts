@@ -22,7 +22,7 @@ import { CategorieService } from './categorie.service';
 //Configuration des routes
 const routes: Routes = [
 { path: 'home', component: HomeComponent },
-{ path: 'origami-list', component: OrigamisComponent },
+{ path: 'origami-list', component: OrigamiComponent },
 { path: 'origami-details', component: OrigamiDetailsComponent },
 
 { path: '', redirectTo: 'home', pathMatch: 'full' }
@@ -48,7 +48,7 @@ const routes: Routes = [
         AppComponent,
         HeaderComponent,
         NavComponent,
-        OrigamisComponent,
+        OrigamiComponent,
         FooterComponent,
         IdeeComponent,
         OrigamiDetailsComponent,

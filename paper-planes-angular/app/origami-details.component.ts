@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-//import service si besoin
-//import classe model si besoin
+import { OrigamiDetailsService } from './origami-details.service';
+import { Etape } from './etape';
+import { Origami } from './origami';
 
 @Component({
     templateUrl: 'app/origami-details.component.html',

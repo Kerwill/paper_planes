@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-//import service si besoin
-//import classe model si besoin
+import { OrigamiService } from './origami.service';
+import { Origami } from './origami';
 
 @Component({
-    selector: 'origamis',
-    templateUrl: 'app/origamis.component.html',
-    styleUrls: ['app/origamis.component.css']
+    selector: 'origami',
+    templateUrl: 'app/origami.component.html',
+    styleUrls: ['app/origami.component.css']
 	})
 
-export class OrigamisComponent {
+export class OrigamiComponent {
 
 }
