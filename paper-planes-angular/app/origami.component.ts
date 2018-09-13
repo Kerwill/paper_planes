@@ -8,13 +8,12 @@ import { Origami } from './origami';
     styleUrls: ['app/origami.component.css']
 	})
 
-<<<<<<< HEAD:paper-planes-angular/app/origamis.component.ts
+
 export class OrigamiComponent {
-=======
-export class OrigamisComponent {
+
   private origami: Origami = new Origami();
   private origamis: Array<Origami> = new Array<Origami>();
->>>>>>> angular:paper-planes-angular/app/origami.component.ts
+
 
   constructor() {
       this.origamis.push(new Origami("Lapin", "Normal", 10, 3, "blabla"));
