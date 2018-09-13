@@ -42,7 +42,7 @@ public class CategorieController {
 		
 		daoCategorie.save(myCategorie);
 		
-		return "redirect:/categorie";
+		return "categorie";
 	}
 
 	@GetMapping("/delete")
@@ -50,7 +50,7 @@ public class CategorieController {
 	        Categorie nouveauCategorie = new Categorie();
 	        nouveauCategorie.setId(id);
 	        daoCategorie.delete(nouveauCategorie);
-	        return "redirect:/categorie";
+	        return "categorie";
 	}
 	
 	@GetMapping("/update")
@@ -68,7 +68,7 @@ public class CategorieController {
 		
 		daoCategorie.save(categorie);
 		
-		return "redirect:/produit";
+		return "produit";
 	}
 	
 	
