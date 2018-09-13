@@ -20,23 +20,23 @@ public class AdministrateurController {
 
 //	lister les administrateurs/techniciens
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
-	@GetMapping("/listeadmin")
+	@GetMapping("/administration")
 	public String readAdmin(Model model) {
 		model.addAttribute("administrateurs", daoAdministrateur.findAll());
-		return "listeadmin";
+		return "administration";
 	}
 
 //	Etape 1 : modifier les administrateurs/techniciens -- find by id
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/modifieradmin")
+	@GetMapping("/administration")
 	public String updateAdminGet(@RequestParam int id, Model model) {
 		model.addAttribute("administrateur", daoAdministrateur.findById(id).get());
-		return "modifieradmin";
+		return "createadministration";
 	}
 
 //	Etape 2 : modifier les administrateurs -- modifier les champs
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@PostMapping("/modifieradmin")
+	@PostMapping("/createadministration")
 	public String updateAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien, @RequestParam String username,
 			@RequestParam String password, Model model) {
 		Administrateur myAdministrateur = new Administrateur();
@@ -47,31 +47,31 @@ public class AdministrateurController {
 		myAdministrateur.setTechnicien(isTechnicien);
 
 		daoAdministrateur.save(myAdministrateur);
-		return "redirect:/listeadmin";
+		return "redirect:/administration";
 	}
 
 //	supprimer les administrateurs/techniciens
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/supprimeradmin")
+	@GetMapping("/administration")
 	public String deleteAdmin(@RequestParam int id, Model model) {
 		Administrateur myAdministrateur = new Administrateur();
 		myAdministrateur.setId(id);
 
 		daoAdministrateur.deleteById(id);
-		return "redirect:/listeadmin";
+		return "redirect:/administration";
 	}
 
 //creer administrateurs/techniciens	
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/creeradmin")
+	@GetMapping("/administration")
 	public String createAdminGet(Model model) {
 		model.addAttribute("administrateurs", daoAdministrateur.findAll());
-		return "creeradmin";
+		return "createadministration";
 	}
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@PostMapping("/creeradmin")
+	@PostMapping("/createadministration")
 	public String createAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien, @RequestParam String username,
 	@RequestParam String password, Model model) {
 		Administrateur myAdministrateur = new Administrateur();
@@ -83,7 +83,7 @@ public class AdministrateurController {
 
 
 		daoAdministrateur.save(myAdministrateur);
-		return "redirect:/listeadmin";
+		return "redirect:/administration";
 	}
 	
 }
