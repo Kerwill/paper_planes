@@ -1,0 +1,81 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security" 
+layout:decorator="layout.html"> 
+<head> 
+<title>Gestion des Origami</title> 
+</head> 
+<body> 
+ 
+<section layout:fragment="custom-content"> 
+ 
+<h1 class="display-2"><div th:if="${ origami?.id !=null }" layout:fragment="custom-title">Modifier un produit </div></h1> 
+<h1 class="display-2"><div th:if="${ origami?.id ==null }" layout:fragment="custom-title">Ajouter un produit </div></h1> 
+<!-- <div sec:authorize="hasRole('ROLE_ADMIN')"> --> 
+<form method="post"> 
+  <div class="form-row"> 
+  	<div class="col"> 
+  	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> 
+  		<input class="form-control" readonly type="text" placeholder="ID" th:value="${ origami?.id }"/> 
+  	</div> 
+    <div class="col"> 
+      <input type="text" class="form-control" name="nom" placeholder="Nom" th:value="${ origami?.nom }"/> 
+    </div> 
+        <div class="col"> 
+      <input type="number" class="form-control" name="niveau" placeholder="Niveau" th:value="${ origami?.niveau }"/> 
+    </div> 
+    <div class="col"> 
+      <input type="number" class="form-control" name="temps" placeholder="Temps" th:value="${ origami?.temps }"/> 
+    </div> 
+    <div class="col"> 
+      <input type="number" class="form-control" name="feuille" placeholder="Nombre de feuilles" th:value="${ origami?.feuilles }"/> 
+    </div> 
+    <div class="col"> 
+      <input type="number" class="form-control" name="note" placeholder="Note" th:value="${ origami?.note }"/> 
+    </div> 
+    <div><label for="dispo">Disponibilit�</label></div> 
+        <div> 
+        <input type="radio" name="dispo" 
+               value="true" checked /> 
+    	</div> 
+        <div> 
+        <input type="radio" name="dispo" 
+               value="false" /> 
+        </div> 
+      <div><label for="categorie"></label></div> 
+      <div><label for="categorie">Cat�gories</label></div> 
+      <div> 
+        <input type="checkbox" name="categorie" 
+             th:each= "categorie : ${ categories }" th:value="${ categories.id }" checked /> 
+      </div> 
+     
+   <!-- <section id="extraGam"> 
+     
+      <div class="col"> 
+      <input type="text" class="form-control" name="gamme.nom" placeholder="Nom de gamme"/> 
+    </div> 
+    <div class="col"> 
+    <select id="inputState" class="form-control" name="fournisseur.id"> 
+        	<option th:each= "fournisseurs : ${fournisseurs }" th:value="${ fournisseurs.id }">[[${ fournisseurs.societe }]]</option> 
+        </select> 
+    </div> 
+     
+    </section>--> 
+     
+        <div> 
+     <button class="btn btn-outline-info" type="submit">Envoyer</button></div> 
+     <div> 
+     <a class="btn btn-outline-danger" href = "http://localhost:8080/ewavy-wab/produit/list">Annuler</a> 
+     </div> 
+  </div> 
+</form> 
+<!-- </div> --> 
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script src="/ewavy-web/scripts/addGamme.js"></script> 
+ 
+</section> 
+ 
+</body> 
+</html>
