@@ -35,6 +35,7 @@ public class SecurityConfig {
 				.antMatchers("/assets/**").permitAll()
 				.antMatchers("/home").permitAll()
 				.antMatchers("/login").permitAll()
+				.antMatchers("/api/**").permitAll()
 				.antMatchers("/**").hasAnyRole("ADMIN", "TECH")
 				.and()
 				.formLogin()
