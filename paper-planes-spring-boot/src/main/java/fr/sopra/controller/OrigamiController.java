@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import fr.sopra.dao.IDAOCategorie;
 import fr.sopra.dao.IDAOOrigami;
 import fr.sopra.model.Origami;
@@ -39,7 +38,7 @@ public class OrigamiController {
 
 		model.addAttribute("id", id);
 		daoOri.deleteById(id);
-		return "redirect:/origami/list";
+		return "redirect:/origami/read";
 	}
 	
 	@GetMapping(value="/update") 
@@ -51,7 +50,7 @@ public class OrigamiController {
 		model.addAttribute("origami", origami);
 		model.addAttribute("categories", daoCat.findAll());
 		model.addAttribute("id", id);
-		return "origami-edit";
+		return "create-origami";
 		
 	}
 	
@@ -59,7 +58,7 @@ public class OrigamiController {
 	public String updateOrigamiPost (@ModelAttribute Origami origami){
 
 		daoOri.save(origami);		
-		return "redirect:/produit/list";
+		return "redirect:/origami/read";
 		
 	}
 	
@@ -67,7 +66,7 @@ public class OrigamiController {
 	public String createOrigamiGet (Model model) {
 
 		model.addAttribute("categories", daoCat.findAll());
-		return "origami-edit";
+		return "create-origami";
 		
 	}
 	
@@ -75,8 +74,30 @@ public class OrigamiController {
 	public String createOrigamiPost (@ModelAttribute Origami origami) {
 		
 		daoOri.save(origami);
-		return "redirect:/origami/list";
+		return "redirect:/origami/read";
 		
+	}
+	
+	@GetMapping("/dispo")
+	public String getDispo(@RequestParam Integer id) {
+		
+		Origami toSetDispo =  daoOri.findById(id).get();
+		toSetDispo.setDispo(true);
+		daoOri.save(toSetDispo);
+			
+		return "redirect:/origami/read";
+
+	}
+	
+	@GetMapping("/non-dispo")
+	public String getNonDispo(@RequestParam Integer id) {
+		
+		Origami toSetDispo =  daoOri.findById(id).get();
+		toSetDispo.setDispo(false);
+		daoOri.save(toSetDispo);
+			
+		return "redirect:/origami/read";
+
 	}
 	
 }
