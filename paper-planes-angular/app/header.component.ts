@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 //import classe model si besoin
 
 @Component({
+    selector: 'myHeader',
     templateUrl: 'app/header.component.html',
     styleUrls: ['app/header.component.css']
 	})

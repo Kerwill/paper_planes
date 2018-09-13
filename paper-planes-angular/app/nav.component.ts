@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 //import classe model si besoin
 
 @Component({
+    selector: 'myNav',
     templateUrl: 'app/nav.component.html',
     styleUrls: ['app/nav.component.css']
 	})

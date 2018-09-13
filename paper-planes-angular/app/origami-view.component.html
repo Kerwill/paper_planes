@@ -1,0 +1,29 @@
+
+<div id="leDivDesFamilles">
+<div id="aside">
+  <b>Difficulté</b>
+  <form name="difficulte">
+    <input type="checkbox" name="occasionnel" value="1"> Occasionnel
+    <input type="checkbox" name="normal" value="2"> Normal
+    <input type="checkbox" name="avance" value="3"> Avancé
+    <input type="checkbox" name="expert" value="4"> Expert
+  </form>
+
+  <br/>
+  <br/>
+
+  <b>Catégorie</b>
+  <select name="categorie">
+    <option selected>Sélection</option>
+  </select>
+
+  <br/>
+  <br/>
+
+  <b>Recherche</b>
+  <input name="recherche" type="text" [(ngModel)]="filtre" />
+</div>
+
+<div id="view">
+</div>
+</div>
