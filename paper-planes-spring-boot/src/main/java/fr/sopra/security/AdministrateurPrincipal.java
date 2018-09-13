@@ -1,4 +1,4 @@
-package fr.sopra;
+package fr.sopra.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
