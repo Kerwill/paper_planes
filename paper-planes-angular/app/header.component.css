@@ -1,6 +1,5 @@
-#section{
+#front{
   display : flex;
-  flex-direction: column;
 }
 
 #logo{
@@ -8,6 +7,6 @@
 }
 
 #slogan{
-  flex : 2;
+  flex : 1;
   font-family: 'Gamja Flower', cursive;
 }

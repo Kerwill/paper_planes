@@ -26,7 +26,7 @@ import { CategorieService } from './categorie.service';
 
 //Configuration des routes
 const routes: Routes = [
-{ path: 'home', component: AppComponent },
+{ path: 'home', component: HomeComponent },
 { path: 'origami-list', component: OrigamisComponent },
 { path: 'origami-details', component: OrigamiDetailsComponent },
 
