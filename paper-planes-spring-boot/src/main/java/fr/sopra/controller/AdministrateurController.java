@@ -31,12 +31,12 @@ public class AdministrateurController {
 	@GetMapping("/administration")
 	public String updateAdminGet(@RequestParam int id, Model model) {
 		model.addAttribute("administrateur", daoAdministrateur.findById(id).get());
-		return "createadministration";
+		return "create-administration";
 	}
 
 //	Etape 2 : modifier les administrateurs -- modifier les champs
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@PostMapping("/createadministration")
+	@PostMapping("/create-administration")
 	public String updateAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien, @RequestParam String username,
 			@RequestParam String password, Model model) {
 		Administrateur myAdministrateur = new Administrateur();
@@ -67,11 +67,11 @@ public class AdministrateurController {
 	@GetMapping("/administration")
 	public String createAdminGet(Model model) {
 		model.addAttribute("administrateurs", daoAdministrateur.findAll());
-		return "createadministration";
+		return "create-administration";
 	}
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@PostMapping("/createadministration")
+	@PostMapping("/create-administration")
 	public String createAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien, @RequestParam String username,
 	@RequestParam String password, Model model) {
 		Administrateur myAdministrateur = new Administrateur();
