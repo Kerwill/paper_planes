@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import fr.formation.ewavy.model.Produit;
+
 import fr.sopra.dao.IDAOCategorie;
 import fr.sopra.dao.IDAOOrigami;
 import fr.sopra.model.Origami;
