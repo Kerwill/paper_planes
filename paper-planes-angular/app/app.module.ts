@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
 import { NavComponent } from './nav.component';
 import { OrigamiViewComponent } from './origami-view.component';
-import { OrigamiComponent } from './origami.component';
+
 import { FooterComponent } from './footer.component';
 import { IdeeComponent } from './idee.component';
 import { EtapeViewComponent } from './etape-view.component';
@@ -23,7 +23,8 @@ import { CategorieService } from './categorie.service';
 const routes: Routes = [
 { path: 'home', component: AppComponent },
 { path: 'origami-view', component: OrigamiViewComponent },
-{ path: 'origami', component: OrigamiComponent },
+{ path: 'origami-details', component: OrigamiDetailsComponent },
+
 { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
