@@ -15,9 +15,9 @@
 
 <title></title>
 </head>
-<section layout:fragment="custom-content">
-<body>
 
+<body>
+<section layout:fragment="custom-content">
 	<h1> ADMINISTRATION </h1>
 
 <a sec:authorize="hasRole('ROLE_ADMIN')"href="/paperplanes-web/create-administration">Ajouter un administrateur</a>			>
@@ -38,7 +38,7 @@
 
 				<td>[[${ administrateur.username }]]</td>
 				<td>[[${ administrateur.password }]]</td>
-				<td>[[${ administrateur.isTechnicien }]]</td>
+				<td>[[${ administrateur.technicien }]]</td>
 
 					<td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{create-administration(id=${ administrateur.id })}"
 					class="btn btn-primary">Modifier</a> 
