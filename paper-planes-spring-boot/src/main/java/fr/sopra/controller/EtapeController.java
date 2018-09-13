@@ -23,14 +23,14 @@ public class EtapeController {
 	private IDAOEtape daoetape;
 
 	@Secured({"ROLE_ADMIN","ROLE_TECH"})
-	@GetMapping({ "/etape" })
+	@GetMapping({ "/readEtape" })
 	public String listetape(Model model) {
 
 		List<Etape> myEtapes = new ArrayList<Etape>();
 
 		model.addAttribute("etapes", daoetape.findAll());
 
-		return "etape";
+		return "origami";
 
 	}
 
@@ -38,18 +38,18 @@ public class EtapeController {
 
 	// 1 GET POUR RECUPERER FORMULAIRE
 
-	@GetMapping({ "/addetape" })
+	@GetMapping({ "/createEtape" })
 	public String addEtape(Model model) {
 
 		model.addAttribute("etape", daoetape.findAll());
 
-		return "etapeformulaire";
+		return "origami";
 
 	}
 
 	// 2 POST POUR ENVOYER DONNES
 
-	@PostMapping({ "/addetape" })
+	@PostMapping({ "/createEtape" })
 	
 	// 	public String addProduit(@RequestParam String nom, @RequestParam float prix) {
 	
@@ -64,31 +64,31 @@ public class EtapeController {
 
 		daoetape.save(myEtape);
 
-		return "redirect:/etape";
+		return "redirect:/formulaireetape";
 
 	}
 
 	// EFFACER ETAPE
 
-	@GetMapping({ "/deleteetape" })
+	@GetMapping({ "/deleteEtape" })
 
 	public String deleteEtape(@RequestParam int id) {
 
 		daoetape.deleteById(id);
 
-		return "redirect:/etape";
+		return "redirect:/origami";
 
 	}
 
 	// MODIFIER ETAPE
 
-	@GetMapping({ "/modetape" })
+	@GetMapping({ "/uodateEtape" })
 
 	public String editerEtape(@RequestParam int id, Model model) {
 
 		model.addAttribute("etape", daoetape.findById(id).get());
 
-		return "etapeformulaire";
+		return "formulaireetape";
 
 	}
 
@@ -99,7 +99,7 @@ public class EtapeController {
 	
 		daoetape.save(etape);
 
-		return "redirect:/etape";
+		return "redirect:/origami";
 	}
 	
 	}
