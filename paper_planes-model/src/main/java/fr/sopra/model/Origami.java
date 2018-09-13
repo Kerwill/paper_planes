@@ -120,4 +120,13 @@ public class Origami {
 		this.categories = categories;
 	}
 
+	public Niveau getNiveau() {
+		return niveau;
+	}
+
+	public void setNiveau(Niveau niveau) {
+		this.niveau = niveau;
+	}
+	
+	
 }
