@@ -1,8 +1,17 @@
 <!DOCTYPE html>
-<html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout.html">
+
 <head>
-<meta charset="UTF-8" />
-<title>Insert title here</title>
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link rel="stylesheet"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
 </head>
 
 <body>
@@ -15,35 +24,35 @@
 		
 		<div>
 			<label for="inputDescriptif" class="col-sm-2 col-form-label">Descriptif de
-				l'Ã©tape</label>
+				l'étape</label>
 			<div class="col-sm-10">
 				<input name="descriptif" th:value="${ etape?. }"
-					placeholder="Descriptif de l'Ã©tape">
+					placeholder="Descriptif de l'étape">
 			</div>
 		</div>
 
 		<div>
 			<label for="inputImage" class="col-sm-2 col-form-label">Image
-				de l'Ã©tape</label>
+				de l'étape</label>
 			<div class="col-sm-10">
 				<input name="image" th:value="${ etape?.image }"
-					placeholder="Image de l'Ã©tape">
+					placeholder="Image de l'étape">
 				<div></div>
 
 				<div>
 					<label for="inputVideo" class="col-sm-2 col-form-label">Video
-						de l'Ã©tape</label>
+						de l'étape</label>
 					<div class="col-sm-10">
 						<input name="video" th:value="${ etape?.video }"
-							placeholder="Video de l'Ã©tape">
+							placeholder="Video de l'étape">
 					</div>
 
 					<div>
-						<label for="inputOrdre" class="col-sm-2 col-form-label">Ordre de l'Ã©tape
+						<label for="inputOrdre" class="col-sm-2 col-form-label">Ordre de l'étape
 						</label>
 						<div class="col-sm-10">
 							<input name="ordre" th:value="${ etape?.ordre }"
-								placeholder="Ordre de l'Ã©tape">
+								placeholder="Ordre de l'étape">
 						</div>
 					</div>
 
