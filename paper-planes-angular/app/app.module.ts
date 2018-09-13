@@ -5,18 +5,13 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-
 import { HomeComponent } from './home.component';
-
 import { HeaderComponent } from './header.component';
 import { FooterComponent } from './footer.component';
 import { NavComponent } from './nav.component';
-
 import { OrigamisComponent } from './origamis.component';
 import { OrigamiDetailsComponent } from './origami-details.component';
-
 import { IdeeComponent } from './idee.component';
-
 import { CategorieComponent } from './categorie.component';
 
 import { AppConfigService } from './app-config.service';
