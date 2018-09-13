@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout.html">
+
+<head>
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link rel="stylesheet"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+
+
+<title></title>
+</head>
+
+<body>
+
+	<h1> ADMINISTRATION </h1>
+
+<a sec:authorize="hasRole('ROLE_ADMIN')"href="/paperplanes-web/addtechnicien">Ajouter un technicien</a>			>
+
+		<table>
+
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Password</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')">Actions</th>
+				</tr>
+			</thead>
+
+			<tr th:each="technicien : ${ techniciens }"}>
+
+
+				<td>[[${ technicien.username }]]</td>
+
+				<td>[[${ technicien.password }]]</td>
+
+
+					<td><a th:href="@{modptechnicien(id=${ technicien.id })}"
+					class="btn btn-primary">Modifier</a> <a
+					th:href="@{deletetechnicien(id=${ technicien.id })}"
+					class="btn btn-danger">Supprimer</a></td>
+
+
+
+			</tr>
+
+			</tbody>
+		</table>
+
+</body>
+</html>
