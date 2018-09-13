@@ -34,7 +34,7 @@ layout:decorator="layout.html">
     <div class="col"> 
       <input type="number" class="form-control" name="note" placeholder="Note" th:value="${ origami?.note }"/> 
     </div> 
-    <div><label for="dispo">Disponibilit�</label></div> 
+    <div><label for="dispo">Disponibilite</label></div> 
         <div> 
         <input type="radio" name="dispo" 
                value="true" checked /> 
@@ -44,7 +44,7 @@ layout:decorator="layout.html">
                value="false" /> 
         </div> 
       <div><label for="categorie"></label></div> 
-      <div><label for="categorie">Cat�gories</label></div> 
+      <div><label for="categorie">Categories</label></div> 
       <div> 
         <input type="checkbox" name="categorie" 
              th:each= "categorie : ${ categories }" th:value="${ categories.id }" checked /> 
@@ -53,7 +53,7 @@ layout:decorator="layout.html">
         <div> 
      <button class="btn btn-outline-info" type="submit">Envoyer</button></div> 
      <div> 
-     <a class="btn btn-outline-danger" href = "http://localhost:8080/ewavy-wab/produit/list">Annuler</a> 
+     <a class="btn btn-outline-danger" th:href="@{origami/list}">Annuler</a> 
      </div> 
   </div> 
 </form> 
