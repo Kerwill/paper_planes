@@ -8,9 +8,11 @@ layout:decorator="layout.html">
 </head>
 <body>
 
-<section layout:fragment="custom-content">
-
+<header layout:fragment="custom-title">
 <h1 class="display-2">Liste des origami</h1>
+</header>
+
+<section layout:fragment="custom-content">
 <div>
 <a class="btn btn-outline-info" th:href="@{create}" sec:authorize="hasRole('ROLE_ADMIN')">Ajouter un origami</a>
 </br></br>
