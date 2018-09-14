@@ -29,10 +29,12 @@
 		</div>
 
 		<div id="password">
-			<label th:if="${ administrateur.username == user }">Password :</label> <input th:if="${ administrateur.username == user }" type="text" id="password" name="password"
+			<label th:if="${ administrateur.username == user or administrateur.username == null }" >Password :</label> 
+			<input th:if="${ administrateur.username == user or administrateur.username == null }" type="text" id="password" name="password"
 				placeholder="Votre mot de passe" th:value="${ administrateur?.password }" width="30px">
 		</div>
 		
+			
 		<label>Etes-vous un technicien ?</label> 
 		<label class="radio-inline"><input type="radio" id="0" value="0" name="isTechnicien">Non</label>
 		<label class="radio-inline"><input type="radio" id="1" value="1" name="isTechnicien">Oui</label>
@@ -41,7 +43,7 @@
 	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
 		<p></p>
-		<button type="submit" class="btn btn-danger">Valider</button>
+		<button type="submit" class="btn btn-outline-info">Valider</button>
 
 
 		</table>
