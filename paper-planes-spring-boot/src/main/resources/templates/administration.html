@@ -12,20 +12,20 @@
 	crossorigin="anonymous"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
 
-
-<title></title>
 </head>
+<header layout:fragment="custom-title"><h1 class="display-2">Administration</h1></header>
 
 <body>
 <section layout:fragment="custom-content">
-	<h1> ADMINISTRATION </h1>
-
-<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success" href="create">Ajouter un administrateur</a>	
-
-		<table>
+	
+<br/>
+<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-info" href="create">Ajouter un administrateur</a>	
+<br/>
+<br/>
+		<table class="table table-striped">
 
 			<thead>
-				<tr>
+				<tr class="table-info">
 					<th>Username</th>
 					<th>Technicien</th>
 					<th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
@@ -41,12 +41,12 @@
 				
 				<td>
 				<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{update(id=${ administrateur.id })}"
-				class="btn btn-primary">Modifier</a> 
+				class="btn btn-outline-secondary">Modifier</a> 
 				<a th:if="${ administrateur.username != user }" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{delete(id=${ administrateur.id })}"
-				class="btn btn-danger">Supprimer</a> 
-				<button th:if="${ administrateur.username == user }" sec:authorize="hasRole('ROLE_ADMIN')" disabled class="btn btn-danger">Supprimer</button>
+				class="btn btn-outline-danger">Supprimer</a> 
+				<button th:if="${ administrateur.username == user }" sec:authorize="hasRole('ROLE_ADMIN')" disabled class="btn btn-outline-warning">Supprimer</button>
 				</td>
-					
+				
 		
 			</tr>
 

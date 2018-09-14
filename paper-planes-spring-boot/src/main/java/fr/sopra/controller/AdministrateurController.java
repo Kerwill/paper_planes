@@ -5,6 +5,7 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,11 +47,14 @@ public class AdministrateurController {
 	public String updateAdminGet(@RequestParam int id, Model model, Principal principal) {
 		model.addAttribute("user", principal.getName());
 		model.addAttribute("administrateur", daoAdministrateur.findById(id).get());
-				
+		
+		
+		
 		return "create-administration";
 	}
 
 	
+
 //	Etape 2 : modifier les administrateurs -- modifier les champs
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/update")
@@ -80,7 +84,8 @@ public class AdministrateurController {
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/create")
-	public String createAdminGet(Model model) {
+	public String createAdminGet(Model model, Principal principal) {
+		model.addAttribute("user", principal.getName());
 		model.addAttribute("administrateurs", daoAdministrateur.findAll());
 		return "create-administration";
 	}
