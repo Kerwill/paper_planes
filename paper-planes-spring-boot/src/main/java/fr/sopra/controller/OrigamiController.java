@@ -37,6 +37,8 @@ public class OrigamiController {
 		
 		model.addAttribute("etapes", daoEtap.findByOrigamiIdOrderByOrdre(id));
 		model.addAttribute("origamis", daoOri.findAll());
+//		model.addAttribute("categories", daoCat.findByOrigamiId(id));
+		
 		return "origami";
 		
 	}
