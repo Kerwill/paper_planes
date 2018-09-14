@@ -12,6 +12,6 @@ import fr.sopra.model.Origami;
 public interface IDAOOrigami extends JpaRepository<Origami, Integer>{
 
 //@RestResource(path="by-nom")
-public Set<Origami> findByNom(@Param("nom") int nom);
+public Set<Origami> findByNom(@Param("nom") String nom);
 
 }
