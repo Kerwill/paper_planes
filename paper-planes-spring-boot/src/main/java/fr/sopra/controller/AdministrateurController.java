@@ -20,6 +20,12 @@ public class AdministrateurController {
 	@Autowired
 	private IDAOAdministrateur daoAdministrateur;
 
+	@GetMapping({ "/home-admin" })
+public String login() {
+		
+		return "home-admin";
+	}
+	
 //	lister les administrateurs/techniciens
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
 	@GetMapping("/read")
