@@ -26,8 +26,8 @@ public class Categorie {
 	private String nom;
 	
 	@ManyToOne
-	@JoinColumn(name="CAT_CATEGS", referencedColumnName = "CAT_ID")
-	private Categorie categorie; 
+	@JoinColumn(name="CAT_PARENT", referencedColumnName = "CAT_ID")
+	private Categorie parent; 
 
 	@ManyToMany
 	@JoinTable(

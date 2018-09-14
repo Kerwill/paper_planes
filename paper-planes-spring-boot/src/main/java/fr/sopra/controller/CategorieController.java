@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.sopra.dao.IDAOCategorie;
 import fr.sopra.model.Categorie;
-import fr.sopra.model.Origami;
-
 
 @Controller
 @RequestMapping("/categorie")
