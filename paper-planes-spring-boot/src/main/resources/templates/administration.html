@@ -35,16 +35,21 @@
 			<tr th:each="administrateur : ${ administrateurs }"}>
 
 
+
 				<td>[[${ administrateur.username }]]</td>
 				<td>[[${ administrateur.technicien }]]</td>
 				
-					<td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{create-administration(id=${ administrateur.id })}"
-					class="btn btn-primary">Modifier</a> 
-					<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{administration(id=${ administrateur.id })}"
-					class="btn btn-danger">Supprimer</a></td>
-
-
+				<td>
+				<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{update(id=${ administrateur.id })}"
+				class="btn btn-primary">Modifier</a> 
+				<a th:if="${ administrateur.username != user }" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{delete(id=${ administrateur.id })}"
+				class="btn btn-danger">Supprimer</a> 
+				<button th:if="${ administrateur.username == user }" sec:authorize="hasRole('ROLE_ADMIN')" disabled class="btn btn-danger">Supprimer</button>
+				</td>
+					
+		
 			</tr>
+
 
 			</tbody>
 		</table>
