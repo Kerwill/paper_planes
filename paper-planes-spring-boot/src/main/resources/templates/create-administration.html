@@ -28,9 +28,9 @@
 				th:value="${ administrateur?.username }" width="30px" required>
 		</div>
 
-		<div id="password">
-			<label th:if="${ administrateur.username == user or administrateur.username == null }" >Password :</label> 
-			<input th:if="${ administrateur.username == user or administrateur.username == null }" type="text" id="password" name="password"
+		<div th:if="${ administrateur == null || administrateur.username == user}" id="password">
+			<label>Password :</label> 
+			<input type="text" id="password" name="password"
 				placeholder="Votre mot de passe" th:value="${ administrateur?.password }" width="30px">
 		</div>
 		

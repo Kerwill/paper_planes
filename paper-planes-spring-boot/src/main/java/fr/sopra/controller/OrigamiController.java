@@ -1,7 +1,6 @@
 package fr.sopra.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,7 @@ import fr.sopra.model.enumerateur.Niveau;
 
 @Controller
 @RequestMapping("/origami")
-@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
+//@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class OrigamiController {
 
 	@Autowired 
@@ -31,7 +30,6 @@ public class OrigamiController {
 	@Autowired 
 	private IDAOEtape daoEtap;
 	
-	
 	@GetMapping(value="/read")
 	public String readOrigami(Model model, @RequestParam(defaultValue="1") int id) {
 		
@@ -41,7 +39,6 @@ public class OrigamiController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping(value="/delete")
 	public String deleteOrigami(@RequestParam int id, Model model) {
 
@@ -71,7 +68,6 @@ public class OrigamiController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping(value="/create") 
 	public String createOrigamiGet (Model model) {
 		model.addAttribute("niveaux", Niveau.values());
@@ -81,14 +77,12 @@ public class OrigamiController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping(value="/create") 
 	public String createOrigamiPost (@ModelAttribute Origami origami) {
 		daoOri.save(origami);
 		return "redirect:/origami/read";
 		
 	}
-	
 	
 	@GetMapping("/dispo")
 	public String getDispo(@RequestParam Integer id) {
@@ -111,7 +105,5 @@ public class OrigamiController {
 		return "redirect:/origami/read";
 
 	}
-	
-	
 	
 }
