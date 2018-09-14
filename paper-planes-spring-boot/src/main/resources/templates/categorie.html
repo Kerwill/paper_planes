@@ -24,19 +24,20 @@
   <thead>
     <tr>
       <th scope="col">Nom</th>
-      <th scope="col">Actions</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
   
     <tr th:each="categorie : ${categories}">
       <td>[[${ categorie.nom }]]</td>
-      <td><a type="button" th:href="@{update(id=${ categorie.id })}">Modifier</a></td>
-      <td><a type="button" th:href="@{delete(id=${ categorie.id })}">Supprimer</a></td>
+      <td><a  class="btn btn-primary" th:href="@{update(id=${ categorie.id })}">Modifier</a></td>
+      <td><a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-danger" th:href="@{delete(id=${ categorie.id })}">Supprimer</a></td>
     </tr> 
   </tbody>
 </table>
-<a type="button" th:href="@{create}">Ajouter</a>
+<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success" th:href="@{create}">Ajouter</a>
+
 </div>
 </body>
 </section>

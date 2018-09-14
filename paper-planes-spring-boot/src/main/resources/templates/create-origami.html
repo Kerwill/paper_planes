@@ -24,10 +24,12 @@ layout:decorator="layout.html">
     <label for="Nom">Nom</label> 
       <input type="text" class="form-control" name="nom" placeholder="Nom" th:value="${ origami?.nom }"/> 
     </div> 
-        <div class="col"> 
-        <label for="Niveau">Niveau</label>
-      <input type="text" class="form-control" name="niveau" placeholder="Niveau" th:value="${ origami?.niveau }"/> 
-    </div> 
+   	    </div>
+        <div class="col">
+        <label for="niveau">Niveau</label> 
+            <select id="inputState" class="form-control" name="niveau">
+        	<option th:each="niveau : ${ niveaux }" th:selected="${ origami?.niveau == niveau }" th:value="${ niveau.name() }">[[${ niveau.name() }]]</option>
+      	</select>
     <div class="col"> 
     <label for="Temps">Temps</label>
       <input type="number" class="form-control" name="temps" placeholder="Temps" th:value="${ origami?.temps }"/> 
@@ -51,7 +53,12 @@ layout:decorator="layout.html">
         <input type="radio" name="dispo" 
                value="false" /> 
         </div> 
-      <div><label for="categorie"></label></div> 
+         <div class="col">
+        <label th:each="etape : ${ etapes }" for="etapes">[[${ etape.descriptif }]]</label> 
+            <input type="checkbox" name="etape"
+		th:each="etape : ${ etapes }" th:value="${ etape.descriptif }" >
+      	</select>
+    <div class="col"> 
       <div><label for="categorie">Categories</label></div> 
       <div> 
         <input type="checkbox" th:name="${categorie.nom}" 
