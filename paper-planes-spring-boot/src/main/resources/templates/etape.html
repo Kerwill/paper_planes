@@ -48,19 +48,30 @@
 
 				<td>[[${ etape.descriptif }]]</td>
 
-				<td>[[${ etape.image }]]</td>
-
-				<td>[[${ etape.video }]]</td>
-
-				<td>[[${ etape.ordre }]]</td>
-
-				<td><a
-					sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )
+				<td><a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )
 					th:href="@{update(id=${ etape.id })}"
-					class="btn btn-outline-secondary">Modifier</a> <a
-					sec:authorize="hasRole('ROLE_ADMIN')"
+					class="btn btn-outline-secondary">Modifier</a>
+					
+					 <a sec:authorize="hasRole('ROLE_ADMIN')"
 					th:href="@{delete(id=${ etape.id })}" a
-					class="btn btn-outline-danger">Supprimer</a></td>
+					class="btn btn-outline-danger">Supprimer</a>
+				</td>
+
+
+			</tr>
+
+			<td>[[${ etape.video }]]</td>
+
+			<td>[[${ etape.ordre }]]</td>
+
+			<td><a
+				sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )
+				th:href="@{update(id=${ etape.id })}"
+				class="btn btn-outline-secondary">Modifier</a> <a
+				sec:authorize="hasRole('ROLE_ADMIN')"
+				th:href="@{delete(id=${ etape.id })}" class="btn btn-outline-danger">Supprimer</a>
+
+			</td>
 
 
 			</tr>
