@@ -40,12 +40,18 @@
 			</div>
 
 
-
-
 			<div id="ordre">
 				<label>Ordre :</label> <input type="text" id="ordre" name="ordre"
 					placeholder="Votre ordre" th:value="${ etape?.ordre }" width="30px">
 			</div>
+
+
+  <div class="col"> <label>Origami :</label>
+            <select id="inputState" class="form-control" name="origami.id">
+        		<option th:each ="origami : ${ origamis }" th:selected="${origami.id == etape?.origami?.id }" th:value="${ origami?.id }">[[${ origami.nom }]]</option>
+      	</select>
+    </div>
+
 
 
 			<!--  	<input name="etapeid" type="hidden" th:value="${ etape?.id }" /> 
@@ -93,12 +99,12 @@
 			
 			-->
 
-						<a href="/etape" class="btn btn-danger">Annuler</a>
+			<a href="/etape/read" class="btn btn-danger">Annuler</a>
 
-						<button type="submit" class="btn btn-primary">Ajouter</button>
+			<button type="submit" class="btn btn-primary">Ajouter</button>
 
-					</div>
-				</div>
+			</div>
+			</div>
 			</div>
 			<input type="hidden" th:name="${_csrf.parameterName}"
 				th:value="${_csrf.token}" />
