@@ -14,11 +14,11 @@
 </tr>
 </thead>
 <tbody>
-<tr *ngFor="let e of etapeService.findAll()">
+<tr *ngFor="let e of getEtapes()">
  <td>{{e.ordre}}</td>
  <td>{{e.descriptif}}</td>
 <td>{{e.image}}</td>
-<td>{{e.video}}</td>
+<td>{{id}}</td>
 </tr>
 </tbody>
 </table>

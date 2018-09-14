@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EtapeService } from './etape.service';
 import { Etape } from './etape';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -9,14 +10,25 @@ import { Etape } from './etape';
 	})
 
 export class OrigamiDetailsComponent {
-// private etapes : Array<Etape>;
 
-constructor(private etapeService : EtapeService ) {
+private id : number;
+
+constructor(private etapeService : EtapeService, private route: ActivatedRoute ) {
 
 // this.etapes = this.etapeService.findAll();
 }
 
-// public getEtapes(){
+ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log(params['id']);
+      this.id = params['id'];
+    });
+
+  }
+
+public getEtapes(){
+  return this.etapeService.findAllById(this.id);
 //   return this.etapes;
 // }
+}
 }

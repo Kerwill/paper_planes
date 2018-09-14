@@ -24,7 +24,7 @@ import { EtapeService } from './etape.service';
 const routes: Routes = [
 { path: 'home', component: HomeComponent },
 { path: 'origami-list', component: OrigamiComponent },
-{ path: 'origami-details', component: OrigamiDetailsComponent },
+{ path: 'origami-details/:id', component: OrigamiDetailsComponent },
 
 { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

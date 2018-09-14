@@ -21,12 +21,7 @@ export class OrigamiComponent {
   }
 
   public getOrigamis() {
-    if (!this.filtre) {
       return this.origamiService.findAll();
-    }
-    else {
-      return this.;
-    }
   }
 
   public addOrigami() {

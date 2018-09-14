@@ -37,13 +37,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
        <tr *ngFor="let o of getOrigamis()">
         <td>{{ o.nom }}</td>
         <td>{{ o.niveau }}</td>
         <td>{{ o.temps }}</td>
         <td>{{ o.note }}</td>
-        <td><a href>Détail</a></td>
+        <td><a [routerLink]="['/origami-details', o.id]" routerLinkActive="active">Détail</a></td>
+        <td> Categorie</td>
         <!-- <td *ngFor="let c of getOrigamiCategorie()">{{ c.nom }}</td> -->
       </tr>
     </tbody>
