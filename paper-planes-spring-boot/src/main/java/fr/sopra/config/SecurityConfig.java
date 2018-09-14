@@ -39,7 +39,7 @@ public class SecurityConfig {
 				.antMatchers("/login").permitAll()
 				.antMatchers("/**").hasAnyRole("ADMIN", "TECH")
 				.antMatchers("/home").permitAll()
-				.antMatchers("/**").permitAll()//.hasAnyRole("ADMIN", "TECH")
+				.antMatchers("/**").hasAnyRole("ADMIN", "TECH")
 				.and()
 				.formLogin()
 					.loginPage("/login")

@@ -22,7 +22,6 @@ import fr.sopra.model.Etape;
 
 @Controller
 @RequestMapping("/etape")
-@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
 
 public class EtapeController {
 
@@ -32,7 +31,7 @@ public class EtapeController {
 	@Autowired
 	private IDAOEtape daoEtape;
 
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
 	@GetMapping("/read")
 	public String readEtape(Model model) {
 		model.addAttribute("etapes", daoEtape.findAll());
@@ -86,8 +85,8 @@ public class EtapeController {
 	}
 
 	// MODIFIER ETAPE
-
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
 	@GetMapping("/update")
 	public String updateEtapeGet(@RequestParam int id, Model model) {
 
@@ -99,7 +98,7 @@ public class EtapeController {
 
 	}
 
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
 	@PostMapping("/update")
 	public String updateEtapePost(@ModelAttribute Etape etape) {
 

@@ -1,5 +1,7 @@
 package fr.sopra.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -32,7 +34,8 @@ public class AdministrateurController {
 //	lister les administrateurs/techniciens
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
 	@GetMapping("/read")
-	public String readAdmin(Model model) {
+	public String readAdmin(Model model, Principal principal) {
+		model.addAttribute("user", principal.getName());
 		model.addAttribute("administrateurs", daoAdministrateur.findAll());
 		return "administration";
 	}
@@ -40,12 +43,10 @@ public class AdministrateurController {
 //	Etape 1 : modifier les administrateurs/techniciens -- find by id
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/update")
-	public String updateAdminGet(@RequestParam int id, Model model) {
+	public String updateAdminGet(@RequestParam int id, Model model, Principal principal) {
+		model.addAttribute("user", principal.getName());
 		model.addAttribute("administrateur", daoAdministrateur.findById(id).get());
-		
-	
-		
-		
+				
 		return "create-administration";
 	}
 
