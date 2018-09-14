@@ -21,14 +21,14 @@ layout:decorator="layout.html">
 					<th scope="col">#</th>
 					<th scope="col">Nom</th>
 					<th scope="col">Niveau</th>
-					<th scope="col">Temps de réalisation</th>
+					<th scope="col">Temps de realisation</th>
 					<th scope="col">Nombre de feuilles</th>
-					<th scope="col">Disponibilité</th>
+					<th scope="col">Disponibilite</th>
 					<th scope="col">Rendre disponible</th>
 					<th scope="col">Rendre indisponible</th>
 					<th scope="col">Note</th>
 					<th scope="col">Etapes</th>
-					<th scope="col">Catégories</th>
+					<th scope="col">Categories</th>
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
@@ -45,11 +45,11 @@ layout:decorator="layout.html">
 					<td th:if="${ ori.dispo == true }">Origami disponible</a></td>
 					<td th:if="${ ori.dispo == false }"><a th:href="@{dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></td>
 					<td>[[${ori.note }]]</td>
-					<td>[[${ ori.etapes }]]</td>
+					<td><a class="btn btn-primary" th:href="@{read(id=${ ori.id })}">Voir la liste des etapes</a></td>
 					<td>[[${ ori.categories }]]</td>
 					<td><a class="btn btn-outline-warning"
 						th:href="@{update(id=${ ori.id })}">Modifier</a>
-						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-danger"
+						<a class="btn btn-outline-danger"
 						th:href="@{delete(id=${ ori.id })}"
 						>Supprimer</a>
 					</td>
@@ -57,6 +57,28 @@ layout:decorator="layout.html">
 			</tbody>
 		</table>
 	</div>
+	
+	<h2>Liste des ï¿½tapes</h2>
+			<table class="table table-borderless">
+			<thead class="bg-success">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Descriptif</th>
+					<th scope="col">Ordre</th>
+					<th scope="col">Image</th>
+					<th scope="col">Video</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="etape : ${ etapes }">
+					<th scope="row">[[${ etape.id }]]</th>
+					<td>[[${ etape.descriptif }]]</td>
+					<td>[[${ etape.ordre }]]</td>
+					<td>[[${ etape.image }]]</td>
+					<td>[[${ etape.video }]]</td>
+				</tr>
+			</tbody>
+		</table>
 
 </section>
 
