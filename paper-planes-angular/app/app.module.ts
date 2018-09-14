@@ -18,6 +18,7 @@ import { AppConfigService } from './app-config.service';
 import { OrigamiService } from './origami.service';
 import { IdeeService } from './idee.service';
 import { CategorieService } from './categorie.service';
+import { EtapeService } from './etape.service';
 
 //Configuration des routes
 const routes: Routes = [
@@ -40,7 +41,8 @@ const routes: Routes = [
       AppConfigService,
       OrigamiService,
       IdeeService,
-      CategorieService
+      CategorieService,
+      EtapeService
 
     ],
 
