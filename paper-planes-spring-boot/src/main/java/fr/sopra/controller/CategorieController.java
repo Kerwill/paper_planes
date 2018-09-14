@@ -1,5 +1,7 @@
 package fr.sopra.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,7 @@ public class CategorieController {
 	@GetMapping("/create")
 	public String createCategorieGet(Model model){
 		model.addAttribute("categories", daoCategorie.findAll());
+	
 		return "create-categorie";
 	}
 	
@@ -46,10 +49,12 @@ public class CategorieController {
 	        return "redirect:/categorie/read";
 	}
 	
+	
 	@GetMapping("/update")
-	public String updateCategorieGet(@RequestParam int idCategorie, Model model) {
+	public String updateCategorieGet(@RequestParam int id, Model model) {
 		
-		model.addAttribute("categorie", daoCategorie.findById(idCategorie).get());
+		Categorie categorie = daoCategorie.findById(id).get();
+		model.addAttribute("categorie", categorie);
 		
 	
 	return "create-categorie";
@@ -61,8 +66,11 @@ public class CategorieController {
 		
 		daoCategorie.save(categorie);
 		
-		return "categorie";
+		return "redirect:/categorie/read";
 	}
+	
+	
+	
 	
 	
 }

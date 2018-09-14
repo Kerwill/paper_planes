@@ -1,5 +1,8 @@
 package fr.sopra.config;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -35,6 +38,8 @@ public class SecurityConfig {
 				.antMatchers("/assets/**").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/**").hasAnyRole("ADMIN", "TECH")
+				.antMatchers("/home").permitAll()
+				.antMatchers("/**").permitAll()//.hasAnyRole("ADMIN", "TECH")
 				.and()
 				.formLogin()
 					.loginPage("/login")
@@ -52,8 +57,9 @@ public class SecurityConfig {
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
+//	    System.out.println("1, mot de passe : " + bcrypt.encode("1"));
+//	    System.out.println("2, mot de passe : " + bcrypt.encode("2"));
 		return new BCryptPasswordEncoder();
 	}
-}
 
-
+}	
