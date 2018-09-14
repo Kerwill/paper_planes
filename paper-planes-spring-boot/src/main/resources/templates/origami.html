@@ -12,7 +12,7 @@ layout:decorator="layout.html">
 
 <h1 class="display-2" layout:fragment="custom-title">Liste des origami</h1>
 <div>
-<a class="btn btn-outline-success" th:href="@{origami/create}">Ajouter un origami</a>
+<a class="btn btn-outline-success" th:href="@{create}">Ajouter un origami</a>
 </div>
 	<div>
 		<table class="table table-borderless">
@@ -40,13 +40,13 @@ layout:decorator="layout.html">
 					<td>[[${ ori.temps }]]</td>
 					<td>[[${ ori.feuille }]]</td>
 					<td>[[${ ori.dispo }]]</td>
-					<td th:if="${ ori.dispo == true }"><a th:href="@{origami/non-dispo(id=${ori.id})}" class="btn btn-danger">Rendre indisponible</a></td>
+					<td th:if="${ ori.dispo == true }"><a th:href="@{non-dispo(id=${ori.id})}" class="btn btn-danger">Rendre indisponible</a></td>
 					<td th:if="${ ori.dispo == false }">Origami indisponible</td>
-					<td th:if="${ ori.dispo == false }"></a></td>
-					<td th:if="${ ori.dispo == true }"><a th:href="@{origami/dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></td>
-					<td>[[${ori.note}]]</td>
-					<td>[[${ ori.etapes}]]</td>
-					<td>[[${ ori.categories}]]</td>
+					<td th:if="${ ori.dispo == true }">Origami disponible</a></td>
+					<td th:if="${ ori.dispo == false }"><a th:href="@{dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></td>
+					<td>[[${ori.note }]]</td>
+					<td>[[${ ori.etapes }]]</td>
+					<td>[[${ ori.categories }]]</td>
 					<td><a class="btn btn-outline-warning"
 						th:href="@{update(id=${ ori.id })}">Modifier</a>
 						<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-danger"
