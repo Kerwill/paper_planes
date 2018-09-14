@@ -29,12 +29,12 @@
 		</div>
 
 		<div id="password">
-			<label>Password :</label> <input type="text" id="password" name="password"
-				placeholder="Votre mot de passe" th:value="${ produit?.password }" width="30px">
+			<label>Password :</label> <input type="password" id="password" name="password"
+				placeholder="Votre mot de passe" th:value="${ administrateur?.password }" width="30px">
 		</div>
 		
 		<label>Etes-vous un technicien ?</label> 
-		<label class="radio-inline"><input type="radio" id="0" value="0" name="isTechnicien" checked>Non</label>
+		<label class="radio-inline"><input type="radio" id="0" value="0" name="isTechnicien">Non</label>
 		<label class="radio-inline"><input type="radio" id="1" value="1" name="isTechnicien">Oui</label>
 		
  
@@ -42,6 +42,7 @@
 
 		<p></p>
 		<button type="submit" class="btn btn-danger">Valider</button>
+
 
 		</table>
 </body>
