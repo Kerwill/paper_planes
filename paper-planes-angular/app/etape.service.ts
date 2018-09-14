@@ -13,10 +13,12 @@ constructor(private http: Http, private appConfigService: AppConfigService) {
 // myHeaders.append('Authorization', this.appConfigService.getApiBasic());
 // this.requestOptions = new RequestOptions({ headers: myHeaders });
    this.http
-        .get(this.appConfigService.getApiUrl() + "etapes")
+        .get(this.appConfigService.getUrlApi() + "etapes")
         .subscribe(resp => {
             for (let e of resp.json()._embedded.etapes) {
-                this.etapes.push(new Etapes(e));
+                this.etapes.push(new Etape(e));
+
+            console.log("ok service");
             }
         });
 }

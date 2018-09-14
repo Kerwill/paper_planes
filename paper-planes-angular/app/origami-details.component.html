@@ -1,8 +1,8 @@
-<h1>{{origami.nom}}</h1>
+<!-- <h1>{{origami.nom}}</h1> -->
 <br />
 <h2>Listes des etapes</h2>
 <div>
-Temps: {{origami.temps}} - Nombre de feuilles: {{origami.feuille}} - Niveau: {{origami.niveau}} - Note: {{origami.note}}
+<!-- Temps: {{origami.temps}} - Nombre de feuilles: {{origami.feuille}} - Niveau: {{origami.niveau}} - Note: {{origami.note}} -->
 </div>
 <table class="table table-hover">
 <thead>
@@ -14,7 +14,7 @@ Temps: {{origami.temps}} - Nombre de feuilles: {{origami.feuille}} - Niveau: {{o
 </tr>
 </thead>
 <tbody>
-<tr *ngFor="let e of EtapeService.findAll()">
+<tr *ngFor="let e of etapeService.findAll()">
  <td>{{e.ordre}}</td>
  <td>{{e.descriptif}}</td>
 <td>{{e.image}}</td>
