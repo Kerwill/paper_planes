@@ -43,11 +43,7 @@ public class AdministrateurController {
 	public String updateAdminGet(@RequestParam int id, Model model) {
 		model.addAttribute("administrateur", daoAdministrateur.findById(id).get());
 		
-//		String mdp = daoAdministrateur.getOne(id).getPassword();
-//		System.out.println("LE MOT DE PASSE : " + mdp);
-//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();  
-//		encoder.matches(password, daoAdministrateur.getOne(id).getPassword());  
-//		
+	
 		
 		
 		return "create-administration";
@@ -57,7 +53,11 @@ public class AdministrateurController {
 //	Etape 2 : modifier les administrateurs -- modifier les champs
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/update")
-	public String updateAdminPost(@ModelAttribute Administrateur myAdministrateur) {
+	public String updateAdminPost(@ModelAttribute Administrateur myAdministrateur, @RequestParam String password) {
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encoderpassword = passwordEncoder.encode(password);
+		myAdministrateur.setPassword(encoderpassword);
 		
 		daoAdministrateur.save(myAdministrateur);
 		return "redirect:/administration/read";
