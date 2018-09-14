@@ -10,7 +10,7 @@ layout:decorator="layout.html">
 
 <section layout:fragment="custom-content">
 
-<h1 class="display-2" layout:fragment="custom-title">Liste des origami</h1>
+<h1 class="display-2">Liste des origami</h1>
 <div>
 <a class="btn btn-outline-info" th:href="@{create}" sec:authorize="hasRole('ROLE_ADMIN')">Ajouter un origami</a>
 </br></br>

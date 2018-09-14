@@ -1,74 +1,91 @@
-<!DOCTYPE html> 
-<html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-xmlns:sec="http://www.thymeleaf.org/extras/spring-security" 
-layout:decorator="layout.html"> 
-<head> 
-<title>Gestion des Origami</title> 
-</head> 
-<body> 
- 
-<section layout:fragment="custom-content"> 
- 
-<h1 class="display-2"><div th:if="${ origami?.id !=null }" layout:fragment="custom-title">Modifier un produit </div></h1> 
-<h1 class="display-2"><div th:if="${ origami?.id ==null }" layout:fragment="custom-title">Ajouter un produit </div></h1> 
-<!-- <div sec:authorize="hasRole('ROLE_ADMIN')"> --> 
-<form method="post"> 
-  <div class="form-row"> 
-  	<div class="col"> 
-  	<label for="ID">ID</label>
-  	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> 
-  		<input class="form-control" readonly type="text" placeholder="ID" th:value="${ origami?.id }"/> 
-  	</div> 
-    <div class="col">
-    <label for="Nom">Nom</label> 
-      <input type="text" class="form-control" name="nom" placeholder="Nom" th:value="${ origami?.nom }"/> 
-    </div> 
-   	    </div>
-        <div class="col">
-        <label for="niveau">Niveau</label> 
-            <select id="inputState" class="form-control" name="niveau">
-        	<option th:each="niveau : ${ niveaux }" th:selected="${ origami?.niveau == niveau }" th:value="${ niveau.name() }">[[${ niveau.name() }]]</option>
-      	</select>
-    <div class="col"> 
-    <label for="Temps">Temps</label>
-      <input type="number" class="form-control" name="temps" placeholder="Temps" th:value="${ origami?.temps }"/> 
-    </div> 
-    <div class="col"> 
-    <label for="Feuille">Feuilles</label>
-      <input type="number" class="form-control" name="feuille" placeholder="Nombre de feuilles" th:value="${ origami?.feuille }"/> 
-    </div> 
-    <div class="col"> 
-    <label for="Note">Note</label>
-      <input type="number" class="form-control" name="note" placeholder="Note" th:value="${ origami?.note }"/> 
-    </div> 
-    <div><label for="dispo">Disponibilite</label></div> 
-        <div> 
-        <label for="dispo">Oui</label>
-        <input type="radio" name="dispo" 
-               value="true" checked /> 
-    	</div> 
-        <div> 
-        <label for="dispo">Non</label>
-        <input type="radio" name="dispo" 
-           value="false" /> 
-               
-    <div class="col"> 
-      <div><label for="categorie">C"C:/Users/admin/Desktop/PaperPlanes/paper-planes-spring-boot"ategories</label></div> 
-      <div> 
-        <input type="checkbox" th:name="${categorie.nom}" 
-             th:each= "categorie : ${ categories }" th:value="${ categorie.id }" checked /> 
-      </div>
-     
-        <div> 
-     <button class="btn btn-outline-info" type="submit">Envoyer</button></div> 
-     <div> 
-     <a class="btn btn-outline-danger" th:href="@{origami/list}">Annuler</a> 
-     </div> 
-  </div> 
-</form> 
- 
-</section> 
- 
-</body> 
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorator="layout.html">
+<head>
+<title>Gestion des Origami</title>
+</head>
+<body>
+
+	<section layout:fragment="custom-content">
+
+		<h1 class="display-2">
+			<div th:if="${ origami?.id !=null }" layout:fragment="custom-title">Modifier
+				un produit</div>
+		</h1>
+		<h1 class="display-2">
+			<div th:if="${ origami?.id ==null }" layout:fragment="custom-title">Ajouter
+				un produit</div>
+		</h1>
+		<!-- <div sec:authorize="hasRole('ROLE_ADMIN')"> -->
+		<form method="post">
+			<div class="form-row">
+				<div class="col">
+					<label for="ID">ID</label> <input type="hidden"
+						th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> <input
+						class="form-control" readonly type="text" placeholder="ID"
+						th:value="${ origami?.id }" />
+				</div>
+				<div class="col">
+					<label for="Nom">Nom</label> <input type="text"
+						class="form-control" name="nom" placeholder="Nom"
+						th:value="${ origami?.nom }" />
+				</div>
+			</div>
+			<div class="col">
+				<label for="niveau">Niveau</label> <select id="inputState"
+					class="form-control" name="niveau">
+					<option th:each="niveau : ${ niveaux }"
+						th:selected="${ origami?.niveau == niveau }"
+						th:value="${ niveau.name() }">[[${ niveau.name() }]]</option>
+				</select>
+				<div class="col">
+					<label for="Temps">Temps</label> <input type="number"
+						class="form-control" name="temps" placeholder="Temps"
+						th:value="${ origami?.temps }" />
+				</div>
+				<div class="col">
+					<label for="Feuille">Feuilles</label> <input type="number"
+						class="form-control" name="feuille"
+						placeholder="Nombre de feuilles" th:value="${ origami?.feuille }" />
+				</div>
+				<div class="col">
+					<label for="Note">Note</label> <input type="number"
+						class="form-control" name="note" placeholder="Note"
+						th:value="${ origami?.note }" />
+				</div>
+				<div>
+					<label for="dispo">Disponibilite</label>
+				</div>
+				<div>
+					<label for="dispo">Oui</label> <input type="radio" name="dispo"
+						value="true" checked />
+				</div>
+				<div>
+					<label for="dispo">Non</label> <input type="radio" name="dispo"
+						value="false" />
+
+					<div class="col">
+						<div>
+							<label for="categorie">C"C:/Users/admin/Desktop/PaperPlanes/paper-planes-spring-boot"ategories</label>
+						</div>
+						<div>
+							<input type="checkbox" th:name="${categorie.nom}"
+								th:each="categorie : ${ categories }"
+								th:value="${ categorie.id }" checked />
+						</div>
+
+						<div>
+							<button class="btn btn-outline-info" type="submit">Envoyer</button>
+						</div>
+						<div>
+							<a class="btn btn-outline-danger" th:href="@{origami/list}">Annuler</a>
+						</div>
+					</div>
+		</form>
+
+	</section>
+
+</body>
 </html>
