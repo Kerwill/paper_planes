@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.sopra.dao.IDAOCategorie;
 import fr.sopra.model.Categorie;
+import fr.sopra.model.Origami;
 
 
 @Controller
@@ -28,21 +29,15 @@ public class CategorieController {
 	@GetMapping("/create")
 	public String createCategorieGet(Model model){
 		model.addAttribute("categories", daoCategorie.findAll());
-		return "create";
+		return "create-categorie";
 	}
 	
-	
-	
 	@PostMapping({"/create"})
-	public String createCategoriePost(@RequestParam String nom) {
+	public String createCategoriePost(@ModelAttribute Categorie categorie) {
 		
-		Categorie myCategorie = new Categorie();
-			
-		myCategorie.setNom(nom);
+		daoCategorie.save(categorie);
 		
-		daoCategorie.save(myCategorie);
-		
-		return "categorie";
+		return "redirect:/categorie/read";
 	}
 
 	@GetMapping("/delete")
@@ -50,7 +45,7 @@ public class CategorieController {
 	        Categorie nouveauCategorie = new Categorie();
 	        nouveauCategorie.setId(id);
 	        daoCategorie.delete(nouveauCategorie);
-	        return "categorie";
+	        return "redirect:/origami/read";
 	}
 	
 	@GetMapping("/update")
@@ -59,7 +54,7 @@ public class CategorieController {
 		model.addAttribute("categorie", daoCategorie.findById(idCategorie).get());
 		
 	
-	return "update";
+	return "create-categorie";
 	}
 	
 	@PostMapping({"/update"})
@@ -68,7 +63,7 @@ public class CategorieController {
 		
 		daoCategorie.save(categorie);
 		
-		return "produit";
+		return "categorie";
 	}
 	
 	
