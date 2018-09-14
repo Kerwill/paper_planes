@@ -45,7 +45,7 @@ layout:decorator="layout.html">
 					<td th:if="${ ori.dispo == true }">Origami disponible</a></td>
 					<td th:if="${ ori.dispo == false }"><a th:href="@{dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></td>
 					<td>[[${ori.note }]]</td>
-					<td>[[${ ori.etapes }]]</td>
+					<td></td>
 					<td>[[${ ori.categories }]]</td>
 					<td><a class="btn btn-outline-warning"
 						th:href="@{update(id=${ ori.id })}">Modifier</a>

@@ -21,6 +21,9 @@
 
 		<form method="POST">
 
+			<input type="hidden" th:name="${_csrf.parameterName}"
+				th:value="${_csrf.token}" />
+
 			<div id="descriptif">
 				<label>Descriptif :</label> <input type="text" id="descriptif"
 					name="descriptif" placeholder="Votre descriptif"
@@ -40,9 +43,8 @@
 			</div>
 
 
-
 			<div id="ordre">
-				<label>Ordre :</label> <input type="text" id="ordre" name="ordre"
+				<label>Ordre :</label> <input type="number" id="ordre" name="ordre"
 					placeholder="Votre ordre" th:value="${ etape?.ordre }" width="30px">
 			</div>
 
@@ -92,15 +94,17 @@
 			
 			-->
 
-						<a href="/etape" class="btn btn-danger">Annuler</a>
 
-						<button type="submit" class="btn btn-primary">Ajouter</button>
+			
+     <a class="btn btn-outline-danger" th:href="@{read}">Annuler</a> 
+     
+     
+    	    <div><button class="btn btn-outline-info" type="submit">Ajouter</button></div> 
 
-					</div>
-				</div>
 			</div>
-			<input type="hidden" th:name="${_csrf.parameterName}"
-				th:value="${_csrf.token}" />
+			</div>
+			</div>
+
 		</form>
 
 

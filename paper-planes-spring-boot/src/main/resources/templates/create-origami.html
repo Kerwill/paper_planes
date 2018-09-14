@@ -24,10 +24,12 @@ layout:decorator="layout.html">
     <label for="Nom">Nom</label> 
       <input type="text" class="form-control" name="nom" placeholder="Nom" th:value="${ origami?.nom }"/> 
     </div> 
-        <div class="col"> 
-        <label for="Niveau">Niveau</label>
-      <input type="text" class="form-control" name="niveau" placeholder="Niveau" th:value="${ origami?.niveau }"/> 
-    </div> 
+   	    </div>
+        <div class="col">
+        <label for="niveau">Niveau</label> 
+            <select id="inputState" class="form-control" name="niveau">
+        	<option th:each="niveau : ${ niveaux }" th:selected="${ origami?.niveau == niveau }" th:value="${ niveau.name() }">[[${ niveau.name() }]]</option>
+      	</select>
     <div class="col"> 
     <label for="Temps">Temps</label>
       <input type="number" class="form-control" name="temps" placeholder="Temps" th:value="${ origami?.temps }"/> 
