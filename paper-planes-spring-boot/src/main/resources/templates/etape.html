@@ -4,7 +4,7 @@
 	layout:decorator="layout.html">
 
 <head>
-
+<meta charset="UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -21,8 +21,8 @@
 	<h1> ETAPE </h1>
 
 
-	
-<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success" href="create">Ajouter une étape"</a>
+
+<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success" href="create">Ajouter une Ã©tape"</a>
 
 
 			<table>
@@ -30,6 +30,7 @@
 				<thead>
 					<tr>
 						<th>Id</th>
+						<th>Origami</th>
 						<th>Descriptif</th>
 						<th>Image</th>
 						<th>Video</th>
@@ -41,6 +42,8 @@
 				<tr th:each="etape : ${ etapes }"}>
 
 					<td>[[${ etape.id }]]</td>
+					
+					<td>[[${ etape?.origami?.nom }]]</td>
 
 					<td>[[${ etape.descriptif }]]</td>
 
