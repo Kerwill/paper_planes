@@ -9,4 +9,10 @@ import { Idee } from './idee';
 
 export class IdeeComponent {
 
+
+  constructor(private ideeService : IdeeService) {}
+
+  public addIdee(idee){
+  this.ideeService.save(idee);
+}
 }

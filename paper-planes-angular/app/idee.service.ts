@@ -5,4 +5,24 @@ import { AppConfigService} from './app-config.service';
 
 @Injectable()
 export class IdeeService {
+  private idee: Idee;
+
+  constructor(private http: Http, private appConfigService: AppConfigService) {}
+
+  public save(idee) {
+
+    idee.setNom(this.appConfigService.getUrlApi() + "idees/this.nom");
+    idee.setPrenom(this.appConfigService.getUrlApi() + "idees/this.prenom");
+    idee.setEmail(this.appConfigService.getUrlApi() + "idees/this.mail");
+    idee.setDescription(this.appConfigService.getUrlApi() + "idees/this.description");
+
+    this.http
+      .post(this.appConfigService.getUrlApi() + "idees", {
+      idee: idee.getHref()
+      })
+      .subscribe(resp => alert("Message envoyé !"));
+  }
+  }
+
+
 }
