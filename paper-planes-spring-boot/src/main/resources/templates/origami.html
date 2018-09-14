@@ -40,10 +40,10 @@ layout:decorator="layout.html">
 					<td>[[${ ori.temps }]]</td>
 					<td>[[${ ori.feuille }]]</td>
 					<td>[[${ ori.dispo }]]</td>
-					<td th:if="${ ori.dispo == true }"><a th:href="@{origami/non-dispo(id=${ori.id})}" class="btn btn-danger">Rendre indisponible</a></td>
+					<td th:if="${ ori.dispo == true }"><a th:href="@{non-dispo(id=${ori.id})}" class="btn btn-danger">Rendre indisponible</a></td>
 					<td th:if="${ ori.dispo == false }">Origami indisponible</td>
 					<td th:if="${ ori.dispo == false }"></a></td>
-					<td th:if="${ ori.dispo == true }"><a th:href="@{origami/dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></td>
+					<td th:if="${ ori.dispo == true }"><a th:href="@{dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></td>
 					<td>[[${ori.note}]]</td>
 					<td>[[${ ori.etapes}]]</td>
 					<td>[[${ ori.categories}]]</td>
