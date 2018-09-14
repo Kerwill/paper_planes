@@ -36,3 +36,4 @@
   -o-transition: none;
   transition: none;
 }
+a { text-decoration: none; }
