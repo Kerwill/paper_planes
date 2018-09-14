@@ -5,6 +5,8 @@ import { AppConfigService} from './app-config.service';
 
 @Injectable()
 export class CategorieService {
+
+  private id : number;
   private categories: Array<Categorie> = new Array<Categorie>();
 
   constructor(private http: Http, private appConfigService : AppConfigService) {
@@ -22,4 +24,21 @@ export class CategorieService {
   public findAll() : Array<Categorie>{
     return this.categories;
   }
+//   public getCategories(id) : Array<Categorie>{
+//
+// if (this.id != id){
+//   this.categories = new Array <Categorie> ();
+//     this.id = id;
+//     this.http
+//          .get(this.appConfigService.getUrlApi() + "categories/search/by-origami?id="+id)
+//          .subscribe(resp => {
+//
+//              for (let c of resp.json()._embedded.categories) {
+//                  this.categories.push(new Categorie(c));
+//            }
+//          }
+//          );
+//     return this.categories;
+//   }
+
 }

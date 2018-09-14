@@ -16,5 +16,9 @@ public interface IDAOCategorie extends JpaRepository<Categorie, Integer> {
 
 //	@RestResource(path="by-origami")
 //	public List<Categorie> findByOrigamiId(@Param("id") int id);
+	
+	
+	@RestResource(path="by-origami")
+public List<Categorie> getAllByOrigamisId(@Param("id") int id);
 
 }

@@ -9,6 +9,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import fr.sopra.model.Origami;
+import fr.sopra.model.enumerateur.Niveau;
 import fr.sopra.projection.OrigamiProjection;
 
 @CrossOrigin("*")
@@ -22,6 +23,7 @@ public List<Origami> findByNomOrderByNom(@Param("nom") String nom);
 @RestResource(path="by-nom-containing")
 public List<Origami> findByNomContaining(@Param("nom") String nom);
 
-
+@RestResource(path="by-niveau")
+public List<Origami> findByNiveau(@Param("niveau") Niveau niveau);
 
 }

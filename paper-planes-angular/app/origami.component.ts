@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Origami } from './origami';
 import { OrigamiService } from './origami.service';
 import { CategorieService} from './categorie.service';
+import { Categorie} from './categorie';
 //import service si besoin
 //import classe model si besoin
 
@@ -77,6 +78,14 @@ return this.origamis;
 
   }
 
+
+  // getCategories() : Array<Categorie>{
+  //
+  //   this.categorieService.findByOrigami(id);
+  //
+  //
+  // }
+
   // public getOrigamisByNiveau() {
   //
   // }
@@ -85,10 +94,7 @@ return this.origamis;
   //    console.log(ev);
   // }
 
-  public addOrigami() {
-      this.origamis.push(this.origami);
-      this.origami = new Origami();
-  }
+
 
   public filtrerOrigamis(): Array<Origami> {
     return null;

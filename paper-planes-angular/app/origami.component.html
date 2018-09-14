@@ -23,7 +23,7 @@
   <b>Recherche</b>
   <input id="recherche" type="text" [(ngModel)] = "filtreRecherche" />
 
-  {{filtreRecherche}}
+
 
 <!-- [(ngModel)]="filtreRecherche" -->
 
@@ -48,8 +48,9 @@
         <td>{{ o.temps }}</td>
         <td>{{ o.note }}</td>
         <td><a [routerLink]="['/origami-details', o.id]" routerLinkActive="active">Détail</a></td>
-        <td> Categorie</td>
-        <!-- <td *ngFor="let c of getOrigamiCategorie()">{{ c.nom }}</td> -->
+        <td> d</td>
+        <!-- <td> <span *ngFor="let c of capaciteService.getCategories(o.id)">{{c.nom}}</span></td> -->
+
       </tr>
     </tbody>
   </table>
