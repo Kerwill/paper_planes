@@ -45,13 +45,15 @@ public class CategorieController {
 	        Categorie nouveauCategorie = new Categorie();
 	        nouveauCategorie.setId(id);
 	        daoCategorie.delete(nouveauCategorie);
-	        return "redirect:/origami/read";
+	        return "redirect:/categorie/read";
 	}
 	
+	
 	@GetMapping("/update")
-	public String updateCategorieGet(@RequestParam int idCategorie, Model model) {
+	public String updateCategorieGet(@RequestParam int id, Model model) {
 		
-		model.addAttribute("categorie", daoCategorie.findById(idCategorie).get());
+		Categorie categorie = daoCategorie.findById(id).get();
+		model.addAttribute("categorie", categorie);
 		
 	
 	return "create-categorie";
@@ -63,8 +65,11 @@ public class CategorieController {
 		
 		daoCategorie.save(categorie);
 		
-		return "categorie";
+		return "redirect:/categorie/read";
 	}
+	
+	
+	
 	
 	
 }
