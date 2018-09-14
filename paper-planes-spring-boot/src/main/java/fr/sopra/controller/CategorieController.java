@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import fr.sopra.dao.IDAOCategorie;
 import fr.sopra.model.Categorie;
 
+
 @Controller
 @RequestMapping("/categorie")
 public class CategorieController {
@@ -51,12 +52,11 @@ public class CategorieController {
 	
 	
 	@GetMapping("/update")
-	public String updateCategorieGet(@RequestParam int id, Model model) {
+	public String updateCategorieGet(@RequestParam int id, @ModelAttribute Categorie parent, Model model) {
 		
 		Categorie categorie = daoCategorie.findById(id).get();
 		model.addAttribute("categorie", categorie);
 		
-	
 	return "create-categorie";
 	}
 	

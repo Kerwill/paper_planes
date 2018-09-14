@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,35 +42,27 @@ public class AdministrateurController {
 	@GetMapping("/update")
 	public String updateAdminGet(@RequestParam int id, Model model) {
 		model.addAttribute("administrateur", daoAdministrateur.findById(id).get());
+		
+	
+		
+		
 		return "create-administration";
 	}
 
+	
 //	Etape 2 : modifier les administrateurs -- modifier les champs
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/update")
-	public String updateAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien,
-			@RequestParam String username, @RequestParam String password, Model model) {
-		Administrateur myAdministrateur = new Administrateur();
-
-		myAdministrateur.setId(id);
-		myAdministrateur.setUsername(username);
-		myAdministrateur.setPassword(password);
-		myAdministrateur.setTechnicien(isTechnicien);
-
+	public String updateAdminPost(@ModelAttribute Administrateur myAdministrateur, @RequestParam String password) {
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encoderpassword = passwordEncoder.encode(password);
+		myAdministrateur.setPassword(encoderpassword);
+		
 		daoAdministrateur.save(myAdministrateur);
 		return "redirect:/administration/read";
 	}
 
-////	supprimer les administrateurs/techniciens
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
-//	@GetMapping("/delete")
-//	public String deleteAdmin(@RequestParam int id, Model model) {
-//		Administrateur myAdministrateur = new Administrateur();
-//		myAdministrateur.setId(id);
-//
-//		daoAdministrateur.deleteById(id);
-//		return "redirect:/read";
-//	}
 
 //	supprimer les administrateurs/techniciens
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
