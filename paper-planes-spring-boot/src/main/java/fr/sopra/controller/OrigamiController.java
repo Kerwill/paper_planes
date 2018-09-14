@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.sopra.dao.IDAOCategorie;
+import fr.sopra.dao.IDAOEtape;
 import fr.sopra.dao.IDAOOrigami;
 import fr.sopra.model.Origami;
+import fr.sopra.model.enumerateur.Niveau;
 
 @Controller
 @RequestMapping("/origami")
@@ -25,9 +27,13 @@ public class OrigamiController {
 	@Autowired 
 	private IDAOCategorie daoCat;
 	
+	@Autowired 
+	private IDAOEtape daoEtap;
+	
 	@GetMapping(value="/read")
 	public String readOrigami(Model model) {
 
+		model.addAttribute("etapes", daoEtap.findAll());
 		model.addAttribute("origamis", daoOri.findAll());
 		return "origami";
 		
@@ -42,11 +48,10 @@ public class OrigamiController {
 	}
 	
 	@GetMapping(value="/update") 
-	public String updateOrigamiGet (
-			@RequestParam int id, 
-			Model model) {
+	public String updateOrigamiGet (@RequestParam int id, Model model) {
 		
 		Origami origami = daoOri.findById(id).get();
+		model.addAttribute("niveaux", Niveau.values());
 		model.addAttribute("origami", origami);
 		model.addAttribute("categories", daoCat.findAll());
 		model.addAttribute("id", id);
@@ -64,7 +69,7 @@ public class OrigamiController {
 	
 	@GetMapping(value="/create") 
 	public String createOrigamiGet (Model model) {
-
+		model.addAttribute("niveaux", Niveau.values());
 		model.addAttribute("categories", daoCat.findAll());
 		return "create-origami";
 		
@@ -72,7 +77,6 @@ public class OrigamiController {
 	
 	@PostMapping(value="/create") 
 	public String createOrigamiPost (@ModelAttribute Origami origami) {
-		
 		daoOri.save(origami);
 		return "redirect:/origami/read";
 		

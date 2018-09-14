@@ -10,9 +10,9 @@ import fr.sopra.model.Etape;
 @CrossOrigin("*")
 public interface IDAOEtape extends JpaRepository<Etape, Integer> {
 
-	@Query("Select e from Etape e left join fetch e.origamis where e.id = :id")	
+	@Query("Select e from Etape e left join fetch e.origami where e.id = :id")	
 	
-	public Etape findByIdFetchOrigamis(@Param("id") int id);
+	public Etape findByIdFetchOrigami(@Param("id") int id);
 
 	}
 	 
