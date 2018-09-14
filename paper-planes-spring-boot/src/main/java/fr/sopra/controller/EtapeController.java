@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import dao.IDAOGamme;
 import fr.sopra.dao.IDAOEtape;
+import fr.sopra.dao.IDAOOrigami;
 import fr.sopra.model.Etape;
 import fr.sopra.model.Origami;
 
@@ -26,6 +28,9 @@ import fr.sopra.model.Origami;
 
 public class EtapeController {
 
+	@Autowired
+	private IDAOOrigami daoOri;
+	
 	@Autowired
 	private IDAOEtape daoEtape;
 
