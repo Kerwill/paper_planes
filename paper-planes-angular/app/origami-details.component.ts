@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { EtapeService } from './etape.service';
-import { Etape } from './etape';
-
+import { OrigamiService } from './origami.service';
 
 @Component({
     templateUrl: 'app/origami-details.component.html',
@@ -11,10 +10,15 @@ import { Etape } from './etape';
 export class OrigamiDetailsComponent {
 // private etapes : Array<Etape>;
 
-constructor(private etapeService : EtapeService ) {
+constructor(private etapeService : EtapeService, private origamiService: OrigamiService ) {
 
 // this.etapes = this.etapeService.findAll();
 }
+
+// private getOrigami() : any{
+//   origamiService
+// }
+
 
 // public getEtapes(){
 //   return this.etapes;
