@@ -13,16 +13,22 @@ import fr.sopra.model.Administrateur;
 @Service
 public class AuthService implements UserDetailsService {
 
-	@Autowired
-	IDAOAdministrateur daoAdministrateur;
-
-//	@Override
+	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//		return new UtilisateurPrincipal(this.daoUtilisateur.findByUsername(username));
-		
-		Administrateur myAdministrateur = this.daoAdministrateur.findByUsername(username);
-		AdministrateurPrincipal myPrincipal = new AdministrateurPrincipal(myAdministrateur);
-		return myPrincipal;
-		
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+//	@Autowired
+//	IDAOAdministrateur daoAdministrateur;
+//
+////	@Override
+//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+////		return new UtilisateurPrincipal(this.daoUtilisateur.findByUsername(username));
+//		
+//		Administrateur myAdministrateur = this.daoAdministrateur.findByUsername(username);
+//		AdministrateurPrincipal myPrincipal = new AdministrateurPrincipal(myAdministrateur);
+//		return myPrincipal;
+		
+	
 }

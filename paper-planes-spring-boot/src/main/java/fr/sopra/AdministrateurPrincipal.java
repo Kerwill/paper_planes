@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import fr.sopra.model.Administrateur;
 
-public class AdministrateurPrincipal implements UserDetails {}
+public class AdministrateurPrincipal  {}
 //
 //	private static final long serialVersionUID = 1L;
 //	private Administrateur administrateur;
