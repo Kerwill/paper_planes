@@ -36,7 +36,7 @@
   -o-transition: none;
   transition: none;
 }
-a { text-decoration: none; }
+a:link { text-decoration: none; }
 
 h1 {
 	text-align: center;
