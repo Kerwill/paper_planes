@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import fr.sopra.model.Etape;
 @CrossOrigin("*")
 public interface IDAOEtape extends JpaRepository<Etape, Integer> {
-
-	@Query("Select e from Etape e left join fetch e.origami where e.id = :id")	
 	
-	public Etape findByIdFetchOrigami(@Param("id") int id);
-
+	public Etape findByOrigamiId(@Param("id") int id);
+	
+	
 	}
 	 
 	
