@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.sopra.dao.IDAOEtape;
 import fr.sopra.model.Etape;
+import fr.sopra.model.Origami;
 
 
 
@@ -42,31 +43,22 @@ public class EtapeController {
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/create")
-//	public String createEtapeGet(Model model) {
+	public String createEtapeGet(Model model) {
 //		model.addAttribute("etapes", daoEtape.findAll());
 //		return "create-etape";
 
-		public String createEtape() {
-			
-			return "create-etape";
-		}	
-		
+		model.addAttribute("etapes", daoEtape.findAll());
+		return "create-etape";
+	}		
 	// 2 POST POUR ENVOYER DONNES
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/create")
 
-	public String createEtapePost(@RequestParam int id, @RequestParam String nom, @RequestParam String descriptif,
-			@RequestParam String image, @RequestParam String video, @RequestParam int ordre, Model model ) {
 
-		Etape myEtape = new Etape();
-		myEtape.setId(id);
-		myEtape.setDescriptif(descriptif);
-		myEtape.setImage(image);
-		myEtape.setVideo(video);
-		myEtape.setOrdre(ordre);
+	public String createEtapePost (@ModelAttribute Etape etape) {
 
-		daoEtape.save(myEtape);
+		daoEtape.save(etape);
 		return "redirect:/etape/read";
 	}
 
@@ -97,21 +89,12 @@ public class EtapeController {
 		return "create-etape";
 
 	}
-
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	
 	@PostMapping("/update")
-	public String updateEtapePost(@RequestParam int id, @RequestParam String nom, @RequestParam String descriptif,
-			@RequestParam String image, @RequestParam String video, @RequestParam int ordre, Model model ) {
+	public String updateEtapePost(@ModelAttribute Etape etape){
 
-		Etape myEtape = new Etape();
-		myEtape.setId(id);
-		myEtape.setDescriptif(descriptif);
-		myEtape.setImage(image);
-		myEtape.setVideo(video);
-		myEtape.setOrdre(ordre);
-
-		daoEtape.save(myEtape);
-		return "redirect:/etape";
+		daoEtape.save(etape);
+		return "redirect:/etape/read";
 	}
 
 	
