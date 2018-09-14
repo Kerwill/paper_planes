@@ -28,9 +28,6 @@ public class Categorie {
 	@ManyToOne
 	@JoinColumn(name="CAT_CATEGS", referencedColumnName = "CAT_ID")
 	private Categorie categorie; 
-	
-	@OneToMany(mappedBy="categorie")
-	private Set<Categorie> categories;
 
 	@ManyToMany
 	@JoinTable(
