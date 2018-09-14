@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { OrigamiDetailsService } from './origami-details.service';
-// // import { Etape } from './etape';
-// import { Origami } from './origami';
+import { EtapeService } from './etape.service';
+import { Etape } from './etape';
+
 
 @Component({
     templateUrl: 'app/origami-details.component.html',
@@ -10,6 +10,6 @@ import { OrigamiDetailsService } from './origami-details.service';
 
 export class OrigamiDetailsComponent {
 
-
-
+constructor(private EtapeService : EtapeService ) {}
+}
 }
