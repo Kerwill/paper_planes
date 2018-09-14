@@ -15,10 +15,10 @@ Temps: {{origami.temps}} - Nombre de feuilles: {{origami.feuille}} - Niveau: {{o
 </thead>
 <tbody>
 <tr *ngFor="let e of OrigamiDetailsService.findAllByOrigamiIdOrderByOrdre()">
- <!-- <td>{{e.ordre}}</td>
+ <td>{{e.ordre}}</td>
  <td>{{e.descriptif}}</td>
-<td>{{e?.image?}}</td>
-<td>{{e?.video?}}</td> -->
+<td>{{e.image}}</td>
+<td>{{e.video}}</td>
 </tr>
 </tbody>
 </table>
