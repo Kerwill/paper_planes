@@ -15,11 +15,11 @@
 <title></title>
 </head>
 
+<header layout:fragment="custom-title">
+	<h1 class="display-4">Modification/Ajout d'une categorie</h1>
+</header>
 <body>
 	<section layout:fragment="custom-content">
-		<header layout:fragment="custom-title">
-			<h1 class="display-2">Modification/Ajout d'une etape</h1>
-		</header>
 
 		<form method="POST">
 
@@ -57,9 +57,7 @@
 				</select>
 			</div>
 
-			<a href="/etape/read" class="btn btn-danger">Annuler</a>
-
-			<button type="submit" class="btn btn-primary">Ajouter</button>
+			<button type="submit" class="btn btn-outline-secondary">Ajouter</button>
 
 			</div>
 			</div>
