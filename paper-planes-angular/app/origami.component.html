@@ -14,7 +14,7 @@
 
   <b>Catégorie</b>
   <select name="categorie">
-    <option selected>Sélection</option>
+    <option *ngFor="let c of getCategories()">{{ c.nom }}</option>
   </select>
 
   <br/>
@@ -37,18 +37,12 @@
     </thead>
     <tbody>
       <tr>
-
-        <td>1</td>
-          <td>3</td>
-            <td>3</td>
-            <td>3</td>
-              <td>3</td>
-      <!-- <tr *ngFor="let o of origamiService.findAll()"> -->
-        <!-- <td>{{ o.nom }}</td>
+       <tr *ngFor="let o of getOrigamis()">
+         <td>{{ o.nom }}</td>
         <td>{{ o.niveau }}</td>
         <td>{{ o.temps }}</td>
         <td>{{ o.note }}</td>
-        <td>{{ o.categorie }}</td> -->
+        <td *ngFor="let c of getOrigamiCategorie()">{{ c.nom }}</td>
       </tr>
     </tbody>
   </table>

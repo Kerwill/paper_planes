@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Origami } from './origami';
 import { OrigamiService } from './origami.service';
+import { CategorieService} from './categorie.service';
 //import service si besoin
 //import classe model si besoin
 
@@ -15,13 +16,13 @@ export class OrigamiComponent {
   private origamis: Array<Origami> = new Array<Origami>();
   private filtre: string;
 
-  constructor(private origamiService : OrigamiService) {
+  constructor(private origamiService : OrigamiService, private categorieService : CategorieService) {
       // this.origamis.push(new Origami("Lapin", "Normal", 10, 3, "blabla"));
   }
 
-  // public getOrigamis() {
-  //     this.origamiService.findAll();
-  // }
+  public getOrigamis() {
+    return this.origamiService.findAll();
+  }
 
   public addOrigami() {
       this.origamis.push(this.origami);
@@ -34,5 +35,13 @@ export class OrigamiComponent {
               .toLowerCase()
               .indexOf(this.filtre.toLowerCase()) !== -1
       )
+  }
+
+  public getCategories() {
+    return this.categorieService.findAll();
+  }
+
+  publi getOrigamiCategorie() {
+    return this.categorie
   }
 }
