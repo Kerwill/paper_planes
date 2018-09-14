@@ -24,8 +24,7 @@ layout:decorator="layout.html">
 					<th scope="col">Temps de realisation</th>
 					<th scope="col">Nombre de feuilles</th>
 					<th scope="col">Disponibilite</th>
-					<th scope="col">Rendre disponible</th>
-					<th scope="col">Rendre indisponible</th>
+					<th scope="col">Gerer la disponibilité</th>
 					<th scope="col">Note</th>
 					<th scope="col">Etapes</th>
 					<th scope="col">Categories</th>
@@ -40,10 +39,12 @@ layout:decorator="layout.html">
 					<td>[[${ ori.temps }]]</td>
 					<td>[[${ ori.feuille }]]</td>
 					<td>[[${ ori.dispo }]]</td>
-					<td th:if="${ ori.dispo == true }"><a th:href="@{non-dispo(id=${ori.id})}" class="btn btn-danger">Rendre indisponible</a></td>
-					<td th:if="${ ori.dispo == false }">Origami indisponible</td>
-					<td th:if="${ ori.dispo == true }">Origami disponible</a></td>
-					<td th:if="${ ori.dispo == false }"><a th:href="@{dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></td>
+					<td><span th:if="${ ori.dispo == false }">Origami indisponible</span>
+					<span th:if="${ ori.dispo == true }">
+					<a th:href="@{non-dispo(id=${ori.id})}" class="btn btn-danger">Rendre indisponible</a></span>
+					<span th:if="${ ori.dispo == true }">Origami disponible</a></span>
+					<span th:if="${ ori.dispo == false }">
+					<a th:href="@{dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></span></td>
 					<td>[[${ori.note }]]</td>
 					<td><a class="btn btn-primary" th:href="@{read(id=${ ori.id })}">Voir la liste des etapes</a></td>
 					<td>[[${ ori.categories }]]</td>
