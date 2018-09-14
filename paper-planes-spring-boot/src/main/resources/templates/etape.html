@@ -17,7 +17,7 @@
 </head>
 
 <header layout:fragment="custom-title">
-	<h1 class="display-2">Liste des etapes</h1>
+	<h1 class="display-2">Etapes</h1>
 </header>
 
 <body>
@@ -26,9 +26,10 @@
 
 		<a class="btn btn-outline-info" sec:authorize="hasRole('ROLE_ADMIN')"
 			href="create">Ajouter une étape</a> </br> </br>
+			
 		<table class="table table-striped">
 
-			<thead>
+			<thead class="bg-success">
 				<tr class="table-info">
 					<th>Id</th>
 					<th>Origami</th>
@@ -48,19 +49,30 @@
 
 				<td>[[${ etape.descriptif }]]</td>
 
-				<td>[[${ etape.image }]]</td>
-
-				<td>[[${ etape.video }]]</td>
-
-				<td>[[${ etape.ordre }]]</td>
-
-				<td><a
-					sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )
+				<td><a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )
 					th:href="@{update(id=${ etape.id })}"
-					class="btn btn-outline-secondary">Modifier</a> <a
-					sec:authorize="hasRole('ROLE_ADMIN')"
+					class="btn btn-outline-secondary">Modifier</a>
+					
+					 <a sec:authorize="hasRole('ROLE_ADMIN')"
 					th:href="@{delete(id=${ etape.id })}" a
-					class="btn btn-outline-danger">Supprimer</a></td>
+					class="btn btn-outline-danger">Supprimer</a>
+				</td>
+
+
+			
+
+			<td>[[${ etape.video }]]</td>
+
+			<td>[[${ etape.ordre }]]</td>
+
+			<td><a
+				sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )
+				th:href="@{update(id=${ etape.id })}"
+				class="btn btn-outline-secondary">Modifier</a> <a
+				sec:authorize="hasRole('ROLE_ADMIN')"
+				th:href="@{delete(id=${ etape.id })}" class="btn btn-outline-danger">Supprimer</a>
+
+			</td>
 
 
 			</tr>
