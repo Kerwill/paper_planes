@@ -14,6 +14,6 @@ public interface IDAOEtape extends JpaRepository<Etape, Integer> {
 	
 	
 	@RestResource(path="by-origami-id")
-	public List<Etape> findByOrigamiId(@Param("id") int id);
+	public List<Etape> findByOrigamiIdOrderByOrdre(@Param("id") int id);
 
 }
