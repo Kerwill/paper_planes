@@ -14,14 +14,19 @@ import { CategorieService} from './categorie.service';
 export class OrigamiComponent {
   private origami: Origami = new Origami();
   private origamis: Array<Origami> = new Array<Origami>();
-  private filtre: string;
+  private filtre: string = "";
 
   constructor(private origamiService : OrigamiService, private categorieService : CategorieService) {
       // this.origamis.push(new Origami("Lapin", "Normal", 10, 3, "blabla"));
   }
 
   public getOrigamis() {
-    return this.origamiService.findAll();
+    if (!this.filtre) {
+      return this.origamiService.findAll();
+    }
+    else {
+      return this.;
+    }
   }
 
   public addOrigami() {
@@ -41,7 +46,7 @@ export class OrigamiComponent {
     return this.categorieService.findAll();
   }
 
-  publi getOrigamiCategorie() {
-    return this.categorie
-  }
+  // public getOrigamiCategorie() {
+  //   return this.categorie
+  // }
 }
