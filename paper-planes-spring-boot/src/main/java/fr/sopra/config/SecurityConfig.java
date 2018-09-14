@@ -50,7 +50,7 @@ public class SecurityConfig {
 				.and()
 				.logout()
 					.logoutUrl("/logout")
-					.logoutSuccessUrl("/deconnexion")
+					.logoutSuccessUrl("/logout")
 					.permitAll();
 		}
 	}
