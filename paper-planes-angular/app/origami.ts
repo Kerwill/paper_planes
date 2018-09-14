@@ -1,15 +1,21 @@
-import { Etape } from './etape';
-import { Categorie } from './categorie';
-
 export class Origami {
-  public nom: string;
-  public temps: number;
-  public note: number;
-  public niveau: any;
-  public etapes: Array<Etape>;
-  public categories: Array<Categorie>;
+  private nom: string;
+  private temps: number;
+  private note: number;
+  private niveau: any;
+  private href: string;
 
-  constructor() {
+
+  constructor(private json?: any) {
+      if (json !== undefined) {
+          this.nom = json.nom;
+          this.temps = json.temps;
+          this.note = json.note;
+          this.niveau = json.niveau;
+          if (json._links !== undefined) {
+              this.href = json._links.self.href;
+          }
+      }
   }
 
   public getNom(): string {
@@ -28,12 +34,8 @@ export class Origami {
     return this.niveau;
   }
 
-  public getCategories(): Array<Categorie> {
-    return this.categories;
-  }
-
-  public getEtapes(): Array<Etape> {
-    return this.etapes;
+  public getHref(): string {
+      return this.href;
   }
 
 }
