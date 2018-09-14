@@ -4,6 +4,7 @@ export class Origami {
   private note: number;
   private niveau: any;
   private href: string;
+  private id: string;
 
 
   constructor(private json?: any) {
@@ -12,6 +13,7 @@ export class Origami {
           this.temps = json.temps;
           this.note = json.note;
           this.niveau = json.niveau;
+          this.id = json.id;
           if (json._links !== undefined) {
               this.href = json._links.self.href;
           }

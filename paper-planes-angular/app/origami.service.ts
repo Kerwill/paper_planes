@@ -23,6 +23,14 @@ export class OrigamiService {
     return this.origamis;
   }
 
+  public findByNomContaining(nom: string): Array<Origami> {
+    return this.origamis.filter(o =>
+            o.nom
+                .toLowerCase()
+                .indexOf(nom.toLowerCase()) !== -1
+        );
+  }
+
   // public findAllByNom(nom: string) : Array<Origami> {
   //   return this.origamis.filter(o =>
   //     o.nom
