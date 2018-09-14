@@ -19,9 +19,9 @@ export class OrigamiComponent {
       // this.origamis.push(new Origami("Lapin", "Normal", 10, 3, "blabla"));
   }
 
-  public getOrigamis() {
-      this.origamiService.findAll();
-  }
+  // public getOrigamis() {
+  //     this.origamiService.findAll();
+  // }
 
   public addOrigami() {
       this.origamis.push(this.origami);

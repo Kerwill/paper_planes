@@ -12,10 +12,10 @@ export class OrigamiService {
            .get(this.appConfigService.getUrlApi() + "origamis")
            .subscribe(resp => {
 
-             console.log("OK")
-               // for (let o of resp.json()._embedded.origamis) {
-               //     this.origamis.push(new Origami(o));
+               for (let o of resp.json()._embedded.origamis) {
+                   this.origamis.push(new Origami(o));
              }
+           }
            );
   }
 
@@ -23,17 +23,16 @@ export class OrigamiService {
     return this.origamis;
   }
 
+  // public findAllByNom(nom: string) : Array<Origami> {
+  //   return this.origamis.filter(o =>
+  //     o.nom
+  //         .toLowerCase()
+  //         .indexOf(nom.toLowerCase()) !== -1
+  //   );
+  // }
+
 }
-//
-// public findAllByNom(nom: string) : Array<Produit> {
-//
-//   return this.produits.filter(p =>
-//       p.nom
-//           .toLowerCase()
-//           .indexOf(nom.toLowerCase()) !== -1
-//   )
-// }
-//
+
 // public save(produit){
 // if (this.produits.indexOf(produit) === -1){
 //   // this.produits.push(produit);

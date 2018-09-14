@@ -26,22 +26,31 @@
 
 <div id="view">
   <table>
-    <tr>
-      <th>Nom</th>
-      <th>Niveau</th>
-      <th>Temps</th>
-      <th>Note</th>
-      <th>Catégorie</th>
-      <th>Détail</th>
-    </tr>
-    <tr *ngFor="let o of getOrigamis()">
-      <td>{{ o.nom }}</td>
-      <td>{{ o.niveau }}</td>
-      <td>{{ o.temps }}</td>
-      <td>{{ o.note }}</td>
-      <td>{{ o.categorie }}</td>
-      <!-- <td>{{  }}</td> -->
-    </tr>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Niveau</th>
+        <th>Temps</th>
+        <th>Note</th>
+        <th>Catégorie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+
+        <td>1</td>
+          <td>3</td>
+            <td>3</td>
+            <td>3</td>
+              <td>3</td>
+      <!-- <tr *ngFor="let o of origamiService.findAll()"> -->
+        <!-- <td>{{ o.nom }}</td>
+        <td>{{ o.niveau }}</td>
+        <td>{{ o.temps }}</td>
+        <td>{{ o.note }}</td>
+        <td>{{ o.categorie }}</td> -->
+      </tr>
+    </tbody>
   </table>
 </div>
 </div>

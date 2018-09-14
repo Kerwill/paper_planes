@@ -1,0 +1,11 @@
+#leDivDesFamilles {
+  display : flex;
+}
+
+#view {
+  flex:2;
+}
+
+#aside {
+  flex:1;
+}
