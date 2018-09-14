@@ -19,8 +19,9 @@ public interface IDAOOrigami extends JpaRepository<Origami, Integer>{
 public List<Origami> findByNomOrderByNom(@Param("nom") String nom);
 
 
-
 @RestResource(path="by-nom-containing")
 public List<Origami> findByNomContaining(@Param("nom") String nom);
+
+
 
 }

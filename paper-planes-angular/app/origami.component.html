@@ -3,10 +3,10 @@
 <div id="aside">
   <b>Niveau</b>
   <form id="niveau">
-    <input type="checkbox" name="occasionnel" value="1" (click)="click($event)"> Occasionnel
-    <input type="checkbox" name="normal" value="2" (click)="click($event)"> Normal
-    <input type="checkbox" name="avance" value="3" (click)="click($event)"> Avancé
-    <input type="checkbox" name="expert" value="4" (click)="click($event)"> Expert
+    <input type="checkbox" name="occasionnel" value="1" (click)="Occasionnel()"> Occasionnel {{isOccasionnel}}
+    <input type="checkbox" name="normal" value="2" (click)="Normal()"> Normal
+    <input type="checkbox" name="avance" value="3" (click)="Avance()"> Avancé
+    <input type="checkbox" name="expert" value="4" (click)="Expert()"> Expert
   </form>
 
   <br/>
@@ -21,7 +21,12 @@
   <br/>
 
   <b>Recherche</b>
-  <input id="recherche" type="text" [(ngModel)]="filtreRecherche" />{{ filtre }}
+  <input id="recherche" type="text" [(ngModel)] = "filtreRecherche" />
+
+  {{filtreRecherche}}
+
+<!-- [(ngModel)]="filtreRecherche" -->
+
 </div>
 
 <div id="view">

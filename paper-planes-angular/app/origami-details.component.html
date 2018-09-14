@@ -1,8 +1,8 @@
-<h1>{{origami.nom}}</h1>
+<h1>{{getOrigami().nom}}</h1>
 <br />
 <h2>Listes des etapes</h2>
 <div>
-<!-- Temps: {{origami.temps}} - Nombre de feuilles: {{origami.feuille}} - Niveau: {{origami.niveau}} - Note: {{origami.note}} -->
+Temps: {{getOrigami().temps}} min - Nombre de feuilles: {{getOrigami().feuille}} - Niveau: {{getOrigami().niveau}} - Note: {{getOrigami().note}}
 </div>
 <table class="table table-hover">
 <thead>
@@ -18,7 +18,7 @@
  <td>{{e.ordre}}</td>
  <td>{{e.descriptif}}</td>
 <td>{{e.image}}</td>
-<td>{{id}}</td>
+<td>{{e.id}}</td>
 </tr>
 </tbody>
 </table>

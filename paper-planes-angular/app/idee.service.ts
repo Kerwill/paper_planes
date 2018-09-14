@@ -23,6 +23,3 @@ export class IdeeService {
       .subscribe(resp => alert("Message envoyé !"));
   }
   }
-
-
-}

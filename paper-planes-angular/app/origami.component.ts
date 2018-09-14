@@ -12,22 +12,69 @@ import { CategorieService} from './categorie.service';
 	})
 
 export class OrigamiComponent {
+  constructor(private origamiService : OrigamiService, private categorieService : CategorieService) {
+  }
   private origami: Origami = new Origami();
   private origamis: Array<Origami> = new Array<Origami>();
   private filtreRecherche: string = "";
+
+  private isOccasionnel : boolean = false;
+  private isNormal : boolean = false;
+  private isAvance : boolean = false;
+  private isExpert : boolean = false;
   private filtreNiveau: string = "";
 
-  constructor(private origamiService : OrigamiService, private categorieService : CategorieService {
-      // this.origamis.push(new Origami("Lapin", "Normal", 10, 3, "blabla"));
+  public Occasionnel() {
+    if (this.isOccasionnel){
+      this.isOccasionnel = false;
+  }
+    else{
+        this.isOccasionnel = true;
+    }
+    return this.isOccasionnel;
   }
 
-  public getOrigamis() {
-    if (!this.filtreRecherche) {
-      return this.origamiService.findAll();
+  public Normal() : boolean{
+    if (this.isNormal){
+      this.isNormal = false;
+    }
+    else{
+        this.isNormal = true;
+    }
+    return this.isNormal;
+  }
+
+  public Avance() : boolean{
+    if (this.isAvance){
+      this.isAvance = false;
+    }
+    else{
+        this.isAvance = true;
+    }
+    return this.isAvance;
+  }
+
+public Expert() : boolean{
+  if (this.isExpert){
+    this.isExpert = false;
+  }
+  else{
+      this.isExpert = true;
+  }
+      return this.isExpert;
+}
+
+
+  public getOrigamis() : Array <Origami>{
+
+    if (this.filtreRecherche !== null) {
+      this.origamis = this.origamiService.findByNomContaining(this.filtreRecherche);
     }
     else {
-      return this.origamiService.findByNomContaining(this.filtreRecherche);
-    }
+      this.origamis = this.origamiService.findAll();
+}
+return this.origamis;
+
   }
 
   // public getOrigamisByNiveau() {
@@ -44,11 +91,12 @@ export class OrigamiComponent {
   }
 
   public filtrerOrigamis(): Array<Origami> {
-      return this.origamis.filter(o =>
-          o.getNom()
-              .toLowerCase()
-              .indexOf(this.filtre.toLowerCase()) !== -1
-      )
+    return null;
+      // return this.origamis.filter(o =>
+      //     o.getNom()
+      //         .toLowerCase()
+      //         .indexOf(this.filtre.toLowerCase()) !== -1
+      // )
   }
 
   public getCategories() {

@@ -4,8 +4,12 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { AppConfigService} from './app-config.service';
 
 @Injectable()
+
 export class OrigamiService {
   private origamis: Array<Origami> = new Array<Origami>();
+  private origami : Origami;
+  private id: number;
+  private filtre: string = "";
 
   constructor(private http: Http, private appConfigService : AppConfigService) {
       this.http
@@ -19,16 +23,46 @@ export class OrigamiService {
            );
   }
 
+  public findById(id) : Origami{
+    if ((this.origami === null) || (this.id != id) ) {
+      this.id = id;
+      this.origami = new Origami();
+      this.http
+           .get(this.appConfigService.getUrlApi() + "origamis/"+id)
+           .subscribe(resp => {
+             this.origami = resp.json()});
+            }
+    return this.origami;
+  }
+
   public findAll() : Array<Origami>{
     return this.origamis;
   }
 
-  public findByNomContaining(nom: string): Array<Origami> {
-    return this.origamis.filter(o =>
-            o.nom
-                .toLowerCase()
-                .indexOf(nom.toLowerCase()) !== -1
-        );
+  public findByNomContaining(filtre: string): Array<Origami> {
+
+if (filtre != this.filtre){
+    this.filtre = filtre;
+    this.origamis = new Array<Origami>();
+
+      this.http
+           .get(this.appConfigService.getUrlApi() + "origamis/search/by-nom-containing?nom="+filtre)
+           .subscribe(resp => {
+               for (let o of resp.json()._embedded.origamis) {
+                   this.origamis.push(new Origami(o));
+             }
+           }
+           );
+  }
+    return this.origamis;
+
+}
+
+  //   return this.origamis.filter(o =>
+  //           o.nom
+  //               .toLowerCase()
+  //               .indexOf(nom.toLowerCase()) !== -1
+  //       );
   }
 
   // public findAllByNom(nom: string) : Array<Origami> {
@@ -39,7 +73,7 @@ export class OrigamiService {
   //   );
   // }
 
-}
+
 
 // public save(produit){
 // if (this.produits.indexOf(produit) === -1){
