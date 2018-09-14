@@ -52,9 +52,9 @@ public class CategorieController {
 	
 	
 	@GetMapping("/update")
-	public String updateCategorieGet(@RequestParam int id, @ModelAttribute Categorie parent, Model model) {
-		
+	public String updateCategorieGet(@RequestParam int id, Model model) {
 		Categorie categorie = daoCategorie.findById(id).get();
+		model.addAttribute("categories", daoCategorie.findAll());
 		model.addAttribute("categorie", categorie);
 		
 	return "create-categorie";

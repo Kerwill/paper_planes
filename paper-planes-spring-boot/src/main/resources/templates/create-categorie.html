@@ -27,9 +27,9 @@
 		
 			<div class="form-group">
 				<label for="parent">Categorie mere :</label> <select
-					class="form-control" name="parent" id="parent" value="${categorie?.parent}">
-					<option th:each="categorie : ${categories}" th:selected="${parent == categorie?.parent }" th:value="${categorie?.id}"
-						th:text="${categorie.nom}"></option>
+					class="form-control" name="parent" id="parent">
+					<option th:each="cat : ${categories}" th:selected="${ categorie?.parent?.id == cat.id }" th:value="${cat.id}"
+						th:text="${cat.nom}"></option>
 				</select>
 			</div>
 
