@@ -67,7 +67,7 @@ public class EtapeController {
 		myEtape.setOrdre(ordre);
 
 		daoEtape.save(myEtape);
-		return "redirect:/etape";
+		return "redirect:/etape/read";
 	}
 
 	// EFFACER ETAPE
@@ -82,7 +82,7 @@ public class EtapeController {
 		myEtape.setId(id);
 		daoEtape.deleteById(id);
 
-		return "redirect:/etape";
+		return "redirect:/etape/read";
 
 	}
 

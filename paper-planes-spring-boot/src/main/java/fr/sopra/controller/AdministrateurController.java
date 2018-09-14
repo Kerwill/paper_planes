@@ -77,7 +77,8 @@ public class AdministrateurController {
 	public String deleteCategorie(@RequestParam int id) {
 		Administrateur myAdministrateur = new Administrateur();
 		myAdministrateur.setId(id);
-		daoAdministrateur.delete(myAdministrateur);
+
+		daoAdministrateur.deleteById(id);
 		return "redirect:/administration/read";
 	}
 
@@ -97,10 +98,11 @@ public class AdministrateurController {
 		Administrateur myAdministrateur = new Administrateur();
 
 		myAdministrateur.setUsername(username);
-
+		
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encoderpassword = passwordEncoder.encode(password);
-
+		
+		
 		myAdministrateur.setPassword(encoderpassword);
 		myAdministrateur.setTechnicien(isTechnicien);
 
