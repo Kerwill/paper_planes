@@ -12,12 +12,12 @@ layout:decorator="layout.html">
 
 <h1 class="display-2" layout:fragment="custom-title">Liste des origami</h1>
 <div>
-<a class="btn btn-outline-success" th:href="@{create}" sec:authorize="hasRole('ROLE_ADMIN')">Ajouter un origami</a>
+<a class="btn btn-outline-info" th:href="@{create}" sec:authorize="hasRole('ROLE_ADMIN')">Ajouter un origami</a>
 </div>
 	<div>
-		<table class="table table-borderless">
+		<table class="table table-striped">
 			<thead class="bg-success">
-				<tr>
+				<tr class="table-info">
 					<th scope="col">#</th>
 					<th scope="col">Nom</th>
 					<th scope="col">Niveau</th>
@@ -48,7 +48,7 @@ layout:decorator="layout.html">
 					<td>[[${ori.note }]]</td>
 					<td><a class="btn btn-primary" th:href="@{read(id=${ ori.id })}">Voir la liste des etapes</a></td>
 					<td>[[${ ori.categories }]]</td>
-					<td><a class="btn btn-outline-warning"
+					<td><a class="btn btn-outline-secondary"
 						th:href="@{update(id=${ ori.id })}">Modifier</a>
 						<a class="btn btn-outline-danger"
 						th:href="@{delete(id=${ ori.id })}" sec:authorize="hasRole('ROLE_ADMIN')">Supprimer</a>
@@ -58,10 +58,10 @@ layout:decorator="layout.html">
 		</table>
 	</div>
 	
-	<h2>Liste des �tapes</h2>
-			<table class="table table-borderless">
+	<h2>Liste des etapes</h2>
+			<table class="table table-striped">
 			<thead class="bg-success">
-				<tr>
+				<tr class="table-info">
 					<th scope="col">#</th>
 					<th scope="col">Descriptif</th>
 					<th scope="col">Ordre</th>

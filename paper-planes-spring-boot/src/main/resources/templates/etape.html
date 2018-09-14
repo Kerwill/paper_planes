@@ -15,56 +15,60 @@
 
 <title>Etape</title>
 </head>
-<section layout:fragment="custom-content">
-	<body>
 
-	<h1> ETAPE </h1>
+<header layout:fragment="custom-title">
+	<h1 class="display-2">Liste des etapes</h1>
+</header>
+
+<body>
+	<section layout:fragment="custom-content">
 
 
+		<a class="btn btn-outline-info" sec:authorize="hasRole('ROLE_ADMIN')"
+			href="create">Ajouter une étape</a> </br> </br>
+		<table class="table table-striped">
 
-<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success" href="create">Ajouter une étape"</a>
-
-
-			<table>
-
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Origami</th>
-						<th>Descriptif</th>
-						<th>Image</th>
-						<th>Video</th>
-						<th>Ordre</th>
-						<th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
-					</tr>
-				</thead>
-
-				<tr th:each="etape : ${ etapes }"}>
-
-					<td>[[${ etape.id }]]</td>
-					
-					<td>[[${ etape?.origami?.nom }]]</td>
-
-					<td>[[${ etape.descriptif }]]</td>
-
-					<td>[[${ etape.image }]]</td>
-
-					<td>[[${ etape.video }]]</td>
-
-					<td>[[${ etape.ordre }]]</td>
-
-					<td><a sec:authorize="hasRole('ROLE_ADMIN')"
-						th:href="@{update(id=${ etape.id })}"
-						class="btn btn-primary">Modifier</a> <a
-						sec:authorize="hasRole('ROLE_ADMIN')"
-						th:href="@{delete(id=${ etape.id })}" class="btn btn-danger">Supprimer</a></td>
-					
-			
+			<thead>
+				<tr class="table-info">
+					<th>Id</th>
+					<th>Origami</th>
+					<th>Descriptif</th>
+					<th>Image</th>
+					<th>Video</th>
+					<th>Ordre</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )>Actions</th>
 				</tr>
+			</thead>
+
+			<tr th:each="etape : ${ etapes }"}>
+
+				<td>[[${ etape.id }]]</td>
+
+				<td>[[${ etape?.origami?.nom }]]</td>
+
+				<td>[[${ etape.descriptif }]]</td>
+
+				<td>[[${ etape.image }]]</td>
+
+				<td>[[${ etape.video }]]</td>
+
+				<td>[[${ etape.ordre }]]</td>
+
+				<td><a
+					sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )
+					th:href="@{update(id=${ etape.id })}"
+					class="btn btn-outline-secondary">Modifier</a> <a
+					sec:authorize="hasRole('ROLE_ADMIN')"
+					th:href="@{delete(id=${ etape.id })}" a
+					class="btn btn-outline-danger">Supprimer</a></td>
 
 
-				</tbody>
-			</table>
-	</body>
-</section>
+			</tr>
+
+
+			</tbody>
+		</table>
+	</section>
+</body>
+
 </html>

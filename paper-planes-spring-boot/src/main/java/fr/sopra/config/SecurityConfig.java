@@ -38,8 +38,6 @@ public class SecurityConfig {
 				.antMatchers("/assets/**").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/**").hasAnyRole("ADMIN", "TECH")
-				.antMatchers("/home").permitAll()
-				.antMatchers("/**").hasAnyRole("ADMIN", "TECH")
 				.and()
 				.formLogin()
 					.loginPage("/login")
@@ -50,7 +48,7 @@ public class SecurityConfig {
 				.and()
 				.logout()
 					.logoutUrl("/logout")
-					.logoutSuccessUrl("/deconnexion")
+					.logoutSuccessUrl("/logout")
 					.permitAll();
 		}
 	}
