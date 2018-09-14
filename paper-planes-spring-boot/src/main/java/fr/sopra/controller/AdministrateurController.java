@@ -20,8 +20,10 @@ public class AdministrateurController {
 	@Autowired
 	private IDAOAdministrateur daoAdministrateur;
 
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
 	@GetMapping({ "/home-admin" })
-public String login() {
+public String login2() {
 		
 		return "home-admin";
 	}

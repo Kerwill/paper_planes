@@ -3,26 +3,33 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8" />
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" type="text/css" href="assets/css/home-admin.css" />
+
 </head>
 
 
 <body>
 
 
+
+    
+    
 <h1>ESPACE ADMINISTRATION</h1>
 
-<div class="container">
-  <img src="assets/img/img-avatar.png" alt="crud technicien" class="image">
-  <div class="overlay">
-    <div class="text">Technicien</div>
-  </div>
-</div>
+<a th:href="read">
+	<div class="myBtn">Technicien</div>
+</a>
+
+<a href="http://localhost:8080/origami/read">
+	<div class="myBtn">Origami</div>
+</a>
+
+<a href="http://localhost:8080/categorie/read">
+	<div class="myBtn">Categorie</div>
+</a>
 
 
 </body>
 
 </html>
-
-
