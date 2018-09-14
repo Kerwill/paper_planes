@@ -49,13 +49,7 @@
 
 				<td>[[${ etape.descriptif }]]</td>
 
-				<td><a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )
-					th:href="@{update(id=${ etape.id })}"
-					class="btn btn-outline-secondary">Modifier</a>
-					
-					 <a sec:authorize="hasRole('ROLE_ADMIN')"
-					th:href="@{delete(id=${ etape.id })}" a
-					class="btn btn-outline-danger">Supprimer</a>
+				<td>[[${ etape.image }]]
 				</td>
 
 
