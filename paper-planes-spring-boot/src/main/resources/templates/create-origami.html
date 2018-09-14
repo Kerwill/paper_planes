@@ -52,12 +52,6 @@ layout:decorator="layout.html">
         <label for="dispo">Non</label>
         <input type="radio" name="dispo" 
                value="false" /> 
-        </div> 
-         <div class="col">
-        <label th:each="etape : ${ etapes }" for="etapes">[[${ etape.descriptif }]]</label> 
-            <input type="checkbox" name="etape"
-		th:each="etape : ${ etapes }" th:value="${ etape.descriptif }" >
-      	</select>
     <div class="col"> 
       <div><label for="categorie">Categories</label></div> 
       <div> 
