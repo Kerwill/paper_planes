@@ -4,6 +4,7 @@ export class Etape {
   private image: string;
   private video: string;
   private href: string;
+
   constructor(private json?: any) {
       if (json !== undefined) {
           this.ordre = json.ordre;

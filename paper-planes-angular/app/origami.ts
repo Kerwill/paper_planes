@@ -28,4 +28,12 @@ export class Origami {
     return this.niveau;
   }
 
+  public getCategories(): Array<Categorie> {
+    return this.categories;
+  }
+
+  public getEtapes(): Array<Etape> {
+    return this.etapes;
+  }
+
 }
