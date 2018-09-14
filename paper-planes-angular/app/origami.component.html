@@ -31,6 +31,7 @@
       <th>Niveau</th>
       <th>Temps</th>
       <th>Note</th>
+      <th>Catégorie</th>
       <th>Détail</th>
     </tr>
     <tr *ngFor="let o of getOrigamis()">
@@ -38,6 +39,7 @@
       <td>{{ o.niveau }}</td>
       <td>{{ o.temps }}</td>
       <td>{{ o.note }}</td>
+      <td>{{ o.categorie }}</td>
       <!-- <td>{{  }}</td> -->
     </tr>
   </table>
