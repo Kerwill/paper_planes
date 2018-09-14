@@ -1,5 +1,7 @@
 package fr.sopra.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,7 @@ public class CategorieController {
 	@GetMapping("/create")
 	public String createCategorieGet(Model model){
 		model.addAttribute("categories", daoCategorie.findAll());
+	
 		return "create-categorie";
 	}
 	
