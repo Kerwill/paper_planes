@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.sopra.dao.IDAOAdministrateur;
 import fr.sopra.model.Administrateur;
+import fr.sopra.model.Categorie;
 
 @Controller
 @RequestMapping("/administration")
@@ -22,11 +23,11 @@ public class AdministrateurController {
 	private IDAOAdministrateur daoAdministrateur;
 
 	@GetMapping({ "/home-admin" })
-public String login() {
-		
+	public String login() {
+
 		return "home-admin";
 	}
-	
+
 //	lister les administrateurs/techniciens
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')")
 	@GetMapping("/read")
@@ -46,8 +47,8 @@ public String login() {
 //	Etape 2 : modifier les administrateurs -- modifier les champs
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/update")
-	public String updateAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien, @RequestParam String username,
-			@RequestParam String password, Model model) {
+	public String updateAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien,
+			@RequestParam String username, @RequestParam String password, Model model) {
 		Administrateur myAdministrateur = new Administrateur();
 
 		myAdministrateur.setId(id);
@@ -59,43 +60,52 @@ public String login() {
 		return "redirect:/administration/read";
 	}
 
+////	supprimer les administrateurs/techniciens
+//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+//	@GetMapping("/delete")
+//	public String deleteAdmin(@RequestParam int id, Model model) {
+//		Administrateur myAdministrateur = new Administrateur();
+//		myAdministrateur.setId(id);
+//
+//		daoAdministrateur.deleteById(id);
+//		return "redirect:/read";
+//	}
+
 //	supprimer les administrateurs/techniciens
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/delete")
-	public String deleteAdmin(@RequestParam int id, Model model) {
+	public String deleteCategorie(@RequestParam int id) {
 		Administrateur myAdministrateur = new Administrateur();
 		myAdministrateur.setId(id);
-
-		daoAdministrateur.deleteById(id);
+		daoAdministrateur.delete(myAdministrateur);
 		return "redirect:/administration/read";
 	}
 
 //creer administrateurs/techniciens	
-	
+
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/create")
 	public String createAdminGet(Model model) {
 		model.addAttribute("administrateurs", daoAdministrateur.findAll());
 		return "create-administration";
 	}
-	
+
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/create")
-	public String createAdminPost(@RequestParam boolean isTechnicien, @RequestParam String username, @RequestParam String password, Model model) {
+	public String createAdminPost(@RequestParam boolean isTechnicien, @RequestParam String username,
+			@RequestParam String password, Model model) {
 		Administrateur myAdministrateur = new Administrateur();
 
 		myAdministrateur.setUsername(username);
-		
+
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encoderpassword = passwordEncoder.encode(password);
-		
-		
+
 		myAdministrateur.setPassword(encoderpassword);
 		myAdministrateur.setTechnicien(isTechnicien);
-		
-		
+
 		daoAdministrateur.save(myAdministrateur);
 		return "redirect:/administration/read";
 	}
-	
+
 }
