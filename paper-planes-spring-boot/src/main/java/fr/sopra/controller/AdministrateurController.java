@@ -2,6 +2,7 @@ package fr.sopra.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,7 +56,7 @@ public String login() {
 		myAdministrateur.setTechnicien(isTechnicien);
 
 		daoAdministrateur.save(myAdministrateur);
-		return "redirect:/administration";
+		return "redirect:/administration/read";
 	}
 
 //	supprimer les administrateurs/techniciens
@@ -66,7 +67,7 @@ public String login() {
 		myAdministrateur.setId(id);
 
 		daoAdministrateur.deleteById(id);
-		return "redirect:/administration";
+		return "redirect:/administration/read";
 	}
 
 //creer administrateurs/techniciens	
@@ -84,13 +85,17 @@ public String login() {
 		Administrateur myAdministrateur = new Administrateur();
 
 		myAdministrateur.setUsername(username);
-		myAdministrateur.setPassword(password);
 		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encoderpassword = passwordEncoder.encode(password);
+		
+		
+		myAdministrateur.setPassword(encoderpassword);
 		myAdministrateur.setTechnicien(isTechnicien);
 		
 		
 		daoAdministrateur.save(myAdministrateur);
-		return "redirect:/administration";
+		return "redirect:/administration/read";
 	}
 	
 }
