@@ -84,7 +84,8 @@ public class AdministrateurController {
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/create")
-	public String createAdminGet(Model model) {
+	public String createAdminGet(Model model, Principal principal) {
+		model.addAttribute("user", principal.getName());
 		model.addAttribute("administrateurs", daoAdministrateur.findAll());
 		return "create-administration";
 	}
