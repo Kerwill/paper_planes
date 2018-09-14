@@ -37,7 +37,7 @@ public class CategorieController {
 		
 		daoCategorie.save(categorie);
 		
-		return "categorie";
+		return "redirect:/categorie/read";
 	}
 
 	@GetMapping("/delete")
