@@ -17,7 +17,7 @@
 </head>
 
 <header layout:fragment="custom-title">
-	<h1 class="display-2">Liste des etapes</h1>
+	<h1 class="display-2">Etapes</h1>
 </header>
 
 <body>
@@ -26,9 +26,10 @@
 
 		<a class="btn btn-outline-info" sec:authorize="hasRole('ROLE_ADMIN')"
 			href="create">Ajouter une étape</a> </br> </br>
+			
 		<table class="table table-striped">
 
-			<thead>
+			<thead class="bg-success">
 				<tr class="table-info">
 					<th>Id</th>
 					<th>Origami</th>
@@ -58,7 +59,7 @@
 				</td>
 
 
-			</tr>
+			
 
 			<td>[[${ etape.video }]]</td>
 
