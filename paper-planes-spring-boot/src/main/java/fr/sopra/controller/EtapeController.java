@@ -28,7 +28,6 @@ public class EtapeController {
 	@Autowired
 	private IDAOEtape daoEtape;
 
-	@Secured({"ROLE_ADMIN","ROLE_TECH"})
 	
 	@GetMapping("/read")
 	public String readEtape(Model model) {
@@ -43,12 +42,15 @@ public class EtapeController {
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/create")
-	public String createEtapeGet(Model model) {
-		model.addAttribute("etapes", daoEtape.findAll());
-		return "create-etape";
+//	public String createEtapeGet(Model model) {
+//		model.addAttribute("etapes", daoEtape.findAll());
+//		return "create-etape";
 
-	}
-
+		public String createEtape() {
+			
+			return "create-etape";
+		}	
+		
 	// 2 POST POUR ENVOYER DONNES
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -86,7 +88,7 @@ public class EtapeController {
 
 	// MODIFIER ETAPE
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+//	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/update")
 	public String updateEtapeGet(@RequestParam int id, Model model) {
 
