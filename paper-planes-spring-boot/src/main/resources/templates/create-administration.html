@@ -29,7 +29,7 @@
 		</div>
 
 		<div id="password">
-			<label>Password :</label> <input type="password" id="password" name="password"
+			<label th:if="${ administrateur.username == user }">Password :</label> <input th:if="${ administrateur.username == user }" type="text" id="password" name="password"
 				placeholder="Votre mot de passe" th:value="${ administrateur?.password }" width="30px">
 		</div>
 		

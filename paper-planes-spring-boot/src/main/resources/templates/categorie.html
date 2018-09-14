@@ -18,26 +18,30 @@
 
 <section layout:fragment="custom-content">
 <body>
+<br/>
 <h1>Liste des categories</h1>
+<br/>
+<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-info" th:href="@{create}">Ajouter</a>
+<br/>
+<br/>
 <div>
-<table>
+<table class="table table-striped">
   <thead>
-    <tr>
+    <tr class="table-info">
       <th scope="col">Nom</th>
-      <th scope="col">Action</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
   
     <tr th:each="categorie : ${categories}">
       <td>[[${ categorie.nom }]]</td>
-      <td><a  class="btn btn-primary" th:href="@{update(id=${ categorie.id })}">Modifier</a></td>
-      <td><a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-danger" th:href="@{delete(id=${ categorie.id })}">Supprimer</a></td>
+      <td><a  class="btn btn-outline-secondary" th:href="@{update(id=${ categorie.id })}">Modifier</a></td>
+      <td><a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-danger" th:href="@{delete(id=${ categorie.id })}">Supprimer</a></td>
     </tr> 
   </tbody>
 </table>
-<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success" th:href="@{create}">Ajouter</a>
-
 </div>
 </body>
 </section>
