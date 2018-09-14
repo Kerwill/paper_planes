@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+
 @Entity
 @Table(name = "administrateur")
 public class Administrateur {
@@ -19,9 +20,8 @@ public class Administrateur {
 		private int id;
 
 		@Column(name="ADM_TECHNICIEN", nullable=false)
-		@NotEmpty
 		private boolean isTechnicien = true;
-	
+			
 		@Column(name="ADM_USERNAME", length =100, nullable=false)
 		@NotEmpty
 		@Size(max = 100)
@@ -31,7 +31,11 @@ public class Administrateur {
 		@NotEmpty
 		@Size(max = 100)
 		private String password;
-
+		
+				
+		
+		
+		
 		public int getId() {
 			return id;
 		}
@@ -55,6 +59,8 @@ public class Administrateur {
 		public void setPassword(String password) {
 			this.password = password;
 		}
+		
+		 
 
 		public boolean isTechnicien() {
 			return isTechnicien;

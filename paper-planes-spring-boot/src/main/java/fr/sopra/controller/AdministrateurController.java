@@ -80,16 +80,15 @@ public String login() {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/create")
-	public String createAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien, @RequestParam String username,
-	@RequestParam String password, Model model) {
+	public String createAdminPost(@RequestParam boolean isTechnicien, @RequestParam String username, @RequestParam String password, Model model) {
 		Administrateur myAdministrateur = new Administrateur();
 
-		myAdministrateur.setId(id);
 		myAdministrateur.setUsername(username);
 		myAdministrateur.setPassword(password);
+		
 		myAdministrateur.setTechnicien(isTechnicien);
-
-
+		
+		
 		daoAdministrateur.save(myAdministrateur);
 		return "redirect:/administration";
 	}
