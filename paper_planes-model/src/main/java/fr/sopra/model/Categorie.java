@@ -60,6 +60,16 @@ public class Categorie {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	public Categorie getParent() {
+		return parent;
+	}
+
+	public void setParent(Categorie parent) {
+		this.parent = parent;
+	}
+	
+	
 	
 
 }

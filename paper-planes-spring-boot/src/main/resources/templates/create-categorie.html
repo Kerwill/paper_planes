@@ -28,11 +28,11 @@
   </div> --> 
   <div class="form-group">
 				<label for="categorie">Categorie mere :</label> <select
-					class="form-control" name="categorie" id="categorie"
-					value="${categorie.parent}">
-					<option th:each="parent : ${parents}" th:value="${parent.id}"
-						th:text="${parent.nom}"
-						th:selected="${parent.id == categorie?.parent?.id}"></option>
+					class="form-control" name="parent" id="parent"
+					value="${parent}">
+					<option th:each="categorie : ${categories}" th:value="${parent}"
+						th:text="${categorie.nom}"
+						></option>
 					<option>Nouvelle categorie</option>
 				</select>
 			</div>
