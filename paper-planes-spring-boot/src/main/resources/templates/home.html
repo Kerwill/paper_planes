@@ -16,6 +16,22 @@
 <section layout:fragment="custom-content">
 <body>
 			<div>Bonjour utilisateur !</div>
+			
+			<table class="table table-striped">
+  <thead>
+    <tr class="table-info">
+      <th scope="col">Nom</th>
+      <th scope="col">Vues</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  <tr th:each="ori : ${ origamis }">
+      <td>[[${ ori.nom }]]</td>
+      <td>[[${ ori.vue }]]</td>
+    </tr> 
+  </tbody>
+</table>
 
 
 </body>
