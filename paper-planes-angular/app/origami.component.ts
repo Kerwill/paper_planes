@@ -14,15 +14,29 @@ import { CategorieService} from './categorie.service';
 export class OrigamiComponent {
   private origami: Origami = new Origami();
   private origamis: Array<Origami> = new Array<Origami>();
-  private filtre: string = "";
+  private filtreRecherche: string = "";
+  private filtreNiveau: string = "";
 
-  constructor(private origamiService : OrigamiService, private categorieService : CategorieService) {
+  constructor(private origamiService : OrigamiService, private categorieService : CategorieService {
       // this.origamis.push(new Origami("Lapin", "Normal", 10, 3, "blabla"));
   }
 
   public getOrigamis() {
+    if (!this.filtreRecherche) {
       return this.origamiService.findAll();
+    }
+    else {
+      return this.origamiService.findByNomContaining(this.filtreRecherche);
+    }
   }
+
+  // public getOrigamisByNiveau() {
+  //
+  // }
+
+  // click(ev){
+  //    console.log(ev);
+  // }
 
   public addOrigami() {
       this.origamis.push(this.origami);

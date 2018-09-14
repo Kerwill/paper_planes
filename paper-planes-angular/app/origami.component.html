@@ -1,19 +1,19 @@
 
 <div id="leDivDesFamilles">
 <div id="aside">
-  <b>Difficulté</b>
-  <form name="difficulte">
-    <input type="checkbox" name="occasionnel" value="1"> Occasionnel
-    <input type="checkbox" name="normal" value="2"> Normal
-    <input type="checkbox" name="avance" value="3"> Avancé
-    <input type="checkbox" name="expert" value="4"> Expert
+  <b>Niveau</b>
+  <form id="niveau">
+    <input type="checkbox" name="occasionnel" value="1" (click)="click($event)"> Occasionnel
+    <input type="checkbox" name="normal" value="2" (click)="click($event)"> Normal
+    <input type="checkbox" name="avance" value="3" (click)="click($event)"> Avancé
+    <input type="checkbox" name="expert" value="4" (click)="click($event)"> Expert
   </form>
 
   <br/>
   <br/>
 
   <b>Catégorie</b>
-  <select name="categorie">
+  <select id="categorie">
     <option *ngFor="let c of getCategories()">{{ c.nom }}</option>
   </select>
 
@@ -21,7 +21,7 @@
   <br/>
 
   <b>Recherche</b>
-  <input name="recherche" type="text" [(ngModel)]="filtre" />{{ filtre }}
+  <input id="recherche" type="text" [(ngModel)]="filtreRecherche" />{{ filtre }}
 </div>
 
 <div id="view">
