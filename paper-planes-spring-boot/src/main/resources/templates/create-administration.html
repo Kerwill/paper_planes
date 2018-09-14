@@ -15,10 +15,13 @@
 
 <title></title>
 </head>
-<section layout:fragment="custom-content">
-<body>
+<header layout:fragment="custom-title">
+	<h1 class="display-4">Ajout d'un utilisateur</h1>
+</header>
 
-	<h1>ADMINISTRATION</h1>
+<body>
+<section layout:fragment="custom-content">
+	
 
 	<form method="POST">
 
@@ -50,9 +53,11 @@
 	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
 		<p></p>
-		<button type="submit" class="btn btn-outline-info">Valider</button>
-	</form>
+		<button type="submit" class="btn btn-outline-secondary">Valider</button>
 
-	</body>
-</section>
+
+		</form>
+		</section>
+</body>
+
 </html>
