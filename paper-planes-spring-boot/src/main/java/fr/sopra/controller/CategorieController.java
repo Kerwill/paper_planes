@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.sopra.dao.IDAOCategorie;
 import fr.sopra.model.Categorie;
-import fr.sopra.model.Origami;
-
 
 @Controller
 @RequestMapping("/categorie")
@@ -45,7 +43,7 @@ public class CategorieController {
 	        Categorie nouveauCategorie = new Categorie();
 	        nouveauCategorie.setId(id);
 	        daoCategorie.delete(nouveauCategorie);
-	        return "redirect:/origami/read";
+	        return "redirect:/categorie/read";
 	}
 	
 	@GetMapping("/update")
