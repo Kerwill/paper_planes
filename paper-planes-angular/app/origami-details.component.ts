@@ -9,7 +9,14 @@ import { Etape } from './etape';
 	})
 
 export class OrigamiDetailsComponent {
+// private etapes : Array<Etape>;
 
-constructor(private EtapeService : EtapeService ) {
+constructor(private etapeService : EtapeService ) {
+
+// this.etapes = this.etapeService.findAll();
 }
+
+// public getEtapes(){
+//   return this.etapes;
+// }
 }
