@@ -6,13 +6,14 @@ layout:decorator="layout.html">
 <head> 
 <title>Gestion des Origami</title> 
 </head> 
-<body> 
+<body>  
  
+<header layout:fragment="custom-title">
+<h1 class="display-2" th:if="${ origami?.id !=null }">Modifier un produit</h1> 
+<h1 class="display-2" th:if="${ origami?.id ==null }">Ajouter un produit</h1> 
+</header>
+
 <section layout:fragment="custom-content"> 
- 
-<h1 class="display-2"><div th:if="${ origami?.id !=null }" layout:fragment="custom-title">Modifier un produit </div></h1> 
-<h1 class="display-2"><div th:if="${ origami?.id ==null }" layout:fragment="custom-title">Ajouter un produit </div></h1> 
-<!-- <div sec:authorize="hasRole('ROLE_ADMIN')"> --> 
 <form method="post"> 
   <div class="form-row"> 
   	<div class="col"> 

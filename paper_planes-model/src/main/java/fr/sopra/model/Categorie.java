@@ -11,10 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.UniqueConstraint;
 
 @Entity
+@NamedNativeQuery(name= "getAllCategoriesByOrigamiId", query="SELECT c.nom FROM categorie c, origami o, branche b"+
+		"LEFT JOIN c.cat_id on b.bra_categorie_id" +
+		"WHERE o.ori_id = b.bra_origami_id")
 public class Categorie {
 
 	@Id
