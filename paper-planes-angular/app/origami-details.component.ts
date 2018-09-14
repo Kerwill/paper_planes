@@ -10,6 +10,6 @@ import { Etape } from './etape';
 
 export class OrigamiDetailsComponent {
 
-constructor(private EtapeService : EtapeService ) {}
+constructor(private EtapeService : EtapeService ) {
 }
 }
