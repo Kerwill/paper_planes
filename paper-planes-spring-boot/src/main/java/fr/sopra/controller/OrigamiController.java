@@ -31,9 +31,9 @@ public class OrigamiController {
 	private IDAOEtape daoEtap;
 	
 	@GetMapping(value="/read")
-	public String readOrigami(Model model) {
-
-		model.addAttribute("etapes", daoEtap.findAll());
+	public String readOrigami(Model model, @RequestParam(defaultValue="1") int id) {
+		
+		model.addAttribute("etapes", daoEtap.findByOrigamiIdOrderByOrdre(id));
 		model.addAttribute("origamis", daoOri.findAll());
 		return "origami";
 		
