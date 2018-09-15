@@ -1,12 +1,16 @@
-#front{
-  display : flex;
-}
-
 #logo{
   flex : 1;
+  z-index : '2';
+  position: absolute;
+  left: 52%;
+  top: 0%;
 }
 
-#slogan{
-  flex : 1;
-  font-family: 'Gamja Flower', cursive;
+#banniere {
+  z-index : '1';
+  height: 220px;
+  width: 1000px;
+  position : relative;
+  overflow : hidden;
+
 }
