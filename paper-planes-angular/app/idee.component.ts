@@ -3,6 +3,7 @@ import { IdeeService } from './idee.service';
 import { Idee } from './idee';
 
 @Component({
+    selector: 'myIdee',
     templateUrl: 'app/idee.component.html',
     styleUrls: ['app/idee.component.css']
 	})

@@ -1,6 +1,27 @@
-<title>Boite à idee</title>
 
-  <body class="text-center">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<div class="container">
+  <form class="form-signin" action="post">
+
+    <input type="text" class="form-control" name="nom" [(ngModel)]="idee.nom" placeholder="Nom">
+
+    <input type="text" class="form-control" name="prenom" [(ngModel)]="idee.prenom" placeholder="Prenom">
+
+    <input type="email" id="inputEmail" class="form-control" name="mail" [(ngModel)]="idee.mail" placeholder="Email" required autofocus>
+
+    <label for="subject">Ecrivez votre commentaire : </label>
+    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" [(ngModel)]="idee.description" placeholder="Votre message..." rows="3" ></textarea>
+
+    <input type="submit" value="Envoyez !" (click)="addIdee(idee)"><i class="fa fa-paper-plane-o"></i>
+  </form>
+</div>
+</div>
+
+
+<button id="fixedbutton" style="font-size:20px;cursor:pointer" onclick="openNav()"><i class="fa fa-paper-plane-o"></i> Boite à idées </button>
+
+  <!-- <body class="text-center">
     <form class="form-signin">
       <img class="mb-4" src="https://banner2.kisspng.com/20180305/usq/kisspng-airplane-paper-plane-red-red-paper-airplane-5a9d3d8ba840a0.4736974015202543476892.jpg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Laissez votre message</h1>
@@ -14,4 +35,4 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="addIdee(idee)">Envoyez !</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
-  </body>
+  </body> -->

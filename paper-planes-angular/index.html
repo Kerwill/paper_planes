@@ -6,11 +6,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
-        <base href="/" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!-- pour les icons -->
+
+  <base href="/" />
     </head>
 
-
-    <body>
+<style>
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+	z-index: 10;
+}</style>
+    <body >
         <paperplane-app>Chargement de l'application Angular ...</paperplane-app>
 
         <!-- Chargement des librairies -->
@@ -23,5 +31,17 @@
         <script>
             System.import('app').catch(err => console.error(err));
         </script>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+</script>
     </body>
 </html>
