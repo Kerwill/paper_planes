@@ -13,8 +13,9 @@
   <br/>
 
   <b>Catégorie</b>
-  <select id="categorie">
-    <option *ngFor="let c of getCategories()">{{ c.nom }}</option>
+  <select id="categorie" [(ngModel)]="selectedCategorie">
+    <option selected >...</option>
+    <option *ngFor="let c of getCategories()" [ngValue]="c">{{ c.nom }}</option>
   </select>
 
   <br/>
@@ -47,9 +48,9 @@
         <td>{{ o.niveau }}</td>
         <td>{{ o.temps }}</td>
         <td>{{ o.note }}</td>
-        <td><a [routerLink]="['/origami-details', o.id]" routerLinkActive="active">Détail</a></td>
-        <td> d</td>
-        <!-- <td> <span *ngFor="let c of capaciteService.getCategories(o.id)">{{c.nom}}</span></td> -->
+        <td><a [routerLink]="['/origami-details', o.id]" routerLinkActive="active">Détails</a></td>
+
+         <td> <span *ngFor="let c of o.getCategories()">{{ c.nom }} </span></td>
 
       </tr>
     </tbody>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Origami } from './origami';
+import { Categorie } from './categorie';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AppConfigService} from './app-config.service';
 
@@ -11,6 +12,16 @@ export class OrigamiService {
   private id: number;
   private filtre: string = "";
 
+
+  // private isOccasionnel : boolean = false;
+  // private isNormal : boolean = false;
+  // private isAvance : boolean = false;
+  // private isExpert : boolean = false;
+    // private selectedCategorie : Categorie = null;
+
+
+
+
   constructor(private http: Http, private appConfigService : AppConfigService) {
       this.http
            .get(this.appConfigService.getUrlApi() + "origamis")
@@ -21,6 +32,11 @@ export class OrigamiService {
              }
            }
            );
+  }
+
+
+  public findAll() : Array<Origami>{
+    return this.origamis;
   }
 
   public findById(id) : Origami{
@@ -35,9 +51,6 @@ export class OrigamiService {
     return this.origami;
   }
 
-  public findAll() : Array<Origami>{
-    return this.origamis;
-  }
 
   public findByNomContaining(filtre: string): Array<Origami> {
 
@@ -58,12 +71,34 @@ if (filtre != this.filtre){
 
 }
 
-  //   return this.origamis.filter(o =>
-  //           o.nom
-  //               .toLowerCase()
-  //               .indexOf(nom.toLowerCase()) !== -1
-  //       );
-  }
+
+
+
+// public findAllFiltrated(filtre: string, isOccasionnel : boolean, isNormal : boolean, isAvance : boolean, isExpert : boolean, selectedCategorie : Categorie): Array<Origami> {
+//
+// if (filtre != this.filtre && selectedCategorie != this.selectedCategorie && isOccasionnel != this.isOccasionnel &&  isNormal != this.isNormal &&  isAvance != this.isAvance &&  isExpert != this.isExpert){
+//   this.filtre = filtre;
+//   this.selectedCategorie = selectedCategorie;
+//   this.isOccasionnel = isOccasionnel;
+//   this.isNormal = isNormal;
+//   this.isAvance = isAvance;
+//   this.isExpert = isExpert;
+// }
+//
+// this.origamis = new Array<Origami>();
+//
+//   this.http
+//        .get(this.appConfigService.getUrlApi() + "origamis/search/by-nom-filtre?filtreRecherche="+filtre+"&selectedCategorie="+selectedCategorie"&isOccasionnel="+isOccasionnel+"&isNormal"+isNormal+
+//        "&isAvance"+isAvance+"&isExpert"+isExpert)
+//        .subscribe(resp => {
+//            for (let o of resp.json()._embedded.origamis) {
+//                this.origamis.push(new Origami(o));
+//          }
+//        }
+//        );
+// }
+// return this.origamis;
+}
 
   // public findAllByNom(nom: string) : Array<Origami> {
   //   return this.origamis.filter(o =>
