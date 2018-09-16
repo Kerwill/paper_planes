@@ -6,6 +6,7 @@
     top: 0;
     left: 0;
     background-color: rgba( 0, 96, 156, 1);
+    background: linear-gradient( rgba( 0, 96, 156, 1) 0%,rgba( 0, 96, 156, 1) 30%, #a4ccdc 40%, #a4ccdc 100%);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -32,10 +33,6 @@
     margin-left: 50px;
 }
 
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
-}
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
@@ -99,9 +96,22 @@ input[type=text], select, textarea {
     margin-bottom: 16px;
     resize: vertical;
 }
+input[type=text]:hover {
+    background-color: #d8d8d8;
+    background: linear-gradient( #a4ccdc 0%, white 100%);
+}
 
+input[type=email]:hover {
+    background-color: #d8d8d8;
+    background: linear-gradient( #a4ccdc 0%, white 100%);
+}
+
+textarea:hover {
+    background-color: #d8d8d8;
+    background: linear-gradient( #a4ccdc 0%, white 100%);
+}
 input[type=submit] {
-    background-color: #4CAF50;
+    background-color:#0089e0;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -109,12 +119,19 @@ input[type=submit] {
     cursor: pointer;
 }
 
-input[type=submit]:hover {
-    background-color: #45a049;
+
+input[type=submit]:hover  {
+    background-color:  rgba( 0, 96, 156, 1);
 }
 
 .container {
     border-radius: 5px;
     background-color: rgba( 0, 137, 223, 1);
+    background: linear-gradient( rgba( 0, 96, 156, 1) 0%, rgba( 0, 137, 223, 1) 46%, #a4ccdc 100%);
     padding: 20px;
+}
+
+.side-img img{
+  width: 200px;
+margin-left: 20px;
 }

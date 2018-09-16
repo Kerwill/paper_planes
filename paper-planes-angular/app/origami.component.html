@@ -1,16 +1,186 @@
 
+
+
+<div class="row">
+  <div class="column">
+    <h2 class="search-h2">Niveau</h2>
+
+    <form id="niveau">
+      <label class="radio">Tout niveau
+        <input type="radio" checked="checked" name="radio" value="5" (click)="ToutNiveau()"><!-- relier à la liste dans origami.service -->
+        <span class="checkmark"></span>
+      </label>
+      <label class="radio">Occasionnel
+        <input type="radio" name="radio" value="1" (click)="Occasionnel()"> {{isOccasionnel}}
+        <span class="checkmark"></span>
+      </label>
+      <label class="radio">Normal
+        <input type="radio" name="radio" value="2" (click)="Normal()">
+        <span class="checkmark"></span>
+      </label>
+      <label class="radio">Avancé
+        <input type="radio" name="radio" value="3" (click)="Avance()">
+        <span class="checkmark"></span>
+      </label>
+      <label class="radio">Expert
+        <input type="radio" name="radio" value="4" (click)="Expert()">
+        <span class="checkmark"></span>
+      </label>
+    </form>
+
+  </div>
+  <div class="column" >
+    <h2 class="search-h2">Categories</h2>
+    <select>
+      <option value="0">Toutes catégories</option>
+      <option value="1">Animaux</option>
+      <option value="2">Avions</option>
+      <option value="3">Divers</option>
+      <option value="4">Fantasie</option>
+      <option value="5">Noel</option>
+      <option value="6">Plantes</option>
+    </select>
+
+  </div>
+  <div class="column">
+    <h2 class="search-h2">Rechercher</h2>
+      <input id="recherche" type="text" name="search" placeholder="Search..." [(ngModel)] = "filtreRecherche" />
+  </div>
+</div>
+
+
+<!-- A relier a la base de données -->
+<div class="miniatures">
+  <h2 class="search-h2">Nos créations</h2>
+
+  <div class="card">
+    <img src="app/assets/img/squirrel.jpg" alt="squirrel" style="width:100%"><!-- on importe de la DB la derniere image -->
+    <div class="container">
+      <h4><b>Ecureuil</b></h4>
+
+      <ul class="tags">
+        <li><a href="#">Animaux</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img src="app/assets/img/bluebird.jpg" alt="bluebird" style="width:100%"><!-- on importe de la DB la derniere image -->
+    <div class="container">
+      <h4><b>Oiseau bleu</b></h4>
+
+      <ul class="tags">
+        <li><a href="#">Animaux</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img src="app/assets/img/yellowbird.jpg" alt="yellowbird" style="width:100%"><!-- on importe de la DB la derniere image -->
+    <div class="container">
+      <h4><b>Oiseau jaune</b></h4>
+
+      <ul class="tags">
+        <li><a href="#">Animaux</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="app/assets/img/unicorn.jpg" alt="unicorn" style="width:100%"><!-- on importe de la DB la derniere image -->
+    <div class="container">
+      <h4><b>Licorne</b></h4>
+
+      <ul class="tags">
+        <li><a href="#">Animaux</a></li>
+        <li><a href="#">Fantasie</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img src="app/assets/img/plane1.jpg" alt="plane1" style="width:100%"><!-- on importe de la DB la derniere image -->
+    <div class="container">
+      <h4><b>Avion simple</b></h4>
+
+      <ul class="tags">
+        <li><a href="#">Avions</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="app/assets/img/plane2.jpg" alt="plane2" style="width:100%"><!-- on importe de la DB la derniere image -->
+    <div class="container">
+      <h4><b>Chasseur</b></h4>
+
+      <ul class="tags">
+        <li><a href="#">Avions</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img src="app/assets/img/plants1.jpg" alt="plants1" style="width:100%"><!-- on importe de la DB la derniere image -->
+    <div class="container">
+      <h4><b>Sapin</b></h4>
+
+      <ul class="tags">
+        <li><a href="#">Plantes</a></li>
+        <li><a href="#">Noel</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img src="app/assets/img/star-geometry.jpg" alt="black star" style="width:100%"><!-- on importe de la DB la derniere image -->
+    <div class="container">
+      <h4><b>Black Star</b></h4>
+
+      <ul class="tags">
+        <li><a href="#">Divers</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img src="app/assets/img/rocket.jpg" alt="rocket" style="width:100%"><!-- on importe de la DB la derniere image -->
+    <div class="container">
+      <h4><b>Fusée</b></h4>
+
+      <ul class="tags">
+        <li><a href="#">Divers</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div><!--class = miniatures -->
+<br/>
+
+<!-- ancien truc -->
+
+
+
+
+<!--
 <div id="leDivDesFamilles">
 <div id="aside">
-  <b>Niveau</b>
-  <form id="niveau">
-    <input type="checkbox" name="occasionnel" value="1" (click)="Occasionnel()"> Occasionnel {{isOccasionnel}}
-    <input type="checkbox" name="normal" value="2" (click)="Normal()"> Normal
-    <input type="checkbox" name="avance" value="3" (click)="Avance()"> Avancé
-    <input type="checkbox" name="expert" value="4" (click)="Expert()"> Expert
-  </form>
+<b>Niveau</b>
+<form id="niveau">
+<input type="checkbox" name="occasionnel" value="1" (click)="Occasionnel()"> Occasionnel {{isOccasionnel}}
+<input type="checkbox" name="normal" value="2" (click)="Normal()"> Normal
+<input type="checkbox" name="avance" value="3" (click)="Avance()"> Avancé
+<input type="checkbox" name="expert" value="4" (click)="Expert()"> Expert
+</form>
 
-  <br/>
-  <br/>
+<br/>
+<br/>
 
   <b>Catégorie</b>
   <select id="categorie" [(ngModel)]="selectedCategorie">
@@ -18,17 +188,17 @@
     <option *ngFor="let c of getCategories()" [ngValue]="c">{{ c.nom }}</option>
   </select>
 
-  <br/>
-  <br/>
+<br/>
+<br/>
 
-  <b>Recherche</b>
-  <input id="recherche" type="text" [(ngModel)] = "filtreRecherche" />
+<b>Recherche</b>
+<input id="recherche" type="text" [(ngModel)] = "filtreRecherche" />
 
 
 
-<!-- [(ngModel)]="filtreRecherche" -->
+[(ngModel)]="filtreRecherche"
 
-</div>
+</div> -->
 
 <div id="view">
   <table>
@@ -43,7 +213,7 @@
       </tr>
     </thead>
     <tbody>
-       <tr *ngFor="let o of getOrigamis()">
+      <tr *ngFor="let o of getOrigamis()">
         <td>{{ o.nom }}</td>
         <td>{{ o.niveau }}</td>
         <td>{{ o.temps }}</td>
@@ -58,118 +228,5 @@
 
 </div>
 
-</div>
 
-  <!-- A relier a la base de données -->
-<div class="miniatures">
-<h2>Nos créations</h2>
-
-<div class="card">
-  <img src="app/assets/img/squirrel.jpg" alt="squirrel" style="width:100%"><!-- on importe de la DB la derniere image -->
-  <div class="container">
-    <h4><b>Ecureuil</b></h4>
-
-    <ul class="tags">
-      <li><a href="#">Animaux</a></li>
-    </ul>
-</div>
-</div>
-
-
-<div class="card">
-  <img src="app/assets/img/bluebird.jpg" alt="bluebird" style="width:100%"><!-- on importe de la DB la derniere image -->
-  <div class="container">
-    <h4><b>Oiseau bleu</b></h4>
-
-    <ul class="tags">
-      <li><a href="#">Animaux</a></li>
-    </ul>
-</div>
-</div>
-
-
-<div class="card">
-  <img src="app/assets/img/yellowbird.jpg" alt="yellowbird" style="width:100%"><!-- on importe de la DB la derniere image -->
-  <div class="container">
-    <h4><b>Oiseau jaune</b></h4>
-
-    <ul class="tags">
-      <li><a href="#">Animaux</a></li>
-    </ul>
-</div>
-</div>
-
-<div class="card">
-  <img src="app/assets/img/unicorn.jpg" alt="unicorn" style="width:100%"><!-- on importe de la DB la derniere image -->
-  <div class="container">
-    <h4><b>Licorne</b></h4>
-
-    <ul class="tags">
-      <li><a href="#">Animaux</a></li>
-      <li><a href="#">Fantasie</a></li>
-    </ul>
-</div>
-</div>
-
-
-<div class="card">
-  <img src="app/assets/img/plane1.jpg" alt="plane1" style="width:100%"><!-- on importe de la DB la derniere image -->
-  <div class="container">
-    <h4><b>Avion simple</b></h4>
-
-    <ul class="tags">
-      <li><a href="#">Avions</a></li>
-    </ul>
-</div>
-</div>
-
-<div class="card">
-  <img src="app/assets/img/plane2.jpg" alt="plane2" style="width:100%"><!-- on importe de la DB la derniere image -->
-  <div class="container">
-    <h4><b>Chasseur</b></h4>
-
-    <ul class="tags">
-      <li><a href="#">Avions</a></li>
-    </ul>
-</div>
-</div>
-
-
-<div class="card">
-  <img src="app/assets/img/plants1.jpg" alt="plants1" style="width:100%"><!-- on importe de la DB la derniere image -->
-  <div class="container">
-    <h4><b>Sapin</b></h4>
-
-    <ul class="tags">
-      <li><a href="#">Plantes</a></li>
-      <li><a href="#">Noel</a></li>
-    </ul>
-</div>
-</div>
-
-
-<div class="card">
-  <img src="app/assets/img/star-geometry.jpg" alt="black star" style="width:100%"><!-- on importe de la DB la derniere image -->
-  <div class="container">
-    <h4><b>Black Star</b></h4>
-
-    <ul class="tags">
-      <li><a href="#">Divers</a></li>
-    </ul>
-</div>
-</div>
-
-
-<div class="card">
-  <img src="app/assets/img/rocket.jpg" alt="rocket" style="width:100%"><!-- on importe de la DB la derniere image -->
-  <div class="container">
-    <h4><b>Fusée</b></h4>
-
-    <ul class="tags">
-      <li><a href="#">Divers</a></li>
-    </ul>
-</div>
-</div>
-
-</div><!--class = miniatures -->
-<br/>
+<!-- dropdown categories -->
