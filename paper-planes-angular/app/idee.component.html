@@ -10,12 +10,18 @@
 
     <input type="email" id="inputEmail" class="form-control" name="mail" [(ngModel)]="idee.mail" placeholder="Email" required autofocus>
 
-    <label for="subject">Ecrivez votre commentaire : </label>
+    <!-- <label for="subject">Ecrivez votre commentaire : </label> -->
     <textarea class="form-control" name="description" id="exampleFormControlTextarea1" [(ngModel)]="idee.description" placeholder="Votre message..." rows="3" ></textarea>
 
-    <input type="submit" value="Envoyez !" (click)="addIdee(idee)"><i class="fa fa-paper-plane-o"></i>
+    <input type="submit" value="Envoyez !" (click)="addIdee(idee)">
   </form>
 </div>
+
+<div class="side-img">
+<img src="app/assets/img/turtle.png" />
+</div>
+
+
 </div>
 
 

@@ -1,4 +1,4 @@
-#leDivDesFamilles {
+/* #leDivDesFamilles {
   display : flex;
 }
 
@@ -8,9 +8,10 @@
 
 #aside {
   flex:1;
-}
+} */
 .miniatures{
   display: block;
+  text-align: center;
 }
 .card {
 position: relative;
@@ -96,3 +97,123 @@ max-width: 200px;
   .tags a:hover{background:#555;}
 
 .tags a:hover:before{border-color:transparent #555 transparent transparent;}
+
+
+/* filtres */
+
+.radio {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.radio input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.radio .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+/* dropdown categories */
+
+select {
+  appearance: none;
+  background-color: #0089e0;
+  background-position: right;
+  background-repeat: no-repeat;
+  border-color: #b3cccc;
+  border-radius: .2em;
+  border-style: solid;
+  border-width: 1px;
+  border-right-color: #869999;
+  border-bottom-color: #869999;
+  color: black;
+  padding: .33em .5em;
+  width: 200px;
+  text-align:center;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.search-h2 {
+  font-family: "Allerta Stencil", Sans-serif;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* search */
+#recherche {
+    width: 160px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 5px 20px 5px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#recherche:focus {
+    width: 100%;
+}
