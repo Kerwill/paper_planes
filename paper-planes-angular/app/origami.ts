@@ -1,3 +1,5 @@
+import { Categorie } from './categorie';
+
 export class Origami {
   private nom: string;
   private temps: number;
@@ -5,6 +7,7 @@ export class Origami {
   private niveau: any;
   private href: string;
   private id: string;
+  private categories: Array<Categorie>;
 
 
   constructor(private json?: any) {
@@ -14,6 +17,8 @@ export class Origami {
           this.note = json.note;
           this.niveau = json.niveau;
           this.id = json.id;
+          this.categories = json.categories;
+
           if (json._links !== undefined) {
               this.href = json._links.self.href;
           }
@@ -34,6 +39,10 @@ export class Origami {
 
   public getNiveau(): any {
     return this.niveau;
+  }
+
+  public getCategories(): Array<Categorie> {
+      return this.categories;
   }
 
   public getHref(): string {

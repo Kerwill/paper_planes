@@ -68,6 +68,14 @@ public class Categorie {
 	public void setParent(Categorie parent) {
 		this.parent = parent;
 	}
+
+	public Set<Categorie> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Set<Categorie> categories) {
+		this.categories = categories;
+	}
 	
 	
 	

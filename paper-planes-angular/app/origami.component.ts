@@ -17,13 +17,21 @@ export class OrigamiComponent {
   }
   private origami: Origami = new Origami();
   private origamis: Array<Origami> = new Array<Origami>();
+
+
+
+  //filtre pour recherche par mot
+
   private filtreRecherche: string = "";
+
+  //boolean sur niveau
 
   private isOccasionnel : boolean = false;
   private isNormal : boolean = false;
   private isAvance : boolean = false;
   private isExpert : boolean = false;
   private filtreNiveau: string = "";
+  private selectedCategorieId : number = 0;
 
   public Occasionnel() {
     if (this.isOccasionnel){
@@ -66,50 +74,35 @@ public Expert() : boolean{
 }
 
 
-  public getOrigamis() : Array <Origami>{
-
-    if (this.filtreRecherche !== null) {
-      this.origamis = this.origamiService.findByNomContaining(this.filtreRecherche);
-    }
-    else {
-      this.origamis = this.origamiService.findAll();
-}
-return this.origamis;
-
-  }
 
 
-  // getCategories() : Array<Categorie>{
-  //
-  //   this.categorieService.findByOrigami(id);
-  //
-  //
-  // }
-
-  // public getOrigamisByNiveau() {
-  //
-  // }
-
-  // click(ev){
-  //    console.log(ev);
-  // }
-
-
-
-  public filtrerOrigamis(): Array<Origami> {
-    return null;
-      // return this.origamis.filter(o =>
-      //     o.getNom()
-      //         .toLowerCase()
-      //         .indexOf(this.filtre.toLowerCase()) !== -1
-      // )
-  }
+//afficher l'ensemble des categories dans le select
 
   public getCategories() {
     return this.categorieService.findAll();
   }
 
-  // public getOrigamiCategorie() {
-  //   return this.categorie
-  // }
+
+//appel à Origami Service pour générer les tableaux d'origamis
+
+
+public getOrigamis() : Array <Origami>{
+
+this.origamis = this.origamiService.findAllFiltrated(this.filtreRecherche, this.selectedCategorieId, this.isOccasionnel,this.isNormal, this.isAvance, this.isExpert);
+
+return this.origamis;
+
+  }
 }
+
+
+//   public getOrigamis() : Array <Origami>{
+//
+//     if (!this.filtreRecherche && !this.selectedCategorie && !isExpert && !isNormal && !isAvance && !isOccasionnel){
+//         this.origamis = this.origamiService.findAll();
+//     }
+//
+//     else{
+//     this.origamis = this.origamiService.findAllFiltrated(this.filtreRecherche, this.selectedCategorie, this.isOccasionnel, this.isNormal, this.isAvance, this.isExpert);
+// }
+// return this.origamis;
