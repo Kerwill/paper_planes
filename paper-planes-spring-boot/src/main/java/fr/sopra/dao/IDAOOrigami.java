@@ -1,7 +1,7 @@
 package fr.sopra.dao;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import fr.sopra.model.Origami;
 import fr.sopra.model.enumerateur.Niveau;
 import fr.sopra.projection.OrigamiProjection;
+
 
 @CrossOrigin("*")
 @RepositoryRestResource(excerptProjection=OrigamiProjection.class)
