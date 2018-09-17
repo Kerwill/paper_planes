@@ -2,7 +2,7 @@
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 <div class="container">
-  <form class="form-signin" action="post">
+  <form class="form-signin" action="POST">
 
     <input type="text" class="form-control" name="nom" [(ngModel)]="idee.nom" placeholder="Nom">
 
@@ -13,7 +13,7 @@
     <!-- <label for="subject">Ecrivez votre commentaire : </label> -->
     <textarea class="form-control" name="description" id="exampleFormControlTextarea1" [(ngModel)]="idee.description" placeholder="Votre message..." rows="3" ></textarea>
 
-    <input type="submit" value="Envoyez !" (click)="addIdee(idee)">
+    <input type="submit" value="Envoyez !" (click)="addIdee()">
   </form>
 </div>
 
@@ -24,8 +24,11 @@
 
 </div>
 
+<div class='field'>
+        <button id="fixedbutton" class='has-tooltip' onclick="openNav()"><i class="fa fa-paper-plane-o"></i> Boite à idées </button>
 
-<button id="fixedbutton" style="font-size:20px;cursor:pointer" onclick="openNav()"><i class="fa fa-paper-plane-o"></i> Boite à idées </button>
+        <span class='tooltip blue'><p>Partagez vos idées d'origamis exceptionnels ! <br/> Contactez-nous !</p></span>
+    </div>
 
   <!-- <body class="text-center">
     <form class="form-signin">

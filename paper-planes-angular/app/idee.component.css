@@ -49,8 +49,8 @@
 
 #fixedbutton {
 border: 0;
-  padding: 20px 38px;
-  font-size: 30px;
+  padding: 10px 38px;
+  font-size: 20px;
   font-family: "Open Sans", Helvetica;
   border-radius: 4px;
   border-bottom: 2px solid 00609c;
@@ -134,4 +134,52 @@ input[type=submit]:hover  {
 .side-img img{
   width: 200px;
 margin-left: 20px;
+}
+
+/* tooltip */
+.has-tooltip:hover + .tooltip {
+  opacity: 1;
+  transform: translate(-50%, -100%) scale(1) rotate(0deg);
+  pointer-events: inherit;
+}
+
+.tooltip {
+  display: block;
+  position: fixed;
+  bottom: 30px;
+  right:-100px;
+font-weight: bold;
+  transform: translate(-50%, -50%) scale(0.75) rotate(5deg);
+  transform-origin: bottom center;
+  padding: 10px 30px;
+  border-radius: 5px;
+  background: linear-gradient( #0089e0 0%, rgba(71, 184, 224, 0.75) 100%);
+  text-align: center;
+  color: white;
+  transition: 0.15s ease-in-out;
+  width: inherit;
+  pointer-events: none;
+  z-index: 5;
+}
+.tooltip.blue:after {
+  border-top: 5px solid rgba(71, 184, 224, 0.75);
+}
+
+.tooltip:hover {
+  opacity: 1;
+  transform: translate(-50%, -100%) scale(1) rotate(0deg);
+  pointer-events: inherit;
+}
+.tooltip:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top: 5px solid rgba(0, 0, 0, 0.75);
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  transform: translate(-50%, 100%);
 }
