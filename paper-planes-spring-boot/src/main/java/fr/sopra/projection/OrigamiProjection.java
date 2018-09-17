@@ -16,6 +16,8 @@ public interface OrigamiProjection {
 	public int getTemps();
 	public int getFeuille();
 	public int getNote();
+	public String getImage();
+	public int getVue();
 	public boolean isDispo();
 	public Set<Categorie> getCategories();
 	public Set<Etape> getEtapes();

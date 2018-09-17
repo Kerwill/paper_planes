@@ -32,6 +32,9 @@ public interface IDAOOrigami extends JpaRepository<Origami, Integer> {
 public List<Origami> findByNomContaining(@Param("nom") String nom);
 
 
+
+
+
 @RestResource(path="by-filtre")
 @Query(value = "SELECT distinct o FROM Origami o "
 		+ "LEFT JOIN o.categories c "
