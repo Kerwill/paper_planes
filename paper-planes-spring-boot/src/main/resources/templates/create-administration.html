@@ -20,49 +20,101 @@
 </header>
 
 <body>
-<section layout:fragment="custom-content">
-	
+	<section layout:fragment="custom-content">
 
-	<form method="POST">
 
-		<div id="username">
-			<label>Username :</label> <input type="text" id="username"
-				name="username" placeholder="Votre nom"
-				th:value="${ administrateur?.username }" width="30px" required>
-		</div>
+		<form method="POST">
 
-		<div th:if="${ administrateur == null || administrateur.username == user}" id="password">
-			<label>Password :</label> 
-			<input type="password" id="password" name="password"
-				placeholder="Votre mot de passe" th:value="${ administrateur?.password }" width="30px">
-		</div>
+			<div id="username">
+				<label>Username :</label> <input type="text" id="username"
+					name="username" placeholder="Votre nom"
+					th:value="${ administrateur?.username }" width="30px" required>
+			</div>
+
+			<div th:if="${ administrateur == null || administrateur.username == user}"
+				id="password">
+				<label>Password :</label> <input type="password" id="password"
+					name="password" placeholder="Votre mot de passe"
+					 width="30px">
+			</div>
+			
 		
-		
-		<label>L'utilisateur aura t'il les droits de technicien ?</label> 
-		
-		<div th:if="${ administrateur == null}">
-		<label class="radio-inline"><input type="radio" id="0" value="0" name="isTechnicien">Non</label>
-		<label class="radio-inline"><input type="radio" id="1" value="1" name="isTechnicien" checked>Oui</label>
-		</div>
-		<div th:unless="${ administrateur == null || administrateur.technicien == false }">
-		<label class="radio-inline"><input type="radio" id="0" value="0" name="isTechnicien">Non</label>
-		<label class="radio-inline"><input type="radio" id="1" value="1" name="isTechnicien" checked>Oui</label>
-		</div>
-		<div th:unless="${ administrateur == null || administrateur.technicien == true}">
-		<label class="radio-inline"><input type="radio" id="0" value="0" name="isTechnicien" checked>Non</label>
-		<label class="radio-inline"><input type="radio" id="1" value="1" name="isTechnicien">Oui</label>
-		</div>
-	
-	
- 
-	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
-		<p></p>
-		<button type="submit" class="btn btn-outline-secondary">Valider</button>
+			<!-- 			tentative "nouveau mot de passe" -->
+		<br />
+			<div th:if="${ administrateur == null}">
+				<label></label>
+			</div>
+			
+			
+			<div
+				th:unless="${ administrateur == null || administrateur.username != user}"
+				id="passwordchange">
+
+				<script type="text/javascript">
+					/* Voici la fonction javascript qui change la propriété "display"
+					 pour afficher ou non le div selon que ce soit "none" ou "block". */
+
+					function AfficherMasquer() {
+						divInfo = document.getElementById('divacacher');
+
+						if (divInfo.style.display == 'none')
+							divInfo.style.display = 'block';
+						else
+							divInfo.style.display = 'none';
+					}
+				</script>
+
+			
+				<input type="button" class="btn btn-outline-danger"
+					value="Modifier le mot de passe ?" onClick="AfficherMasquer()" /> 
+					<br />
+				<div id="divacacher" style="display: none;">
+					<br />
+					<input type="text" id="password" name="newpassword"
+						placeholder="Nouveau mot de passe" width="150px">
+				</div>
+
+
+
+			</div>
+
+			<br />  
+
+			<label>L'utilisateur aura-t-il les droits de technicien ?</label>
+
+			<div th:if="${ administrateur == null}">
+				<label class="radio-inline"><input type="radio" id="0"
+					value="0" name="isTechnicien">Non</label> <label
+					class="radio-inline"><input type="radio" id="1" value="1"
+					name="isTechnicien" checked>Oui</label>
+			</div>
+			<div
+				th:unless="${ administrateur == null || administrateur.technicien == false }">
+				<label class="radio-inline"><input type="radio" id="0"
+					value="0" name="isTechnicien">Non</label> <label
+					class="radio-inline"><input type="radio" id="1" value="1"
+					name="isTechnicien" checked>Oui</label>
+			</div>
+			<div
+				th:unless="${ administrateur == null || administrateur.technicien == true}">
+				<label class="radio-inline"><input type="radio" id="0"
+					value="0" name="isTechnicien" checked>Non</label> <label
+					class="radio-inline"><input type="radio" id="1" value="1"
+					name="isTechnicien">Oui</label>
+			</div>
+
+
+
+			<input type="hidden" th:name="${_csrf.parameterName}"
+				th:value="${_csrf.token}" />
+
+			<p></p>
+			<button type="submit" class="btn btn-outline-secondary">Valider</button>
 
 
 		</form>
-		</section>
+	</section>
 </body>
 
 </html>
