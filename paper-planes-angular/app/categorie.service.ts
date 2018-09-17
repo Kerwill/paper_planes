@@ -5,8 +5,6 @@ import { AppConfigService} from './app-config.service';
 
 @Injectable()
 export class CategorieService {
-
-  private id : number;
   private categories: Array<Categorie> = new Array<Categorie>();
 
   constructor(private http: Http, private appConfigService : AppConfigService) {
@@ -24,6 +22,7 @@ export class CategorieService {
   public findAll() : Array<Categorie>{
     return this.categories;
   }
+
 //   public getCategories(id) : Array<Categorie>{
 //
 // if (this.id != id){
@@ -40,5 +39,4 @@ export class CategorieService {
 //          );
 //     return this.categories;
 //   }
-
 }

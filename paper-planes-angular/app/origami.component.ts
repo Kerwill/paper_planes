@@ -31,7 +31,7 @@ export class OrigamiComponent {
   private isAvance : boolean = false;
   private isExpert : boolean = false;
   private filtreNiveau: string = "";
-
+  private selectedCategorieId : number = 0;
 
   public Occasionnel() {
     if (this.isOccasionnel){
@@ -74,8 +74,7 @@ public Expert() : boolean{
 }
 
 
-  //selection categorie pour filtre
-    private selectedCategorie : Categorie = null;
+
 
 //afficher l'ensemble des categories dans le select
 
@@ -87,16 +86,10 @@ public Expert() : boolean{
 //appel à Origami Service pour générer les tableaux d'origamis
 
 
-  public getOrigamis() : Array <Origami>{
+public getOrigamis() : Array <Origami>{
 
+this.origamis = this.origamiService.findAllFiltrated(this.filtreRecherche, this.selectedCategorieId, this.isOccasionnel,this.isNormal, this.isAvance, this.isExpert);
 
-
-    if (this.filtreRecherche !== null) {
-      this.origamis = this.origamiService.findByNomContaining(this.filtreRecherche);
-    }
-    else {
-      this.origamis = this.origamiService.findAll();
-}
 return this.origamis;
 
   }

@@ -58,6 +58,14 @@ public class Categorie {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	public Set<Categorie> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Set<Categorie> categories) {
+		this.categories = categories;
+	}
 	
 
 }

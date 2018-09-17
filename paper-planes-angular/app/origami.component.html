@@ -6,7 +6,7 @@
     <h2 class="search-h2">Niveau</h2>
 
     <form id="niveau">
-    <input type="checkbox" name="occasionnel" value="1" (click)="Occasionnel()"> Occasionnel {{isOccasionnel}}
+    <input type="checkbox" name="occasionnel" value="1" (click)="Occasionnel()"> Occasionnel
     <input type="checkbox" name="normal" value="2" (click)="Normal()"> Normal
     <input type="checkbox" name="avance" value="3" (click)="Avance()"> Avancé
     <input type="checkbox" name="expert" value="4" (click)="Expert()"> Expert
@@ -38,7 +38,7 @@
     </form> -->
 
   </div>
-  <div class="column" >
+  <!-- <div class="column" >
     <h2 class="search-h2">Categories</h2>
     <select>
       <option value="0">Toutes catégories</option>
@@ -50,12 +50,24 @@
       <option value="6">Plantes</option>
     </select>
 
-  </div>
+  </div> -->
+
+
+  <b>Catégorie</b>
+  <select id="categorie" [(ngModel)]="selectedCategorieId">
+    <option selected [ngValue]="0"> Tous </option>
+    <option *ngFor="let c of getCategories()" [ngValue]="c.id">{{ c.nom }}</option>
+  </select>
+
+
   <div class="column">
     <h2 class="search-h2">Rechercher</h2>
       <input id="recherche" type="text" name="search" placeholder="Search..." [(ngModel)] = "filtreRecherche" />
   </div>
 </div>
+
+
+
 
 <div id="view">
   <table>
@@ -77,7 +89,7 @@
         <td>{{ o.note }}</td>
         <td><a [routerLink]="['/origami-details', o.id]" routerLinkActive="active">Détails</a></td>
 
-         <td> <span *ngFor="let c of o.getCategories()">{{ c.nom }} </span></td>
+         <td> <span *ngFor="let c of o.getCategories()">{{ c.nom }}  </span></td>
 
       </tr>
     </tbody>

@@ -9,7 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import fr.sopra.model.Categorie;
 import fr.sopra.model.Origami;
 import fr.sopra.projection.OrigamiProjection;
 
@@ -20,20 +19,22 @@ public interface IDAOOrigami extends JpaRepository<Origami, Integer> {
 	@RestResource(path = "by-nom")
 	public List<Origami> findByNomOrderByNom(@Param("nom") String nom);
 
-	@RestResource(path = "by-nom-containing")
-	public List<Origami> findByNomContaining(@Param("nom") String nom);
+//	@RestResource(path = "by-nom-containing")
+//	public List<Origami> findByNomContaining(@Param("nom") String nom);
 
 //	@RestResource(path = "by-categorie")
-//	public List<Origami> findByCategorieNom(@Param("categorie") String nom);
+//	public List<Origami> findByCategoriesId(@Param("id") int id);
 
 
-//@RestResource(path="by-filtre")
-//@Query(value = "SELECT o FROM Origami o"
-//		+ "WHERE o.name LIKE '%:filtreRecherche' "
-//		+ "AND :selectedCategorie MEMBER OF o.categories"
-//		+ "AND"
-//		+ "((o.niveau = Occasionnel) IS :isOccasionnel OR (o.niveau = Normal) IS :isNormal OR (o.niveau = Avance) IS :isAvance OR (o.niveau = Expert) IS :isExpert")
-//public List<Origami> findByFiltration(@Param("filtreRecherche") String filtreRecherche,@Param("selectedCategories") Categorie selectedCategorie, @Param("isOccasionnel") Boolean isOccasionnel,
-//		@Param("isNormal") Boolean isNormal, @Param("isAvance") Boolean isAvance, @Param("isExpert") Boolean isExpert);
+@RestResource(path="by-filtre")
+@Query(value = "SELECT distinct o FROM Origami o "
+		+ "LEFT JOIN o.categories c "
+		+ "WHERE o.nom LIKE CONCAT('%', :filtreRecherche, '%') "
+		+ "AND (:selectedCategorieId = 0 OR c.id = :selectedCategorieId) "
+		+ "AND "
+		+ "((:isOccasionnel = FALSE AND :isNormal = FALSE AND :isAvance = FALSE AND :isExpert = FALSE) OR (o.niveau = 0 AND :isOccasionnel = TRUE) OR (o.niveau = 1 AND :isNormal = TRUE) OR (o.niveau = 2 AND :isAvance = TRUE) OR (o.niveau = 3 AND :isExpert = TRUE))")
+public List<Origami> findByFiltration(@Param("filtreRecherche") String filtreRecherche,@Param("selectedCategorieId") int selectedCategorieId,
+		@Param("isOccasionnel") Boolean isOccasionnel, @Param("isNormal") Boolean isNormal, @Param("isAvance") Boolean isAvance, @Param("isExpert") Boolean isExpert);
+		
 
 }
