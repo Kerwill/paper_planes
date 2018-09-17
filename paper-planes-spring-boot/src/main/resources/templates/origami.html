@@ -23,7 +23,6 @@ layout:decorator="layout.html">
 					<th scope="col">Niveau</th>
 					<th scope="col">Temps de realisation</th>
 					<th scope="col">Nombre de feuilles</th>
-					<th scope="col">Disponibilite</th>
 					<th scope="col">Gerer la disponibilité</th>
 					<th scope="col">Note</th>
 					<th scope="col">Etapes</th>
@@ -38,7 +37,6 @@ layout:decorator="layout.html">
 					<td>[[${ ori.niveau }]]</td>
 					<td>[[${ ori.temps }]]</td>
 					<td>[[${ ori.feuille }]]</td>
-					<td>[[${ ori.dispo }]]</td>
 					<td>
 					<span th:if="${ ori.dispo == true }">
 					<a th:href="@{non-dispo(id=${ori.id})}" class="btn btn-danger">Rendre indisponible</a></span>
@@ -46,10 +44,10 @@ layout:decorator="layout.html">
 					<a th:href="@{dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></span>
 					</td>
 					<td>[[${ori.note }]]</td>
-					<td><a class="btn btn-primary" th:href="@{read(id=${ ori.id })}">Voir la liste des etapes</a></td>
+					<td><a class="btn btn-primary" th:href="@{read(id=${ ori.id })}">Voir les etapes</a></td>
 					<td>
 					<span th:each="cat : ${ ori.categories }">[[${ cat.nom }]]</span>
-					<a class="btn btn-primary" th:href="@{read(id=${ ori.id })}">Gérer les catégories associées</a>
+					<a class="btn btn-primary" th:href="@{read(id=${ ori.id })}">Gérer les catégories</a>
 					</td>
 					<td><a class="btn btn-outline-secondary"
 						th:href="@{update(id=${ ori.id })}">Modifier</a>
