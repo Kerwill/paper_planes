@@ -36,7 +36,6 @@ public class Origami {
 	private int temps;
 	
 	@Column(name = "ORI_VUE", nullable = true, columnDefinition = "BIGINT DEFAULT 0")
-	@Positive
 	private int vue;
 
 	@Column(name = "ORI_FEUILLE", nullable = false, columnDefinition = "INT DEFAULT 1")
