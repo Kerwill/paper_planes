@@ -41,32 +41,40 @@ public class AdministrateurController {
         return "administration";
     }
 
-//    Etape 1 : modifier les administrateurs/techniciens -- find by id
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/update")
-    public String updateAdminGet(@RequestParam int id, Model model, Principal principal) {
-        model.addAttribute("user", principal.getName());
-        model.addAttribute("administrateur", daoAdministrateur.findById(id).get());
-        
-        
-        
-        return "create-administration";
-    }
+	
+
+	
+//	Etape 1 : modifier les administrateurs/techniciens -- find by id
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping("/update")
+	public String updateAdminGet(@RequestParam int id, Model model, Principal principal) {
+		model.addAttribute("user", principal.getName());
+		model.addAttribute("administrateur", daoAdministrateur.findById(id).get());
+				
+		
+		return "create-administration";
+	}
 
     
 
-//    Etape 2 : modifier les administrateurs -- modifier les champs
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping("/update")
-    public String updateAdminPost(@ModelAttribute Administrateur myAdministrateur, @RequestParam String password) {
-        
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encoderpassword = passwordEncoder.encode(password);
-        myAdministrateur.setPassword(encoderpassword);
-        
-        daoAdministrateur.save(myAdministrateur);
-        return "redirect:/administration/read";
-    }
+//	Etape 2 : modifier les administrateurs -- modifier les champs
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PostMapping("/update")
+	public String updateAdminPost(@RequestParam int id, @RequestParam boolean isTechnicien, @RequestParam String username, @RequestParam(required=false) String password, @RequestParam(required=false) String newpassword) {
+		Administrateur myAdministrateur = daoAdministrateur.findById(id).get();
+		
+		if (newpassword != null){
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encoderpassword = passwordEncoder.encode(newpassword);
+		myAdministrateur.setPassword(encoderpassword);
+		}
+		
+		myAdministrateur.setTechnicien(isTechnicien);
+		myAdministrateur.setUsername(username);
+		
+		daoAdministrateur.save(myAdministrateur);
+		return "redirect:/administration/read";
+	}
 
 
 //    supprimer les administrateurs/techniciens
