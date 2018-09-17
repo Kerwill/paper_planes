@@ -29,6 +29,9 @@ public class Categorie {
 	@JoinColumn(name="CAT_PARENT", referencedColumnName = "CAT_ID")
 	private Categorie parent; 
 
+	@OneToMany
+	private Set<Categorie> categories; 
+	
 	@ManyToMany
 	@JoinTable(
 			name="branche",

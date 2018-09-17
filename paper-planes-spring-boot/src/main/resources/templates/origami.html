@@ -6,11 +6,17 @@ layout:decorator="layout.html">
 <head>
 <title>Gestion des origami</title>
 </head>
+
+<header layout:fragment="custom-title">
+<h1 class="display-2">Liste des origami</h1>
+
+</header>
+
 <body>
 
 <section layout:fragment="custom-content">
 
-<h1 class="display-2" layout:fragment="custom-title">Liste des origami</h1>
+
 <div>
 <a class="btn btn-outline-info" th:href="@{create}" sec:authorize="hasRole('ROLE_ADMIN')">Ajouter un origami</a>
 </div>
