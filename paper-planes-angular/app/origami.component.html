@@ -6,10 +6,10 @@
     <h2 class="search-h2">Niveau</h2>
 
     <form id="niveau">
-    <input type="checkbox" name="occasionnel" value="1" (click)="Occasionnel()"> Occasionnel
-    <input type="checkbox" name="normal" value="2" (click)="Normal()"> Normal
-    <input type="checkbox" name="avance" value="3" (click)="Avance()"> Avancé
-    <input type="checkbox" name="expert" value="4" (click)="Expert()"> Expert
+    <input type="checkbox" name="occasionnel" value="1" [(ngModel)]="isOccasionnel" ng-checked = "isOccasionnel"> Occasionnel
+    <input type="checkbox" name="normal" value="2" [(ngModel)]="isNormal" ng-checked = "isNormal"> Normal
+    <input type="checkbox" name="avance" value="3" [(ngModel)]="isAvance" ng-checked = "isAvance"> Avancé
+    <input type="checkbox" name="expert" value="4" [(ngModel)]="isExpert" ng-checked = "isExpert"> Expert
     </form>
 
     <!-- <form id="niveau">
