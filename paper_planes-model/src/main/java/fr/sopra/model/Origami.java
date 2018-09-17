@@ -49,7 +49,10 @@ public class Origami {
 
 	@Column(name = "ORI_DISPO", nullable = false)
 	private boolean dispo;
-
+	
+	@Column(name = "ORI_IMAGE")
+	private String image;
+	
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "ORI_NIVEAU", nullable = false)
 	private Niveau niveau;

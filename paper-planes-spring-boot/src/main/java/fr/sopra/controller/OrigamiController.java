@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import fr.sopra.dao.IDAOCategorie;
 import fr.sopra.dao.IDAOEtape;
 import fr.sopra.dao.IDAOOrigami;
+import fr.sopra.model.Categorie;
 import fr.sopra.model.Origami;
 import fr.sopra.model.enumerateur.Niveau;
 
@@ -33,11 +34,34 @@ public class OrigamiController {
 	@GetMapping(value="/read")
 	public String readOrigami(Model model, @RequestParam(defaultValue="1") int id) {
 		
-		model.addAttribute("etapes", daoEtap.findByOrigamiId(id));
+		model.addAttribute("etapes", daoEtap.findByOrigamiIdOrderByOrdre(id));
 		model.addAttribute("origamis", daoOri.findAll());
 		model.addAttribute("categories", daoCat.findAll());
+		model.addAttribute("categoriesOri", daoCat.findByOrigamisId(id));
+		model.addAttribute("origami", daoOri.findById(id).get());
 		return "origami";
 		
+	}
+	
+	@GetMapping(value="/associate")
+	public String addCategToOri(@RequestParam int idOri, @RequestParam int idCateg) {
+		
+		Categorie categorie = daoCat.findById(idCateg).get();
+		Origami origami = daoOri.findById(idOri).get();
+		categorie.getOrigamis().add(origami);
+		daoCat.save(categorie);
+		return "redirect:/origami/read";
+		
+	}
+	
+	@GetMapping(value="/dissociate")
+	public String removeCategToOri(@RequestParam int idOri, @RequestParam int idCateg) {
+		
+		Categorie categorie = daoCat.findById(idCateg).get();
+		Origami origami = daoOri.findById(idOri).get();
+		categorie.getOrigamis().remove(origami);
+		daoCat.save(categorie);
+		return "redirect:/origami/read";
 	}
 	
 	@GetMapping(value="/delete")
@@ -54,7 +78,6 @@ public class OrigamiController {
 		Origami origami = daoOri.findById(id).get();
 		model.addAttribute("niveaux", Niveau.values());
 		model.addAttribute("origami", origami);
-		model.addAttribute("etapes", daoEtap.findByOrigamiId(id));
 		model.addAttribute("categories", daoCat.findAll());
 		model.addAttribute("id", id);
 		return "create-origami";
@@ -72,7 +95,6 @@ public class OrigamiController {
 	@GetMapping(value="/create") 
 	public String createOrigamiGet (Model model) {
 		model.addAttribute("niveaux", Niveau.values());
-		model.addAttribute("etapes", daoEtap.findAll());
 		model.addAttribute("categories", daoCat.findAll());
 		return "create-origami";
 		
