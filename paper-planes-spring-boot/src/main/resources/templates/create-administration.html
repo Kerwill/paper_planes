@@ -31,7 +31,7 @@
 					th:value="${ administrateur?.username }" width="30px" required>
 			</div>
 
-			<div th:if="${ administrateur == null || administrateur.username == user}"
+			<div th:if="${ administrateur == null}"
 				id="password">
 				<label>Password :</label> <input type="password" id="password"
 					name="password" placeholder="Votre mot de passe"
