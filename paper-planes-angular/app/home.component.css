@@ -1,10 +1,12 @@
 h1{
   font-family: 'Gamja Flower', cursive;
   position: relative;
-  left: 35%;
+ left : 35%;
+
 }
 
 h3{
   font-family: 'Gamja Flower', cursive;
-  position: center;
+  position: absolute;
+ left : 22%;
 }
