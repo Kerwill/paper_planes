@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import fr.sopra.model.Categorie;
+
 @CrossOrigin("*")
 public interface IDAOCategorie extends JpaRepository<Categorie, Integer> {
 
