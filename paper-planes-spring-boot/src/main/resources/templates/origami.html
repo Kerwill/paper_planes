@@ -39,15 +39,18 @@ layout:decorator="layout.html">
 					<td>[[${ ori.temps }]]</td>
 					<td>[[${ ori.feuille }]]</td>
 					<td>[[${ ori.dispo }]]</td>
-					<td><span th:if="${ ori.dispo == false }">Origami indisponible</span>
+					<td>
 					<span th:if="${ ori.dispo == true }">
 					<a th:href="@{non-dispo(id=${ori.id})}" class="btn btn-danger">Rendre indisponible</a></span>
-					<span th:if="${ ori.dispo == true }">Origami disponible</a></span>
 					<span th:if="${ ori.dispo == false }">
-					<a th:href="@{dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></span></td>
+					<a th:href="@{dispo(id=${ori.id})}" class="btn btn-success">Rendre disponible</a></span>
+					</td>
 					<td>[[${ori.note }]]</td>
 					<td><a class="btn btn-primary" th:href="@{read(id=${ ori.id })}">Voir la liste des etapes</a></td>
-					<td>[[${ ori.categories }]]</td>
+					<td>
+					<span th:each="cat : ${ ori.categories }">[[${ cat.nom }]]</span>
+					<a class="btn btn-primary" th:href="@{read(id=${ ori.id })}">Gérer les catégories associées</a>
+					</td>
 					<td><a class="btn btn-outline-secondary"
 						th:href="@{update(id=${ ori.id })}">Modifier</a>
 						<a class="btn btn-outline-danger"
@@ -81,46 +84,30 @@ layout:decorator="layout.html">
 		</table>
 
 
-	<h1 class="display-2">Liste des etapes</h1>
-			<table class="table table-striped">
-			<thead class="bg-success">
-				<tr class="table-info">
-					<th scope="col">#</th>
-					<th scope="col">Descriptif</th>
-					<th scope="col">Ordre</th>
-					<th scope="col">Image</th>
-					<th scope="col">Video</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="etape : ${ etapes }">
-					<th scope="row">[[${ etape.id }]]</th>
-					<td>[[${ etape.descriptif }]]</td>
-					<td>[[${ etape.ordre }]]</td>
-					<td>[[${ etape.image }]]</td>
-					<td>[[${ etape.video }]]</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		
-		<h1 class="display-2">Liste des catégories</h1>
+	<h1 class="display-2">Liste des catégories</h1>
 			<table class="table table-striped">
 			<thead class="bg-success">
 				<tr class="table-info">
 					<th scope="col">#</th>
 					<th scope="col">Nom</th>
-					<th scope="col">Associer/dissocier un origami</th>
+					<th scope="col">Associer/dissocier</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="etape : ${ etapes }">
-					<th scope="row">[[${ etape.id }]]</th>
-					<td>[[${ etape.descriptif }]]</td>
+				<tr th:each="categ : ${ categories }">
+					<th scope="row">[[${ categ.id }]]</th>
+					<td>[[${ categ.nom }]]</td>
+					<td>
+					<span th:if="${ ori?.categories?.contains(categ) }">
+					<a th:href="@{dissociate(nom=${categ.nom})}" class="btn btn-danger">Dissocier</a></span>
+					<span th:if="${ ori?.categories?.contains(categ) == null }">
+					<a th:href="@{associate(nom=${categ.nom})}" class="btn btn-success">Associer</a></span>
+					</td>
 				</tr>
 			</tbody>
 		</table>
-<!-- A faire, ajouter une table nom de catégories, et deux boutons associer/dissocier qui sauvegardent les categs associées à l'origami -->
+		
+		
 </section>
 
 </body>

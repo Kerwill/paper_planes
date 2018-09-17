@@ -1,5 +1,6 @@
 package fr.sopra.dao;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +13,6 @@ import fr.sopra.model.Origami;
 public interface IDAOOrigami extends JpaRepository<Origami, Integer>{
 
 //@RestResource(path="by-nom")
-public Set<Origami> findByNom(@Param("nom") String nom);
+public Optional<Origami> findByNom(@Param("nom") String nom);
 
 }
