@@ -52,13 +52,13 @@
 
   </div> -->
 
-
-  <b>Catégorie</b>
+  <div class="column">
+    <h2 class="search-h2">Categorie</h2>
   <select id="categorie" [(ngModel)]="selectedCategorieId">
     <option selected [ngValue]="0"> Tous </option>
     <option *ngFor="let c of getCategories()" [ngValue]="c.id">{{ c.nom }}</option>
   </select>
-
+</div>
 
   <div class="column">
     <h2 class="search-h2">Rechercher</h2>

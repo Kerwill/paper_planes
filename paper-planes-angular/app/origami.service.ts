@@ -38,6 +38,8 @@ export class OrigamiService {
     return this.origamis;
   }
 
+
+
   public findById(id) : Origami{
     if ((this.origami === null) || (this.id != id) ) {
       this.id = id;
