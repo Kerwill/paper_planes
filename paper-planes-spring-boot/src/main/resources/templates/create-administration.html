@@ -45,12 +45,12 @@
 		<label class="radio-inline"><input type="radio" id="1" value="1" name="isTechnicien" checked>Oui</label>
 		</div>
 		<div th:unless="${ administrateur == null || administrateur.technicien == false }">
-		<label class="radio-inline"><input type="radio" id="0" value="0" name="isTechnicien" checked>Non</label>
-		<label class="radio-inline"><input type="radio" id="1" value="1" name="isTechnicien">Oui</label>
-		</div>
-		<div th:unless="${ administrateur == null || administrateur.technicien == true}">
 		<label class="radio-inline"><input type="radio" id="0" value="0" name="isTechnicien">Non</label>
 		<label class="radio-inline"><input type="radio" id="1" value="1" name="isTechnicien" checked>Oui</label>
+		</div>
+		<div th:unless="${ administrateur == null || administrateur.technicien == true}">
+		<label class="radio-inline"><input type="radio" id="0" value="0" name="isTechnicien" checked>Non</label>
+		<label class="radio-inline"><input type="radio" id="1" value="1" name="isTechnicien">Oui</label>
 		</div>
 	
 	
