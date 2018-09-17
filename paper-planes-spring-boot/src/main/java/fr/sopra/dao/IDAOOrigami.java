@@ -12,7 +12,7 @@ import fr.sopra.model.Origami;
 @CrossOrigin("*")
 public interface IDAOOrigami extends JpaRepository<Origami, Integer>{
 
-//@RestResource(path="by-nom")
-public Optional<Origami> findByNom(@Param("nom") String nom);
+
+	public Optional<Origami> findByNom(@Param("nom") String nom);
 
 }
