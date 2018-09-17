@@ -34,6 +34,10 @@ public class Origami {
 	@Column(name = "ORI_TEMPS", nullable = false, columnDefinition = "INT DEFAULT 1")
 	@Positive
 	private int temps;
+	
+	@Column(name = "ORI_VUE", nullable = true, columnDefinition = "BIGINT DEFAULT 0")
+	@Positive
+	private int vue;
 
 	@Column(name = "ORI_FEUILLE", nullable = false, columnDefinition = "INT DEFAULT 1")
 	@Positive
@@ -45,7 +49,10 @@ public class Origami {
 
 	@Column(name = "ORI_DISPO", nullable = false)
 	private boolean dispo;
-
+	
+	@Column(name = "ORI_IMAGE")
+	private String image;
+	
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "ORI_NIVEAU", nullable = false)
 	private Niveau niveau;
@@ -78,6 +85,14 @@ public class Origami {
 
 	public void setTemps(int temps) {
 		this.temps = temps;
+	}
+	
+	public int getVue() {
+		return vue;
+	}
+
+	public void setVue(int vue) {
+		this.vue = vue;
 	}
 
 	public int getFeuille() {
@@ -127,5 +142,6 @@ public class Origami {
 	public void setNiveau(Niveau niveau) {
 		this.niveau = niveau;
 	}
-
+	
+	
 }

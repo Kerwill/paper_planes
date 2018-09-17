@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import fr.sopra.dao.IDAOCategorie;
+import fr.sopra.dao.IDAOEtape;
 import fr.sopra.dao.IDAOOrigami;
+import fr.sopra.model.Categorie;
 import fr.sopra.model.Origami;
+import fr.sopra.model.enumerateur.Niveau;
 
 @Controller
 @RequestMapping("/origami")
@@ -26,12 +28,40 @@ public class OrigamiController {
 	@Autowired 
 	private IDAOCategorie daoCat;
 	
+	@Autowired 
+	private IDAOEtape daoEtap;
+	
 	@GetMapping(value="/read")
-	public String readOrigami(Model model) {
-
+	public String readOrigami(Model model, @RequestParam(defaultValue="1") int id) {
+		
+		model.addAttribute("etapes", daoEtap.findByOrigamiIdOrderByOrdre(id));
 		model.addAttribute("origamis", daoOri.findAll());
+		model.addAttribute("categories", daoCat.findAll());
+		model.addAttribute("categoriesOri", daoCat.findByOrigamisId(id));
+		model.addAttribute("origami", daoOri.findById(id).get());
 		return "origami";
 		
+	}
+	
+	@GetMapping(value="/associate")
+	public String addCategToOri(@RequestParam int idOri, @RequestParam int idCateg) {
+		
+		Categorie categorie = daoCat.findById(idCateg).get();
+		Origami origami = daoOri.findById(idOri).get();
+		categorie.getOrigamis().add(origami);
+		daoCat.save(categorie);
+		return "redirect:/origami/read";
+		
+	}
+	
+	@GetMapping(value="/dissociate")
+	public String removeCategToOri(@RequestParam int idOri, @RequestParam int idCateg) {
+		
+		Categorie categorie = daoCat.findById(idCateg).get();
+		Origami origami = daoOri.findById(idOri).get();
+		categorie.getOrigamis().remove(origami);
+		daoCat.save(categorie);
+		return "redirect:/origami/read";
 	}
 	
 	@GetMapping(value="/delete")
@@ -39,19 +69,18 @@ public class OrigamiController {
 
 		model.addAttribute("id", id);
 		daoOri.deleteById(id);
-		return "redirect:/origami/list";
+		return "redirect:/origami/read";
 	}
 	
 	@GetMapping(value="/update") 
-	public String updateOrigamiGet (
-			@RequestParam int id, 
-			Model model) {
+	public String updateOrigamiGet (@RequestParam int id, Model model) {
 		
 		Origami origami = daoOri.findById(id).get();
+		model.addAttribute("niveaux", Niveau.values());
 		model.addAttribute("origami", origami);
 		model.addAttribute("categories", daoCat.findAll());
 		model.addAttribute("id", id);
-		return "origami-edit";
+		return "create-origami";
 		
 	}
 	
@@ -59,24 +88,45 @@ public class OrigamiController {
 	public String updateOrigamiPost (@ModelAttribute Origami origami){
 
 		daoOri.save(origami);		
-		return "redirect:/produit/list";
+		return "redirect:/origami/read";
 		
 	}
 	
 	@GetMapping(value="/create") 
 	public String createOrigamiGet (Model model) {
-
+		model.addAttribute("niveaux", Niveau.values());
 		model.addAttribute("categories", daoCat.findAll());
-		return "origami-edit";
+		return "create-origami";
 		
 	}
 	
 	@PostMapping(value="/create") 
 	public String createOrigamiPost (@ModelAttribute Origami origami) {
-		
 		daoOri.save(origami);
-		return "redirect:/origami/list";
+		return "redirect:/origami/read";
 		
+	}
+	
+	@GetMapping("/dispo")
+	public String getDispo(@RequestParam Integer id) {
+		
+		Origami toSetDispo =  daoOri.findById(id).get();
+		toSetDispo.setDispo(true);
+		daoOri.save(toSetDispo);
+			
+		return "redirect:/origami/read";
+
+	}
+	
+	@GetMapping("/non-dispo")
+	public String getNonDispo(@RequestParam Integer id) {
+		
+		Origami toSetDispo =  daoOri.findById(id).get();
+		toSetDispo.setDispo(false);
+		daoOri.save(toSetDispo);
+			
+		return "redirect:/origami/read";
+
 	}
 	
 }

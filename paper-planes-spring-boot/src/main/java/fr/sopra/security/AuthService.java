@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import fr.sopra.AdministrateurPrincipal;
 import fr.sopra.dao.IDAOAdministrateur;
 import fr.sopra.model.Administrateur;
 

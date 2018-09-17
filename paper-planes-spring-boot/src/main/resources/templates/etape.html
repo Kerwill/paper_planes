@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout.html"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
+	layout:decorator="layout.html">
 
 <head>
-
 <meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
 <link rel="stylesheet"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-	
-<base href="/" />
 
 <title>Etape</title>
 </head>
 
+<header layout:fragment="custom-title">
+	<h1 class="display-2">Etapes</h1>
+</header>
+
 <body>
-	<h1 layout:fragment="custom-title">LISTE DES ETAPES</h1>
-
-	</p>
-
-	<div layout:fragment="custom-content">
-		<a sec:authorize="hasRole('ROLE_ADMIN')"
-			href="/http://localhost:8080/create-etape">Ajouter une étape</a> >
+	<section layout:fragment="custom-content">
 
 
+		<a class="btn btn-outline-info" sec:authorize="hasRole('ROLE_ADMIN')"
+			href="create">Ajouter une étape</a> </br> </br>
+			
+		<table class="table table-striped">
 
-		<table>
-
-			<thead>
-				<tr>
+			<thead class="bg-success">
+				<tr class="table-info">
 					<th>Id</th>
+					<th>Origami</th>
 					<th>Descriptif</th>
 					<th>Image</th>
 					<th>Video</th>
 					<th>Ordre</th>
-					<th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )>Actions</th>
 				</tr>
 			</thead>
 
@@ -48,23 +45,36 @@
 
 				<td>[[${ etape.id }]]</td>
 
+				<td>[[${ etape?.origami?.nom }]]</td>
+
 				<td>[[${ etape.descriptif }]]</td>
 
-				<td>[[${ etape.image }]]</td>
+				<td>[[${ etape.image }]]
+				</td>
 
-				<td>[[${ etape.video }]]</td>
 
-				<td>[[${ etape.ordre }]]</td>
+			
 
-				<td><a sec:authorize="hasRole('ROLE_ADMIN')"
-					th:href="@{create-etape(id=${ etape.id })}" class="btn btn-primary">Modifier</a>
-					<a sec:authorize="hasRole('ROLE_ADMIN')"
-					th:href="@{etape(id=${ etape.id })}" class="btn btn-danger">Supprimer</a></td>
+			<td>[[${ etape.video }]]</td>
+
+			<td>[[${ etape.ordre }]]</td>
+
+			<td><a
+				sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TECH')" )
+				th:href="@{update(id=${ etape.id })}"
+				class="btn btn-outline-secondary">Modifier</a> <a
+				sec:authorize="hasRole('ROLE_ADMIN')"
+				th:href="@{delete(id=${ etape.id })}" class="btn btn-outline-danger">Supprimer</a>
+
+			</td>
+
 
 			</tr>
 
+
 			</tbody>
 		</table>
+	</section>
 </body>
-</div>
+
 </html>

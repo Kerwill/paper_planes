@@ -14,7 +14,7 @@
 </head>
 
 <header layout:fragment="custom-title">
-		<h1 class="display-2">Envolez vous sur Paper Planes!</h1>
+		<h1 class="display-2">Que suggerent les visiteurs ?</h1>
 	</header>
 <body>
 <section layout:fragment="custom-content">
@@ -24,14 +24,25 @@
   <thead>
     <tr class="table-info">
       <th scope="col">Nom</th>
-      <th scope="col">Vues</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Mail</th>
+      <th scope="col">Description</th>
+      <th scope="col">Etat</th>
     </tr>
   </thead>
   <tbody>
   
-  <tr th:each="ori : ${ origamis }">
-      <td>[[${ ori.nom }]]</td>
-      <td>[[${ ori.vue }]]</td>
+  <tr th:each="idee : ${ idees }">
+      <td>[[${ idee.nom }]]</td>
+      <td>[[${ idee.prenom }]]</td>
+      <td>[[${ idee.mail }]]</td>
+      <td>[[${ idee.description}]]</td>
+      <td>
+					<span th:if="${ idee.archive == true }">
+					<a th:href="@{non-archive(id=${idee.id})}" class="btn btn-danger">Desarchiver</a></span>
+					<span th:if="${ idee.archive == false }">
+					<a th:href="@{archive(id=${idee.id})}" class="btn btn-success">Archiver</a></span>
+					</td>
     </tr> 
   </tbody>
 </table>

@@ -1,4 +1,7 @@
-package fr.sopra.security;
+package fr.sopra.config;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,28 +36,28 @@ public class SecurityConfig {
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests()
 				.antMatchers("/assets/**").permitAll()
-				.antMatchers("/home").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/**").hasAnyRole("ADMIN", "TECH")
 				.and()
 				.formLogin()
 					.loginPage("/login")
 					.loginProcessingUrl("/perform_login")
-					.defaultSuccessUrl("/administration", true)
+					.defaultSuccessUrl("/administration/home-admin", true)
 					.failureUrl("/login?error=true")
 					.permitAll()
 				.and()
 				.logout()
 					.logoutUrl("/logout")
-					.logoutSuccessUrl("/deconnexion")
+					.logoutSuccessUrl("/logout")
 					.permitAll();
 		}
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
+//	    System.out.println("1, mot de passe : " + bcrypt.encode("1"));
+//	    System.out.println("2, mot de passe : " + bcrypt.encode("2"));
 		return new BCryptPasswordEncoder();
 	}
-}
 
-
+}	

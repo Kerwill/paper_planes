@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.UniqueConstraint;
 
@@ -24,8 +25,9 @@ public class Categorie {
 	@Column(name = "CAT_NOM")
 	private String nom;
 	
-	@OneToMany
-	private Set<Categorie> categories; 
+	@ManyToOne
+	@JoinColumn(name="CAT_PARENT", referencedColumnName = "CAT_ID")
+	private Categorie parent; 
 
 	@ManyToMany
 	@JoinTable(
@@ -58,6 +60,16 @@ public class Categorie {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	public Categorie getParent() {
+		return parent;
+	}
+
+	public void setParent(Categorie parent) {
+		this.parent = parent;
+	}
+	
+	
 	
 
 }

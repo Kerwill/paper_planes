@@ -3,3 +3,4 @@ target/
 .settings/
 .classpath
 bin/
+paper-planes-spring-boot/src/main/java/fr/sopra/controller/OrigamiController\.java

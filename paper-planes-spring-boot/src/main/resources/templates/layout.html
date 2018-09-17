@@ -2,7 +2,6 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="ISO-8859-1">
-<base href="/paper-planes/" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -10,29 +9,38 @@
 <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Envolez vous sur Paper Planes!</title>
 
 </head>
-<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" section layout:fragment="custom-nav">
-  <a class="navbar-brand">PAPER PLANES</a>
+  <a class="navbar-brand" href="http://localhost:8080/home">PAPER PLANES</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="http://localhost:8080/home">Home<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="http://localhost:8080/categorie">Categorie</a>
-      <a class="nav-item nav-link" href="http://localhost:8080/origami">Origami</a>
-      <a class="nav-item nav-link" href="http://localhost:8080/etape">Etape</a>
-      <a class="nav-item nav-link" href="http://localhost:8080/administration">Administration</a>
+      <a class="nav-item nav-link" href="http://localhost:8080/categorie/read">Categorie</a>
+      <a class="nav-item nav-link" href="http://localhost:8080/origami/read">Origami</a>
+      <a class="nav-item nav-link" href="http://localhost:8080/etape/read">Etape</a>
+      <a class="nav-item nav-link" href="http://localhost:8080/administration/read">Administration</a>
+      <a class="nav-item nav-link" href="http://localhost:8080/idee/read">Idee</a>
+      <a class="nav-item nav-link" href="http://localhost:8080/logout">Deconnexion</a>
+
+		
     </div>
   </div>
 </nav>
 	<header layout:fragment="custom-title">
 		<h1>Envolez vous sur Paper Planes!</h1>
 	</header>
+	<body>
+	
 	<section layout:fragment="custom-content">
 		<p>Le contenu par defaut</p>
-	</section>
+	</section>  
+	
+	
+	<br/>
 	<footer layout:fragment="custom-footer">
+	<a type="button" class="btn btn-outline-warning" href="javascript:history.go(-1)">Retour</a>
 		<p>paperplanes&copy;</p>
 	</footer>
 </body>

@@ -15,26 +15,42 @@
 
 <title>Categorie</title>
 </head>
+
+<header layout:fragment="custom-title">
+	<h1 class="display-2">Categories</h1>
+</header>
+
 <body>
-<h1>Liste des catégories</h1>
-<div>
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-    <tr th:each="categorie : ${categories}">
-      <td>[[${ categorie.nom }]]</td>
-      <td><a type="button" th:href="@{update(id=${ categorie.id })}">Modifier</a></td>
-      <td><a type="button" th:href="@{delete(id=${ categorie.id })}">Supprimer</a></td>
-    </tr> 
-  </tbody>
-</table>
-<a type="button" href=create>Ajouter</a>
-</div>
+	<section layout:fragment="custom-content">
+
+
+
+
+		<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-info"
+			th:href="@{create}">Ajouter</a> <br /> <br />
+		<div>
+			<table class="table table-striped">
+				<thead>
+					<tr class="table-info">
+						<th scope="col">Nom</th>
+						<th scope="col"></th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr th:each="categorie : ${categories}">
+						<td>[[${ categorie.nom }]]</td>
+						<td><a class="btn btn-outline-secondary"
+							th:href="@{update(id=${ categorie.id })}">Modifier</a></td>
+						<td><a sec:authorize="hasRole('ROLE_ADMIN')"
+							class="btn btn-outline-danger"
+							th:href="@{delete(id=${ categorie.id })}">Supprimer</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
 </body>
+
 </html>

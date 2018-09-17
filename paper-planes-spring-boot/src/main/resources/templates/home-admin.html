@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" type="text/css" href="/assets/css/home-admin.css" />
+<link rel="stylesheet"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+
+</head>
+
+
+<body>
+
+<h1 class="display-2">ESPACE ADMINISTRATION</h1>
+<br/> 
+<a style="text-decoration:none" th:href="read">
+	<div class="myBtn">Administration</div>
+</a>
+
+<a style="text-decoration:none" href="http://localhost:8080/categorie/read">
+	<div class="myBtn">Categorie</div>
+</a>
+
+<a style="text-decoration:none" href="http://localhost:8080/origami/read">
+	<div class="myBtn">Origami</div>
+</a>
+
+<a style="text-decoration:none" href="http://localhost:8080/etape/read">
+	<div class="myBtn">Etape</div>
+</a>
+
+<a style="text-decoration:none" href="http://localhost:8080/idee/read">
+	<div class="myBtn">Idee</div>
+</a>
+
+</body>
+
+</html>
