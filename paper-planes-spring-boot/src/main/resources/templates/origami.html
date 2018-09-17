@@ -98,10 +98,10 @@ layout:decorator="layout.html">
 					<th scope="row">[[${ categ.id }]]</th>
 					<td>[[${ categ.nom }]]</td>
 					<td>
-					<span th:if="${ ori?.categories?.contains(categ) }">
-					<a th:href="@{dissociate(nom=${categ.nom})}" class="btn btn-danger">Dissocier</a></span>
-					<span th:if="${ ori?.categories?.contains(categ) == null }">
-					<a th:href="@{associate(nom=${categ.nom})}" class="btn btn-success">Associer</a></span>
+					<span th:if="${ categoriesOri?.contains(categ) == true }">
+					<a th:href="@{dissociate(idOri=${ origami.id }, idCateg=${categ.id})}" class="btn btn-danger">Dissocier</a></span>
+					<span th:if="${ categoriesOri?.contains(categ) == false }">
+					<a th:href="@{associate(idOri=${ origami.id }, idCateg=${categ.id})}" class="btn btn-success">Associer</a></span>
 					</td>
 				</tr>
 			</tbody>
