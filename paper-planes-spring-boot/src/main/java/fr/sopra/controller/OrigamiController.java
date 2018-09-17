@@ -33,7 +33,7 @@ public class OrigamiController {
 	@GetMapping(value="/read")
 	public String readOrigami(Model model, @RequestParam(defaultValue="1") int id) {
 		
-		model.addAttribute("etapes", daoEtap.findByOrigamiIdOrderByOrdre(id));
+		model.addAttribute("etapes", daoEtap.findByOrigamiId(id));
 		model.addAttribute("origamis", daoOri.findAll());
 		model.addAttribute("categories", daoCat.findAll());
 		return "origami";
@@ -54,7 +54,7 @@ public class OrigamiController {
 		Origami origami = daoOri.findById(id).get();
 		model.addAttribute("niveaux", Niveau.values());
 		model.addAttribute("origami", origami);
-		model.addAttribute("etapes", daoEtap.findByOrigamiIdOrderByOrdre(id));
+		model.addAttribute("etapes", daoEtap.findByOrigamiId(id));
 		model.addAttribute("categories", daoCat.findAll());
 		model.addAttribute("id", id);
 		return "create-origami";
