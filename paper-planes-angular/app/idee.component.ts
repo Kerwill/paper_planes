@@ -9,12 +9,12 @@ import { Idee } from './idee';
 	})
 
 export class IdeeComponent {
-  private idee: Idee =new Idee();
+private idee: Idee = new Idee();
 
   constructor(private ideeService : IdeeService) {}
 
-  public addIdee(idee){
-  this.ideeService.save(idee);
+  public addIdee(){
+  this.ideeService.save(this.idee);
   this.idee = new Idee();
 }
 }
