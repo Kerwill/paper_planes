@@ -10,7 +10,7 @@ import fr.sopra.model.Etape;
 @CrossOrigin("*")
 public interface IDAOEtape extends JpaRepository<Etape, Integer> {
 	
-	public Etape findByOrigamiId(@Param("id") int id);
+	public Etape findByOrigamiIdOrderByOrdre(@Param("id") int id);
 	
 	}
 	 
